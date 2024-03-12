@@ -81,7 +81,7 @@ body {
   --color-main-blue: #0054a2;
   --color-beige: #ffe995;
   --color-grey: #8e8e8e;
-  --color-main:#0054A2;
+  --color-main: #0054a2;
   // fonts and typos
   --font-family: "Roboto", sans-serif;
   --font-weight-extra-light: 100;
@@ -92,5 +92,8 @@ body {
   --font-weight-bold: 900;
 }
 
-
-
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
