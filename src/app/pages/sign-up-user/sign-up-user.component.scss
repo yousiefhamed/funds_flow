@@ -1,0 +1,209 @@
+.signUpUser {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  min-height: 100vh;
+
+  & > div {
+    width: 50vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .background {
+    color: var(--color-white);
+    background-color: var(--color-main-blue);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+
+    h1 {
+      font-size: 56px;
+      font-weight: var(--font-weight-bold);
+    }
+
+    P {
+      font-size: 40px;
+      font-weight: var(--font-weight-extra-light);
+    }
+
+    .shapes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+
+      .big-shape {
+        position: absolute;
+        top: 60%;
+        left: 40%;
+        animation: up-down 20s ease-in-out infinite;
+      }
+
+      :nth-child(2) {
+        position: absolute;
+        top: 40%;
+        left: -5%;
+        animation: up-down 20s ease-in-out infinite 5s;
+      }
+      :nth-child(3) {
+        position: absolute;
+        top: 10%;
+        left: 70%;
+        animation: up-down 20s ease-in-out infinite 10s;
+      }
+      :nth-child(4) {
+        position: absolute;
+        top: 90%;
+        left: 80%;
+        animation: up-down 20s ease-in-out infinite 15s;
+      }
+      :nth-child(5) {
+        position: absolute;
+        top: -5%;
+        left: 20%;
+        animation: up-down 20s ease-in-out infinite;
+      }
+
+      @keyframes up-down {
+        0% {
+          transform: translate(0, 0);
+        }
+        20% {
+          transform: translate(20%, -10%);
+        }
+        40% {
+          transform: translate(10%, 10%);
+        }
+        60% {
+          transform: translate(-50%, 20%);
+        }
+        80% {
+          transform: translate(-50%, 20%);
+        }
+        100% {
+          transform: translate(0, 0);
+        }
+      }
+    }
+  }
+
+  .signUpUser__content {
+    max-width: 600px;
+    margin: 0 auto;
+
+    figure {
+      width: 70%;
+      margin: 0 auto;
+
+      img {
+        width: 100%;
+        display: inline-block;
+      }
+    }
+
+    form.signUp__form {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      flex-direction: column;
+      width: 100%;
+      padding: 0 80px;
+      gap: 50px;
+
+      .signUp__input__container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        width: 100%;
+        position: relative;
+
+        label {
+          color: var(--color-gray);
+          position: absolute;
+          top: 50%;
+          left: 10px;
+          transform: translate(0, -50%);
+        }
+
+        input {
+          color: var(--color-black);
+          width: 100%;
+          padding: 0 10px;
+          line-height: 40px;
+          border: none;
+          border-bottom: 2px solid var(--color-grey);
+          font-size: 20px;
+          font-weight: var(--font-weight-regular);
+
+          &:focus {
+            outline: 0;
+          }
+
+          &:focus + label {
+            top: -10px;
+            left: 0;
+          }
+        }
+
+        i {
+          position: absolute;
+          top: 50%;
+          right: 10px;
+          transform: translate(0, -50%);
+        }
+      }
+
+      button.submit__form {
+        background-color: var(--color-main-blue);
+        padding: 18px 0;
+        border-radius: 10px;
+        font-size: 32px;
+        font-weight: var(--font-weight-medium);
+        color: var(--color-white);
+        border: none;
+      }
+
+      p.signIn {
+        font-weight: var(--font-weight-extra-light);
+        font-size: 24px;
+        color: var(--color-black);
+        text-align: center;
+
+        a {
+          text-decoration: underline;
+          color: var(--color-black);
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+
+    & > div {
+      height: fit-content;
+      width: 100%;
+    }
+
+    .background {
+      padding: 20px 0;
+      max-height: 200px;
+    }
+  }
+}
+
+.logo {
+  width: 50%;
+  margin: 0 auto;
+}

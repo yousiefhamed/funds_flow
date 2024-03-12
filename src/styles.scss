@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -13,20 +12,27 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $graduationProject-primary: mat.define-palette(mat.$indigo-palette);
-$graduationProject-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$graduationProject-accent: mat.define-palette(
+  mat.$pink-palette,
+  A200,
+  A100,
+  A400
+);
 
 // The warn palette is optional (defaults to red).
 $graduationProject-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$graduationProject-theme: mat.define-light-theme((
-  color: (
-    primary: $graduationProject-primary,
-    accent: $graduationProject-accent,
-    warn: $graduationProject-warn,
+$graduationProject-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $graduationProject-primary,
+      accent: $graduationProject-accent,
+      warn: $graduationProject-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -35,13 +41,14 @@ $graduationProject-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-
-
-
-
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 /* You can add global styles to this file, and also import other style files */
 
@@ -65,4 +72,28 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 //   background-color: #11bd11;
 // }
 
+/* You can add global styles to this file, and also import other style files */
 
+:root {
+  // colors and backgrounds
+  --color-black: #000;
+  --color-white: #fff;
+  --color-main-blue: #0054a2;
+  --color-beige: #ffe995;
+  --color-grey: #8e8e8e;
+  --color-main: #0054a2;
+  // fonts and typos
+  --font-family: "Roboto", sans-serif;
+  --font-weight-extra-light: 100;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 700;
+  --font-weight-bold: 900;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
