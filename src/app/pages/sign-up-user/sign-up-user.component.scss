@@ -16,7 +16,6 @@
   }
 
   .background {
-    background-color: var(--color-main-blue);
     color: var(--color-white);
     text-align: center;
     position: relative;
@@ -85,95 +84,125 @@
       }
     }
 
-    form.signUp__form {
-      display: flex;
-      justify-content: center;
-      align-items: stretch;
-      flex-direction: column;
-      width: 100%;
-      padding: 0 80px;
-      gap: 50px;
+    // form.signUp__form {
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: stretch;
+    //   flex-direction: column;
+    //   width: 100%;
+    //   padding: 0 80px;
+    //   gap: 50px;
 
-      .signUp__input__container {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        flex-direction: column;
-        width: 100%;
-        position: relative;
+    //   .signUp__input__container {
+    //     display: flex;
+    //     justify-content: center;
+    //     align-items: flex-start;
+    //     flex-direction: column;
+    //     width: 100%;
+    //     position: relative;
 
-        label {
-          color: var(--color-gray);
-          position: absolute;
-          top: 50%;
-          left: 10px;
-          transform: translate(0, -50%);
-        }
+    //     label {
+    //       color: var(--color-gray);
+    //       position: absolute;
+    //       top: 50%;
+    //       left: 10px;
+    //       transform: translate(0, -50%);
+    //     }
 
-        input {
-          color: var(--color-black);
-          width: 100%;
-          padding: 0 10px;
-          line-height: 40px;
-          border: none;
-          border-bottom: 2px solid var(--color-grey);
-          font-size: 20px;
-          font-weight: var(--font-weight-regular);
+    //     input {
+    //       color: var(--color-black);
+    //       width: 100%;
+    //       padding: 0 10px;
+    //       line-height: 40px;
+    //       border: none;
+    //       border-bottom: 2px solid var(--color-grey);
+    //       font-size: 20px;
+    //       font-weight: var(--font-weight-regular);
 
-          &:focus {
-            outline: 0;
-          }
+    //       &:focus {
+    //         outline: 0;
+    //       }
 
-          &:focus + label {
-            top: -10px;
-            left: 0;
-          }
-        }
+    //       &:focus + label {
+    //         top: -10px;
+    //         left: 0;
+    //       }
+    //     }
 
-        i {
-          position: absolute;
-          top: 50%;
-          right: 10px;
-          transform: translate(0, -50%);
-        }
-      }
+    //     i {
+    //       position: absolute;
+    //       top: 50%;
+    //       right: 10px;
+    //       transform: translate(0, -50%);
+    //     }
+    //   }
 
-      button.submit__form {
-        background-color: var(--color-main-blue);
-        padding: 18px 0;
-        border-radius: 10px;
-        font-size: 32px;
-        font-weight: var(--font-weight-medium);
-        color: var(--color-white);
-        border: none;
-      }
+    //   button.submit__form {
+    //     background-color: var(--color-main-blue);
+    //     padding: 18px 0;
+    //     border-radius: 10px;
+    //     font-size: 32px;
+    //     font-weight: var(--font-weight-medium);
+    //     color: var(--color-white);
+    //     border: none;
+    //   }
 
-      p.signIn {
-        font-weight: var(--font-weight-extra-light);
-        font-size: 24px;
-        color: var(--color-black);
-        text-align: center;
+    //   p.signIn {
+    //     font-weight: var(--font-weight-extra-light);
+    //     font-size: 24px;
+    //     color: var(--color-black);
+    //     text-align: center;
 
-        a {
-          text-decoration: underline;
-          color: var(--color-black);
-        }
-      }
-    }
+    //     a {
+    //       text-decoration: underline;
+    //       color: var(--color-black);
+    //     }
+    //   }
+    // }
   }
 
-  @media (max-width: 1000px) {
-    flex-direction: column;
+  // @media (max-width: 1000px) {
+  //   flex-direction: column;
+  //   width: 100%;
+  //   height: fit-content;
+
+  //   & > div {
+  //     height: fit-content;
+  //     width: 100%;
+  //   }
+
+  //   .background {
+  //     padding: 20px 0;
+  //   }
+  // }
+}
+
+
+
+
+.fram{
+
+  background-image: url("../../../assets/Frame\ 115.png");
+   height: 100%;
+   background-position: center center;
+   background-size:cover;
+}
+
+
+
+
+// .logo
+// {
+//   width: 50%;
+//   margin: 0 auto;
+// }
+
+figure {
+  width: 50%;
+  margin: 0 auto;
+
+  img {
     width: 100%;
-    height: fit-content;
-
-    & > div {
-      height: fit-content;
-      width: 100%;
-    }
-
-    .background {
-      padding: 20px 0;
-    }
+    display: inline-block;
   }
 }

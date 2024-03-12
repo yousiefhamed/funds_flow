@@ -1,3 +1,4 @@
+import { SignUpUserComponent } from './../sign-up-user/sign-up-user.component';
 import { MatButtonModule } from '@angular/material/button';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,6 +21,8 @@ import { DialogboxComponent } from 'src/app/dialogbox/dialogbox.component';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+
+  userName:string=''
   constructor(public dialog: MatDialog) {}
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
@@ -34,5 +37,7 @@ export class HomeComponent {
   log(){
    console.log("eljjdkjf")
   }
+
+  
 
 }
