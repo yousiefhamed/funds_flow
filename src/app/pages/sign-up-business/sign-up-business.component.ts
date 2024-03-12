@@ -38,7 +38,7 @@ export class SignUpBusinessComponent implements OnInit {
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
     desc: new FormControl('', [Validators.required, Validators.minLength(20)]),
-    // day                  month             years
+    // day                 signUpUser month             years
     detaOfEsta: new FormControl('', [
       Validators.required,
       Validators.pattern(
