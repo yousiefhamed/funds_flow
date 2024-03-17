@@ -1,0 +1,84 @@
+
+
+.form-control{
+
+    box-shadow: none;
+  }
+  
+  
+  figure {
+    width: 60%;
+    margin: 0 auto;
+  
+    img {
+      width: 100%;
+      display: inline-block;
+    }
+  }
+
+  
+  
+  .background-Sign{
+  
+    background-image: url("../../../assets/Frame 115.png");
+     background-position: center center;
+     height: 100vh;
+     background-size:cover;
+     color: var(--color-white);
+     text-align: center;
+     position: relative;
+     z-index: 1;
+     overflow: hidden;
+     display: flex;
+     justify-content: center;
+   
+     h1{
+     padding-top: 50%;
+     }
+     P {
+      font-size: 25px;
+      padding-top: 20px;
+      
+    }
+   
+  }
+  
+  
+  // @media (max-width: 1000px) {
+
+  //   flex-direction:column,
+  //   height:fit-content,
+  //   // width:100%;
+  
+  
+
+  //   & > div {
+  //     height: fit-content;
+  //     width: 100%;
+  //   }
+
+
+  //   .background {
+  //     padding: 20px 0;
+  //     max-height: 200px;
+  //   }
+
+
+  
+  // }
+
+
+
+
+  
+  .btn-sginUp{
+  
+    font-weight: bold;
+    font-size: 25px;
+    color: whitesmoke ;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    background-color: var(--color-main);
+  
+  }
