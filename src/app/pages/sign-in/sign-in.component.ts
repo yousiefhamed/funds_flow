@@ -36,6 +36,38 @@ import {
 export class SignInComponent {
   constructor(private _router: Router) {}
 
+<<<<<<< HEAD
+email:string=''
+
+
+  SinUpForm:FormGroup = new FormGroup({
+
+  email:new FormControl('',[Validators.required ,Validators.email]),
+  password:new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z0-9_@]{6,}$/)])
+
+
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  handelForm(){
+  console.log(this.SinUpForm);
+  if(this.SinUpForm.valid){
+  this._router.navigate(['/home'])
+
+=======
   SinUpForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
@@ -49,5 +81,6 @@ export class SignInComponent {
     if (this.SinUpForm.valid) {
       this._router.navigate(['/home']);
     }
+>>>>>>> f1289fffe807626c9443cde94b6c897683619ef8
   }
 }
