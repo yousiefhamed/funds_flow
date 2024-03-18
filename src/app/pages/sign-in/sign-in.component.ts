@@ -16,7 +16,7 @@ import { Router, RouterLink, RouterLinkActive, RouterModule, Routes } from '@ang
 export class SignInComponent {
   constructor(private _router:Router){}     
 
-
+email:string=''
 
 
   SinUpForm:FormGroup = new FormGroup({
