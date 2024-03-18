@@ -1,1 +1,118 @@
-<p>sign-in works!</p>
+<section class="signUpUser">
+  <div class="signUpUser__content">
+    <figure>
+      <img src="./../../../assets/logo.png" alt="Funds Flow Logo" />
+    </figure>
+
+    <form
+      class="signUp__form"
+      [formGroup]="SinUpForm"
+      (ngSubmit)="handelForm()"
+    >
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          class="form-control border-0 border-bottom bor"
+          id="floatingInput"
+          placeholder="name@example.com"
+          formControlName="email"
+        />
+        <label for="floatingInput" class="text-muted"> Email </label>
+        <div
+          class="mb-3"
+          *ngIf="
+            SinUpForm.get('email')?.errors && SinUpForm.get('email')?.touched
+          "
+        >
+          <p
+            *ngIf="SinUpForm.get('email')?.getError('required')"
+            class="text-danger"
+          >
+            * Email required
+          </p>
+          <p
+            *ngIf="SinUpForm.get('email')?.getError('email')"
+            class="text-danger"
+          >
+            * Email InValid Format
+          </p>
+        </div>
+      </div>
+
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control border-0 border-bottom"
+          id="floatingPassword"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <label for="floatingPassword" class="text-muted mb-3">Password </label>
+        <i class="fa-regular fa-eye-slash"></i>
+        <div
+          class="mb-3"
+          *ngIf="
+            SinUpForm.get('password')?.errors &&
+            SinUpForm.get('password')?.touched
+          "
+        >
+          <p
+            *ngIf="SinUpForm.get('password')?.getError('required')"
+            class="text-danger"
+          >
+            * password required
+          </p>
+          <p
+            *ngIf="SinUpForm.get('password')?.getError('pattern')"
+            class="text-danger"
+          >
+            *must be at least 6 letters
+          </p>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-end">
+        <span>
+          <a routerLink="/forgetpassword">Forget Password ?</a>
+        </span>
+      </div>
+
+      <button
+        class="w-100 mx-auto d-flex mt-4 mb-2 btn btn-sginUp"
+        [disabled]="SinUpForm.invalid"
+      >
+        Sign In
+      </button>
+
+      <p class="text-center mb-5 mt-3">
+        New In?
+        <span>
+          <a class="link-primary cursor-pointer" routerLink="/home">Sign Up</a>
+        </span>
+      </p>
+    </form>
+  </div>
+
+  <div class="background">
+    <h1>Sign In</h1>
+    <p>Welcome Back Our Partner!</p>
+
+    <div class="shapes">
+      <div class="big-shape">
+        <img src="./../../../assets/animation/big-shape.svg" alt="" />
+      </div>
+      <div class="small-shape">
+        <img src="./../../../assets/animation/small-shape.svg" alt="" />
+      </div>
+      <div class="small-shape">
+        <img src="./../../../assets/animation/small-shape.svg" alt="" />
+      </div>
+      <div class="small-shape">
+        <img src="./../../../assets/animation/small-shape.svg" alt="" />
+      </div>
+      <div class="small-shape">
+        <img src="./../../../assets/animation/small-shape.svg" alt="" />
+      </div>
+    </div>
+  </div>
+</section>

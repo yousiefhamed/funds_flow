@@ -30,6 +30,7 @@
     P {
       font-size: 40px;
       font-weight: var(--font-weight-extra-light);
+      padding: 0 20px;
     }
 
     .shapes {
@@ -116,42 +117,15 @@
       flex-direction: column;
       width: 100%;
       padding: 0 80px;
-      gap: 50px;
+      gap: 30px;
 
-      .signUp__input__container {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        flex-direction: column;
-        width: 100%;
-        position: relative;
-
-        label {
-          color: var(--color-gray);
-          position: absolute;
-          top: 50%;
-          left: 10px;
-          transform: translate(0, -50%);
+      .form-floating {
+        input {
+          border-radius: 0;
         }
 
-        input {
-          color: var(--color-black);
-          width: 100%;
-          padding: 0 10px;
-          line-height: 40px;
-          border: none;
-          border-bottom: 2px solid var(--color-grey);
-          font-size: 20px;
-          font-weight: var(--font-weight-regular);
-
-          &:focus {
-            outline: 0;
-          }
-
-          &:focus + label {
-            top: -10px;
-            left: 0;
-          }
+        .text-danger {
+          font-size: 15px;
         }
 
         i {
@@ -161,28 +135,6 @@
           transform: translate(0, -50%);
         }
       }
-
-      button.submit__form {
-        background-color: var(--color-main-blue);
-        padding: 18px 0;
-        border-radius: 10px;
-        font-size: 32px;
-        font-weight: var(--font-weight-medium);
-        color: var(--color-white);
-        border: none;
-      }
-
-      p.signIn {
-        font-weight: var(--font-weight-extra-light);
-        font-size: 24px;
-        color: var(--color-black);
-        text-align: center;
-
-        a {
-          text-decoration: underline;
-          color: var(--color-black);
-        }
-      }
     }
   }
 
@@ -190,6 +142,10 @@
     flex-direction: column;
     width: 100%;
     height: fit-content;
+
+    .signUpUser__content form.signUp__form {
+      padding: 0 20px;
+    }
 
     & > div {
       height: fit-content;
@@ -206,4 +162,18 @@
 .logo {
   width: 50%;
   margin: 0 auto;
+}
+
+.form-control {
+  box-shadow: none;
+}
+
+.btn-sginUp {
+  font-weight: bold;
+  font-size: 25px;
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  background-color: var(--color-main);
 }
