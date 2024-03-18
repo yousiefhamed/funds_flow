@@ -19,6 +19,7 @@ children:[
 {path:'signIn', loadComponent:()=>import('./pages/sign-in/sign-in.component').then((m)=>m.SignInComponent),title:'SignIn'},
 {path:'signUpUser', loadComponent:()=>import('./pages/sign-up-user/sign-up-user.component').then((m)=>m.SignUpUserComponent), title:'SignUpUser'},
 {path:'signUpBusiness', loadComponent:()=>import('./pages/sign-up-business/sign-up-business.component').then((m)=>m.SignUpBusinessComponent),title:'SignUpBusiness'},
+{path:'forgetpassword', loadComponent:()=>import('./pages/forget-password/forget-password.component').then((m)=>m.ForgetPasswordComponent),title:'forgetPassword'},
 
 
 ]
