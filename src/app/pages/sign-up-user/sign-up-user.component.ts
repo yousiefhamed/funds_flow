@@ -50,9 +50,6 @@ export class SignUpUserComponent {
   });
 
   handelForm() {
-    // Data to be sent in the POST request
-    const userData = this.SinUpForm.value;
-
     async function postJSON(data: object) {
       try {
         const response = await fetch(
@@ -74,7 +71,7 @@ export class SignUpUserComponent {
     }
 
     if (this.SinUpForm.valid) {
-      postJSON(userData);
+      postJSON(this.SinUpForm.value);
       this._router.navigate(['/home']);
     }
   }
