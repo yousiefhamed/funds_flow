@@ -50,8 +50,31 @@ export class SignUpUserComponent {
   });
 
   handelForm() {
-    console.log(this.SinUpForm);
+    // Data to be sent in the POST request
+    const userData = this.SinUpForm.value;
+
+    async function postJSON(data: object) {
+      try {
+        const response = await fetch(
+          'https://8436-197-55-187-253.ngrok-free.app/api/register',
+          {
+            method: 'POST', // or 'PUT'
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+          }
+        );
+
+        const result = await response.json();
+        console.log('Success:', result);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+
     if (this.SinUpForm.valid) {
+      postJSON(userData);
       this._router.navigate(['/home']);
     }
   }
