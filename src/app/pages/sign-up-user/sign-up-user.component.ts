@@ -14,6 +14,7 @@ import {
   RouterModule,
   Routes,
 } from '@angular/router';
+import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
   selector: 'app-sign-up-user',
@@ -29,16 +30,21 @@ import {
   styleUrls: ['./sign-up-user.component.scss'],
 })
 export class SignUpUserComponent {
-  constructor(private _router: Router) {}
+  
+  errMsg:string=''
+  isLoading:boolean=false;
+
+  constructor(private _router: Router  ,private _authService:AuthService) {}
+
 
   SinUpForm: FormGroup = new FormGroup({
-    userName: new FormControl('', [
+    name: new FormControl('', [
       Validators.required,
       Validators.minLength(4),
       Validators.maxLength(20),
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    nationalID: new FormControl('', [
+    national_id: new FormControl('', [
       Validators.required,
       Validators.minLength(14),
       Validators.maxLength(14),
@@ -49,10 +55,48 @@ export class SignUpUserComponent {
     ]),
   });
 
+
+
+
+
+
+
+
+
+
   handelForm() {
-    console.log(this.SinUpForm);
-    if (this.SinUpForm.valid) {
-      this._router.navigate(['/home']);
-    }
+    this.errMsg='';
+    this.isLoading=true
+  
+
+const userDate = this.SinUpForm.value;
+
+if(this.SinUpForm.valid===true){
+
+this._authService.Signup(userDate).subscribe({
+
+next:(res)=>{
+
+  console.log(res);
+  this.isLoading=false
+  this._router.navigate(['/signIn'])
+},
+error:(err)=>{
+  console.log(err);
+  this.isLoading=false
+
+this.errMsg= err.error.message
+
+}
+
+
+
+
+})
+
+
+
+}
+
   }
 }

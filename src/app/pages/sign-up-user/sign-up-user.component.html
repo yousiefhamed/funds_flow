@@ -38,7 +38,7 @@
           class="form-control border-0 border-bottom"
           id="floatingUserName"
           placeholder="userName"
-          formControlName="userName"
+          formControlName="name"
         />
         <label for="floatingUserName" class="text-muted mb-3">UserName </label>
         <div
@@ -101,7 +101,7 @@
       <div class="form-floating">
         <input
           type="text"
-          formControlName="nationalID"
+          formControlName="national_id"
           class="form-control border-0 border-bottom"
           id="floatingNationalID"
           placeholder="NationalID"
@@ -159,11 +159,15 @@
           </p>
         </div>
       </div>
+      <div  *ngIf="errMsg" class="alert alert-danger mb-0 m-0">
+        {{errMsg}}
+      </div>
+
       <button
         class="w-100 mx-auto d-flex mt-4 mb-2 btn btn-sginUp"
         [disabled]="SinUpForm.invalid"
       >
-        Sign Up
+        Sign Up<span *ngIf="isLoading"> <i class="fa fa-spin fa-spinner"></i></span>
       </button>
 
       <p class="text-center mb-5 mt-3">
