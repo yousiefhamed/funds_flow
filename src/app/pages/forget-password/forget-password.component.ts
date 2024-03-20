@@ -9,7 +9,7 @@ import { RxReactiveFormsModule, RxwebValidators } from '@rxweb/reactive-form-val
   standalone: true,
   imports: [CommonModule ,FormsModule ,ReactiveFormsModule , RxReactiveFormsModule],
   templateUrl: './forget-password.component.html',
-  styleUrls: ['./forget-password.component.scss']
+  styleUrls: ['./forget-password.component.scss'],
 })
 export class ForgetPasswordComponent {
   step1:boolean=true;
