@@ -15,14 +15,15 @@ export class DialogboxComponent {
   constructor(public dialogRef: MatDialogRef <DialogboxComponent> , private  _Router:Router) {}
 
 
-  log(){
-    console.log("hello ahmed")
+ investor(){
     this._Router.navigate(['/signUpUser'])
+
   }
   
-  logg(){
-    console.log("hello ahmed")
+  business(){
     this._Router.navigate(['/signUpBusiness'])
+    
+
   }
 
 }

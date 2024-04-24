@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   
-  {path:'',
+{path:'',
 
 loadComponent:()=>import('./layouts/blank-layout/blank-layout.component').then((m)=>m.BlankLayoutComponent),
 children:[
 {path:'',redirectTo:'home',pathMatch:'full'},
+// {path:'landing', loadComponent:()=>import('./pages/landing-page/landing-page.component').then((m)=>m.LandingPageComponent),title:'landing'},
+
 {path:'home', loadComponent:()=>import('./pages/home/home.component').then((m)=>m.HomeComponent),title:'Home'}
 ]
 },

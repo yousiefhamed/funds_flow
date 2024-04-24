@@ -1,14 +1,19 @@
 <section class="signUpUser">
-  <div class="signUpUser__content">
-    <figure>
-      <img src="./../../../assets/logo.png" alt="Funds Flow Logo" />
-    </figure>
+
+<div class="signUpUser__content">
+<figure>
+    <!-- <img src="./../../../assets/logo.png" alt="Funds Flow Logo"/> -->
+</figure>
 
     <form
       class="signUp__form"
       [formGroup]="SinInForm"
       (ngSubmit)="handelForm()"
     >
+
+
+        <!-- ==============================================  Email  =============================================== -->
+
       <div class="form-floating mb-3">
         <input
           type="email"
@@ -28,7 +33,7 @@
             *ngIf="SinInForm.get('email')?.getError('required')"
             class="text-danger"
           >
-            * Email required
+            * Email is required
           </p>
           <p
             *ngIf="SinInForm.get('email')?.getError('email')"
@@ -37,7 +42,11 @@
             * Email InValid Format
           </p>
         </div>
+        <p class="text-danger"> {{errMsg}}</p>
       </div>
+
+
+          <!-- ==============================================  Password  =============================================== -->
 
       <div class="form-floating">
         <input
@@ -49,6 +58,9 @@
         />
         <label for="floatingPassword" class="text-muted mb-3">Password </label>
         <i class="fa-regular fa-eye-slash"></i>
+
+
+        
         <div
           class="mb-3"
           *ngIf="
@@ -60,7 +72,7 @@
             *ngIf="SinInForm.get('password')?.getError('required')"
             class="text-danger"
           >
-            * password required
+            * password is required
           </p>
           <p
             *ngIf="SinInForm.get('password')?.getError('pattern')"
@@ -71,14 +83,14 @@
         </div>
       </div>
 
-      <div class="d-flex justify-content-end">
-        <span>
+      <div class="d-flex justify-content-end ">
+        <span class="link-underline-primary">
           <a routerLink="/forgetpassword">Forget Password ?</a>
         </span>
       </div>
-      <div  *ngIf="errMsg" class="alert alert-danger mb-0 m-0">
-        {{errMsg}}
-      </div>
+
+          <!-- ==============================================  Sign In   =============================================== -->
+
       <button
         class="w-100 mx-auto d-flex mt-4 mb-2 btn btn-sginUp"
         [disabled]="SinInForm.invalid"
@@ -106,6 +118,7 @@
     <p>Welcome Back Our Partner!</p>
 
     <div class="shapes">
+
       <div class="big-shape">
         <img src="./../../../assets/animation/big-shape.svg" alt="" />
       </div>
@@ -121,6 +134,7 @@
       <div class="small-shape">
         <img src="./../../../assets/animation/small-shape.svg" alt="" />
       </div>
+
     </div>
   </div>
 </section>

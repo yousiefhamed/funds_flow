@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormControl,
@@ -14,7 +14,9 @@ import {
   RouterModule,
   Routes,
 } from '@angular/router';
-import { AuthService } from 'src/app/core/auth.service';
+import { AuthService } from 'src/app/Services/auth.service';
+import { Subscription } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-up-user',
@@ -30,12 +32,12 @@ import { AuthService } from 'src/app/core/auth.service';
   styleUrls: ['./sign-up-user.component.scss'],
 })
 export class SignUpUserComponent {
-  
-  errMsg:string=''
-  isLoading:boolean=false;
-
-  constructor(private _router: Router  ,private _authService:AuthService) {}
-
+  errMsg: string = '';
+  isLoading: boolean = false;
+  errorEmail: string = '';
+  errorNational_id: string = '';
+  subObject!: Subscription;
+  constructor(private _router: Router, private _authService: AuthService) {}
 
   SinUpForm: FormGroup = new FormGroup({
     name: new FormControl('', [
@@ -51,52 +53,28 @@ export class SignUpUserComponent {
     ]),
     password: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^[a-zA-Z0-9_@]{6,}$/),
+      Validators.pattern(/^[a-zA-Z0-9_@]{8,}$/),
     ]),
   });
 
-
-
-
-
-
-
-
-
-
   handelForm() {
-    this.errMsg='';
-    this.isLoading=true
-  
-
-const userDate = this.SinUpForm.value;
-
-if(this.SinUpForm.valid===true){
-
-this._authService.Signup(userDate).subscribe({
-
-next:(res)=>{
-
-  console.log(res);
-  this.isLoading=false
-  this._router.navigate(['/signIn'])
-},
-error:(err)=>{
-  console.log(err);
-  this.isLoading=false
-
-this.errMsg= err.error.message
-
-}
-
-
-
-
-})
-
-
-
-}
-
+    this.errMsg = '';
+    this.isLoading = true;
+    const userDate = this.SinUpForm.value;
+    userDate.role = 'investor';
+    console.log(this.SinUpForm.value);
+    if (this.SinUpForm.valid === true) {
+      this.subObject = this._authService.Signup(userDate).subscribe({
+        next: (res) => {
+          this.isLoading = false;
+          this._router.navigate(['/signIn']);
+        },
+        error: (err: HttpErrorResponse) => {
+          this.isLoading = false;
+          this.errorEmail = err.error.message.email;
+          this.errorNational_id = err.error.message.national_id;
+        },
+      });
+    }
   }
 }

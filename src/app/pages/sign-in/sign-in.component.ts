@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   CommonModule,
   formatCurrency,
@@ -18,8 +18,9 @@ import {
   RouterModule,
   Routes,
 } from '@angular/router';
-import { AuthService } from 'src/app/core/auth.service';
-
+import { AuthService } from 'src/app/Services/auth.service';
+import { Subscription } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
@@ -34,55 +35,42 @@ import { AuthService } from 'src/app/core/auth.service';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
 })
-export class SignInComponent {
+export class SignInComponent implements OnDestroy {
+  errMsg: string = '';
+  isLoading: boolean = false;
+  subObject!: Subscription;
 
-  errMsg:string=''
-  isLoading:boolean=false;
-  constructor(private _router: Router ,private _AuthService:AuthService) {}
+  constructor(private _router: Router, private _AuthService: AuthService) {}
+  SinInForm: FormGroup = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^[a-zA-Z0-9_@]{8,}$/),
+    ]),
+  });
 
-
-
-  SinInForm:FormGroup = new FormGroup({
-  
-  email:new FormControl('',[Validators.required ,Validators.email]),
-  password:new FormControl('',[Validators.required,Validators.pattern(/^[a-zA-Z0-9_@]{6,}$/)])
-  
-
-  })
-  
-  handelForm(){
-    this.isLoading=true
-    this.errMsg=''
-    const userDate=this.SinInForm.value
-  if(this.SinInForm.valid){
-    this._AuthService.Signin(userDate).subscribe({
-
- next:(res)=>{
-
-console.log(res);
-this.isLoading=false
-
-if(res.message=='User Logged In Successfully'){
-
-  localStorage.setItem('userToken',res.token)
-this._router.navigate(['/home'])
-}
- },
- error:(err)=>{
-
-  console.log(err);
-  this.errMsg= err.error.message
-  this.isLoading=false
-
- }
-
-
-
-
-    })
-
-  
+  handelForm() {
+    this.errMsg = '';
+    this.isLoading = true;
+    const userDate = this.SinInForm.value;
+    if (this.SinInForm.valid) {
+      this.subObject = this._AuthService.Signin(userDate).subscribe({
+        next: (res) => {
+          this.isLoading = false;
+          if (res.message == 'User Logged In Successfully') {
+            localStorage.setItem('userToken', res.token);
+            this._router.navigate(['/home']);
+          }
+        },
+        error: (err: HttpErrorResponse) => {
+          this.errMsg = err.error.message;
+          this.isLoading = false;
+        },
+      });
+    }
   }
 
-}
+  ngOnDestroy(): void {
+    this.subObject?.unsubscribe();
+  }
 }

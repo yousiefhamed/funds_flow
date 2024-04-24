@@ -40,10 +40,18 @@ export class HomeComponent {
     });
   }
 
+
+
+
   signOut(){
 
 localStorage.removeItem('userToken')
 
 this._router.navigate(['/signIn'])
   }
+
+
+
+
+  
 }

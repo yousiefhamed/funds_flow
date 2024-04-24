@@ -10,11 +10,12 @@ export class AuthService {
   constructor(private _httpClient:HttpClient) { }
 
 
-
+baseUrl:string=`https://2552-102-41-129-198.ngrok-free.app/`;
 
   Signup(info:any):Observable<any>{
 
-    return this._httpClient.post(`https://8436-197-55-187-253.ngrok-free.app/api/register` , info)
+    return this._httpClient.post(`${this.baseUrl}api/register
+    ` , info)
     
     }
     
@@ -22,7 +23,7 @@ export class AuthService {
 
     Signin(info:object):Observable<any>{
 
-      return this._httpClient.post(`https://8436-197-55-187-253.ngrok-free.app/api/login` , info)
+      return this._httpClient.post(`${this.baseUrl}api/login` , info)
       
       }
       
