@@ -31,6 +31,8 @@ import {
 export class SignUpUserComponent {
   constructor(private _router: Router) {}
 
+  passwordShown: boolean = false;
+
   SinUpForm: FormGroup = new FormGroup({
     userName: new FormControl('', [
       Validators.required,
@@ -74,5 +76,9 @@ export class SignUpUserComponent {
       postJSON(this.SinUpForm.value);
       this._router.navigate(['/home']);
     }
+  }
+
+  showPassword() {
+    this.passwordShown = !this.passwordShown;
   }
 }

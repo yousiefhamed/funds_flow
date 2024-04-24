@@ -39,6 +39,8 @@ import {
 export class SignUpBusinessComponent implements OnInit {
   constructor(private _router: Router) {}
 
+  passwordShown: boolean = false;
+
   SinUpForm: FormGroup = new FormGroup({
     companyName: new FormControl('', [
       Validators.required,
@@ -63,4 +65,8 @@ export class SignUpBusinessComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  showPassword() {
+    this.passwordShown = !this.passwordShown;
+  }
 }

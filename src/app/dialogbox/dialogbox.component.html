@@ -1,5 +1,14 @@
-<h1  class="lolo"> Would you like to SignUp as</h1>
-<div mat-dialog-actions class=" pb-3 bg-main">
-  <button mat-button mat-dialog-close class="btn" (click)=" log()">Investor</button>
-  <button mat-button mat-dialog-close class="btn" (click)=" logg()">Business</button>
+<h1 class="lolo">Would you like to SignUp as</h1>
+<div mat-dialog-actions class="pb-3 bg-main">
+  <button
+    mat-button
+    mat-dialog-close
+    class="btn"
+    (click)="handleSignUpInvestor()"
+  >
+    Investor
+  </button>
+  <button mat-dialog-close class="btn" (click)="handleSignUpBusiness()">
+    Business
+  </button>
 </div>

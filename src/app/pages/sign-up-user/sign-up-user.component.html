@@ -130,14 +130,14 @@
       </div>
       <div class="form-floating">
         <input
-          type="password"
+          type="{{ passwordShown ? 'text' : 'password' }}"
           class="form-control border-0 border-bottom"
           id="floatingPassword"
           placeholder="Password"
           formControlName="password"
         />
         <label for="floatingPassword" class="text-muted mb-3">Password </label>
-        <i class="fa-regular fa-eye-slash"></i>
+        <i (click)="showPassword()" class="fa-regular fa-eye-slash"></i>
         <div
           class="mb-3"
           *ngIf="

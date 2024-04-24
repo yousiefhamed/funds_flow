@@ -45,53 +45,27 @@
         position: absolute;
         top: 60%;
         left: 40%;
-        animation: up-down 20s ease-in-out infinite;
       }
 
       :nth-child(2) {
         position: absolute;
         top: 40%;
         left: -5%;
-        animation: up-down 20s ease-in-out infinite 5s;
       }
       :nth-child(3) {
         position: absolute;
         top: 10%;
         left: 70%;
-        animation: up-down 20s ease-in-out infinite 10s;
       }
       :nth-child(4) {
         position: absolute;
         top: 90%;
         left: 80%;
-        animation: up-down 20s ease-in-out infinite 15s;
       }
       :nth-child(5) {
         position: absolute;
         top: -5%;
         left: 20%;
-        animation: up-down 20s ease-in-out infinite;
-      }
-
-      @keyframes up-down {
-        0% {
-          transform: translate(0, 0);
-        }
-        20% {
-          transform: translate(20%, -10%);
-        }
-        40% {
-          transform: translate(10%, 10%);
-        }
-        60% {
-          transform: translate(-50%, 20%);
-        }
-        80% {
-          transform: translate(-50%, 20%);
-        }
-        100% {
-          transform: translate(0, 0);
-        }
       }
     }
   }
@@ -102,11 +76,13 @@
 
     figure {
       width: 70%;
+      max-width: 250px;
       margin: 0 auto;
 
       img {
         width: 100%;
         display: inline-block;
+        margin-bottom: var(--padding-regular);
       }
     }
 
@@ -130,9 +106,10 @@
 
         i {
           position: absolute;
-          top: 50%;
+          top: 20px;
           right: 10px;
           transform: translate(0, -50%);
+          cursor: pointer;
         }
       }
     }
@@ -175,5 +152,5 @@
   display: flex;
   justify-content: center;
   align-items: stretch;
-  background-color: var(--color-main);
+  background-color: var(--color-main-blue);
 }

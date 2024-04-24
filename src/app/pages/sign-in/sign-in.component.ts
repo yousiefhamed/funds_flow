@@ -36,6 +36,8 @@ import {
 export class SignInComponent {
   constructor(private _router: Router) {}
 
+  passwordShown: boolean = false;
+
   SinUpForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
@@ -49,5 +51,9 @@ export class SignInComponent {
     if (this.SinUpForm.valid) {
       this._router.navigate(['/home']);
     }
+  }
+
+  showPassword() {
+    this.passwordShown = !this.passwordShown;
   }
 }
