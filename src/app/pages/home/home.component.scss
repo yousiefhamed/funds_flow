@@ -857,3 +857,48 @@
     }
   }
 }
+
+.weekly__inv {
+  h2 {
+    text-align: center;
+  }
+  .best__container {
+    position: relative;
+    display: grid;
+    justify-content: space-between;
+    align-items: stretch;
+    grid-template-columns: repeat(4, 20%);
+    padding-block: var(--padding-extra-large);
+
+    &::after {
+      content: "";
+      background-color: var(--color-main-blue);
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 100vw;
+      height: 100%;
+      z-index: -5;
+    }
+
+    .best,
+    .best img {
+      width: 100%;
+    }
+
+    h3 {
+      color: var(--color-white);
+      font-size: var(--font-size-28);
+      font-style: normal;
+      font-weight: var(--font-weight-medium);
+      line-height: normal;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      grid-template-columns: repeat(2, 45%);
+      gap: var(--padding-regular) 0;
+    }
+  }
+}
