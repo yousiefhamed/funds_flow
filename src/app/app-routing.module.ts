@@ -11,6 +11,8 @@ const routes: Routes = [
       ),
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
+      // {path:'landing', loadComponent:()=>import('./pages/landing-page/landing-page.component').then((m)=>m.LandingPageComponent),title:'landing'},
+
       {
         path: 'home',
         loadComponent: () =>

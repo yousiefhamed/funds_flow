@@ -1,14 +1,16 @@
 <section class="signUpUser">
   <div class="signUpUser__content">
     <figure>
-      <img src="./../../../assets/logo.png" alt="Funds Flow Logo" />
+      <!-- <img src="./../../../assets/logo.png" alt="Funds Flow Logo"/> -->
     </figure>
 
     <form
       class="signUp__form"
-      [formGroup]="SinUpForm"
+      [formGroup]="SinInForm"
       (ngSubmit)="handelForm()"
     >
+      <!-- ==============================================  Email  =============================================== -->
+
       <div class="form-floating mb-3">
         <input
           type="email"
@@ -21,23 +23,26 @@
         <div
           class="mb-3"
           *ngIf="
-            SinUpForm.get('email')?.errors && SinUpForm.get('email')?.touched
+            SinInForm.get('email')?.errors && SinInForm.get('email')?.touched
           "
         >
           <p
-            *ngIf="SinUpForm.get('email')?.getError('required')"
+            *ngIf="SinInForm.get('email')?.getError('required')"
             class="text-danger"
           >
-            * Email required
+            * Email is required
           </p>
           <p
-            *ngIf="SinUpForm.get('email')?.getError('email')"
+            *ngIf="SinInForm.get('email')?.getError('email')"
             class="text-danger"
           >
             * Email InValid Format
           </p>
         </div>
+        <p class="text-danger">{{ errMsg }}</p>
       </div>
+
+      <!-- ==============================================  Password  =============================================== -->
 
       <div class="form-floating">
         <input
@@ -52,18 +57,18 @@
         <div
           class="mb-3"
           *ngIf="
-            SinUpForm.get('password')?.errors &&
-            SinUpForm.get('password')?.touched
+            SinInForm.get('password')?.errors &&
+            SinInForm.get('password')?.touched
           "
         >
           <p
-            *ngIf="SinUpForm.get('password')?.getError('required')"
+            *ngIf="SinInForm.get('password')?.getError('required')"
             class="text-danger"
           >
-            * password required
+            * password is required
           </p>
           <p
-            *ngIf="SinUpForm.get('password')?.getError('pattern')"
+            *ngIf="SinInForm.get('password')?.getError('pattern')"
             class="text-danger"
           >
             *must be at least 6 letters
@@ -72,22 +77,27 @@
       </div>
 
       <div class="d-flex justify-content-end">
-        <span>
+        <span class="link-underline-primary">
           <a routerLink="/forgetpassword">Forget Password ?</a>
         </span>
       </div>
 
+      <!-- ==============================================  Sign In   =============================================== -->
+
       <button
         class="w-100 mx-auto d-flex mt-4 mb-2 btn btn-sginUp"
-        [disabled]="SinUpForm.invalid"
+        [disabled]="SinInForm.invalid"
       >
         Sign In
+        <span *ngIf="isLoading"> <i class="fa fa-spin fa-spinner"></i></span>
       </button>
 
       <p class="text-center mb-5 mt-3">
         New In?
         <span>
-          <a class="link-primary cursor-pointer" routerLink="/home">Sign Up</a>
+          <a class="link-primary cursor-pointer" routerLink="/signUpUser"
+            >Sign Up</a
+          >
         </span>
       </p>
     </form>

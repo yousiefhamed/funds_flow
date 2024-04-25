@@ -2,7 +2,7 @@ import { SignUpUserComponent } from './../sign-up-user/sign-up-user.component';
 import { MatButtonModule } from '@angular/material/button';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Route, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import {
   MatDialog,
   MatDialogModule,
@@ -27,7 +27,7 @@ import { DialogboxComponent } from 'src/app/dialogbox/dialogbox.component';
 })
 export class HomeComponent {
   userName: string = '';
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog ,private _router:Router) {}
 
   openDialog(
     enterAnimationDuration: string,
@@ -40,7 +40,18 @@ export class HomeComponent {
     });
   }
 
-  log() {
-    console.log('eljjdkjf');
+
+
+
+  signOut(){
+
+localStorage.removeItem('userToken')
+
+this._router.navigate(['/signIn'])
   }
+
+
+
+
+  
 }

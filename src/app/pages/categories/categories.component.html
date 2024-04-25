@@ -1,0 +1,31 @@
+<section *ngIf="categories.length>0">
+
+    <p><strong>Choose the sector or industry you want to invest in</strong></p>
+    <div class="row">
+
+
+        <!-- display 3 categories -->
+        <!-- *ngFor="let categorie of categories | slice:0:3 " -->
+
+
+        <div *ngFor="let categorie of categories " class="col-md-6">
+
+            <div class="categories">
+
+
+                <img class="w-100" [src]="categorie." [alt]="categorie." [title]="categorie.">
+
+
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+    </div>
+</section>

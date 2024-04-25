@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormControl,
@@ -14,6 +14,9 @@ import {
   RouterModule,
   Routes,
 } from '@angular/router';
+import { AuthService } from 'src/app/Services/auth.service';
+import { Subscription } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-up-user',
@@ -29,52 +32,51 @@ import {
   styleUrls: ['./sign-up-user.component.scss'],
 })
 export class SignUpUserComponent {
-  constructor(private _router: Router) {}
+  errMsg: string = '';
+  isLoading: boolean = false;
+  errorEmail: string = '';
+  errorNational_id: string = '';
+  subObject!: Subscription;
+  constructor(private _router: Router, private _authService: AuthService) {}
 
   passwordShown: boolean = false;
 
   SinUpForm: FormGroup = new FormGroup({
-    userName: new FormControl('', [
+    name: new FormControl('', [
       Validators.required,
       Validators.minLength(4),
       Validators.maxLength(20),
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    nationalID: new FormControl('', [
+    national_id: new FormControl('', [
       Validators.required,
       Validators.minLength(14),
       Validators.maxLength(14),
     ]),
     password: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^[a-zA-Z0-9_@]{6,}$/),
+      Validators.pattern(/^[a-zA-Z0-9_@]{8,}$/),
     ]),
   });
 
   handelForm() {
-    async function postJSON(data: object) {
-      try {
-        const response = await fetch(
-          'https://8436-197-55-187-253.ngrok-free.app/api/register',
-          {
-            method: 'POST', // or 'PUT'
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-          }
-        );
-
-        const result = await response.json();
-        console.log('Success:', result);
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    }
-
-    if (this.SinUpForm.valid) {
-      postJSON(this.SinUpForm.value);
-      this._router.navigate(['/home']);
+    this.errMsg = '';
+    this.isLoading = true;
+    const userDate = this.SinUpForm.value;
+    userDate.role = 'investor';
+    console.log(this.SinUpForm.value);
+    if (this.SinUpForm.valid === true) {
+      this.subObject = this._authService.Signup(userDate).subscribe({
+        next: (res) => {
+          this.isLoading = false;
+          this._router.navigate(['/signIn']);
+        },
+        error: (err: HttpErrorResponse) => {
+          this.isLoading = false;
+          this.errorEmail = err.error.message.email;
+          this.errorNational_id = err.error.message.national_id;
+        },
+      });
     }
   }
 
