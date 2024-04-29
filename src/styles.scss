@@ -45,7 +45,7 @@ $graduationProject-theme: mat.define-light-theme(
   --timing: 0.5s;
 
   /* spaces and pixels of elements, padding and margin */
-  --max-width: 1900px;
+  --max-width: 1700px;
   --border-radius-5: 5px;
   --border-radius-10: 10px;
   --border-radius-20: 20px;
@@ -146,7 +146,7 @@ body {
 }
 
 .h2__heading {
-  font-size: var(--font-size-45);
+  font-size: var(--font-size-36);
   font-weight: var(--font-weight-extra-bold);
   font-style: normal;
   line-height: normal;
