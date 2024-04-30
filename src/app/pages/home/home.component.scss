@@ -909,6 +909,22 @@
       width: 100%;
     }
   }
+  @media (max-width: 500px) {
+    max-height: 400px;
+    figure {
+      margin-block: 0;
+    }
+
+    h1 {
+      margin-block-start: -90px;
+      z-index: 5;
+    }
+  }
+  @media (max-width: 400px) {
+    h1 {
+      margin-block-start: -60px;
+    }
+  }
 }
 
 .about {
@@ -925,6 +941,7 @@
       @include absolute($width: 350px, $left: 50%);
       transform: translate(-50%, -50%);
       z-index: -5;
+      max-width: 100%;
     }
     .smallShape {
       @include absolute($width: 250px, $top: 100%, $left: 30%);
@@ -971,17 +988,16 @@
   }
 
   &__container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-content: space-evenly;
-    align-items: center;
+    @include gridBox(
+      $justify: space-evenly,
+      $colsNum: 4,
+      $gapCol: 0,
+      $gapRow: 50px
+    );
     margin-top: 20px;
-    gap: 50px 0;
   }
   &__member {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexBox($gap: 0);
 
     img {
       width: 50%;
@@ -1070,6 +1086,66 @@
   }
 }
 
+.social__links {
+  > div {
+    width: 30%;
+    min-width: 300px;
+    max-width: 30%;
+    background-color: var(--color-main-blue);
+    border-radius: var(--border-radius-10);
+
+    .h2__heading {
+      font-size: var(--font-size-26);
+      margin-bottom: 0;
+    }
+    .p__text {
+      word-break: break-word;
+    }
+  }
+
+  img {
+    max-width: 80px;
+  }
+
+  @media (max-width: 720px) {
+    > div {
+      width: 100%;
+      max-width: 400px;
+      min-width: 100%;
+    }
+  }
+}
+
+.hours {
+  .float-end {
+    margin-inline-start: 25%;
+
+    > .p__text {
+      background-color: var(--color-main-blue);
+      color: var(--color-white);
+      border-radius: var(--border-radius-30);
+      padding: var(--padding-small) var(--padding-regular);
+    }
+
+    .day {
+      color: var(--color-main-blue);
+      font-weight: var(--font-weight-medium);
+    }
+    .time {
+      font-size: var(--font-size-22);
+    }
+  }
+
+  @media (max-width: 700px) {
+    > div.w-75 {
+      width: 100% !important;
+    }
+    > .float-end {
+      margin-inline-start: 0;
+    }
+  }
+}
+
 .faq {
   width: 100%;
   display: flex;
@@ -1139,7 +1215,8 @@
 
   @media (max-width: 450px) {
     p {
-      font-size: 55px;
+      font-size: 50px;
+      word-break: break-word;
     }
   }
 }
