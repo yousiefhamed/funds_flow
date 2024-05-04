@@ -41,14 +41,11 @@ children:[
 
 // notFound
 
-// {path:"**",loadComponent:()=>import('./pages/not-fonud/not-fonud.component').then((m)=>m.NotFonudComponent)}
-
-
+  // {path:"**",loadComponent:()=>import('./pages/not-fonud/not-fonud.component').then((m)=>m.NotFonudComponent)}
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

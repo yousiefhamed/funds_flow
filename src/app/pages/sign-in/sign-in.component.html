@@ -11,9 +11,7 @@
       [formGroup]="SinInForm"
       (ngSubmit)="handelForm()"
     >
-
-
-        <!-- ==============================================  Email  =============================================== -->
+      <!-- ==============================================  Email  =============================================== -->
 
       <div class="form-floating mb-3">
         <input
@@ -43,15 +41,14 @@
             * Email InValid Format
           </p>
         </div>
-        <p class="text-danger"> {{errMsg}}</p>
+        <p class="text-danger">{{ errMsg }}</p>
       </div>
 
-
-          <!-- ==============================================  Password  =============================================== -->
+      <!-- ==============================================  Password  =============================================== -->
 
       <div class="form-floating">
         <input
-          type="password"
+          type="{{ passwordShown ? 'text' : 'password' }}"
           class="form-control border-0 border-bottom"
           id="floatingPassword"
           placeholder="Password"
@@ -83,34 +80,31 @@
         </div>
       </div>
 
-      <div class="d-flex justify-content-end ">
+      <div class="d-flex justify-content-end">
         <span class="link-underline-primary">
           <a routerLink="/forgetpassword">Forget Password ?</a>
         </span>
       </div>
 
-          <!-- ==============================================  Sign In   =============================================== -->
+      <!-- ==============================================  Sign In   =============================================== -->
 
       <button
         class="w-100 mx-auto d-flex mt-4 mb-2 btn btn-sginUp"
         [disabled]="SinInForm.invalid"
       >
-        Sign In   <span *ngIf="isLoading"> <i class="fa fa-spin fa-spinner"></i></span>
-
-
+        Sign In
+        <span *ngIf="isLoading"> <i class="fa fa-spin fa-spinner"></i></span>
       </button>
 
       <p class="text-center mb-5 mt-3">
         New In?
         <span>
-          <a class="link-primary cursor-pointer" routerLink="/signUpUser">Sign Up</a>
-
+          <a class="link-primary cursor-pointer" routerLink="/signUpUser"
+            >Sign Up</a
+          >
         </span>
       </p>
     </form>
-
-
-
   </div>
 
   <div class="background">
@@ -118,7 +112,6 @@
     <p>Welcome Back Our Partner!</p>
 
     <div class="shapes">
-
       <div class="big-shape">
         <img src="./../../../assets/animation/big-shape.svg" alt="" />
       </div>
@@ -134,7 +127,6 @@
       <div class="small-shape">
         <img src="./../../../assets/animation/small-shape.svg" alt="" />
       </div>
-
     </div>
   </div>
 </section>

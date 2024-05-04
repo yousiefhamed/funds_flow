@@ -53,6 +53,8 @@ export class SignUpBusinessComponent implements OnDestroy {
 
   constructor(private _router: Router, private _authService: AuthService) {}
 
+  passwordShown: boolean = false;
+
   SinUpForm: FormGroup = new FormGroup({
     name: new FormControl('', [
       Validators.required,
@@ -62,7 +64,7 @@ export class SignUpBusinessComponent implements OnDestroy {
     email: new FormControl('', [Validators.required, Validators.email]),
     national_id: new FormControl('', [
       Validators.required,
-      Validators.pattern(/^[0-9]{12}$/)
+      Validators.pattern(/^[0-9]{12}$/),
       // Validators.maxLength(12),
       // Validators.minLength(12),
     ]),
@@ -72,9 +74,9 @@ export class SignUpBusinessComponent implements OnDestroy {
     ]),
     // date_of_establishment: new FormControl('', [
     //   Validators.required,
-      // Validators.pattern(
-      //   /^ (0[1-9]|1[1,2])(\/|-)(0[1-9]|[12][0-9]|3[01])(\/|-)(19|20)\d{2}$/
-      // ),
+    // Validators.pattern(
+    //   /^ (0[1-9]|1[1,2])(\/|-)(0[1-9]|[12][0-9]|3[01])(\/|-)(19|20)\d{2}$/
+    // ),
     // ]),
     password: new FormControl('', [
       Validators.required,
@@ -110,5 +112,9 @@ export class SignUpBusinessComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     this.subObject?.unsubscribe();
+  }
+
+  showPassword() {
+    this.passwordShown = !this.passwordShown;
   }
 }

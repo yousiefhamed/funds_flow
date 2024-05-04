@@ -37,6 +37,9 @@ import { CategoriesService } from 'src/app/Services/categories.service';
   styleUrls: ['./sign-in.component.scss'],
 })
 export class SignInComponent implements OnDestroy {
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
+  }
   errMsg: string = '';
   isLoading: boolean = false;
   subObject!: Subscription;
@@ -90,7 +93,7 @@ export class SignInComponent implements OnDestroy {
     }
   }
 
-  ngOnDestroy(): void {
-    this.subObject?.unsubscribe();
+  showPassword() {
+    this.passwordShown = !this.passwordShown;
   }
 }

@@ -27,7 +27,7 @@ import { DialogboxComponent } from 'src/app/dialogbox/dialogbox.component';
 })
 export class HomeComponent {
   userName: string = '';
-  constructor(public dialog: MatDialog ,private _router:Router) {}
+  constructor(public dialog: MatDialog, private _router: Router) {}
 
   openDialog(
     enterAnimationDuration: string,
@@ -40,18 +40,9 @@ export class HomeComponent {
     });
   }
 
+  signOut() {
+    localStorage.removeItem('userToken');
 
-
-
-  signOut(){
-
-localStorage.removeItem('userToken')
-
-this._router.navigate(['/signIn'])
+    this._router.navigate(['/signIn']);
   }
-
-
-
-
-  
 }

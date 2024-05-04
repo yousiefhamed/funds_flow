@@ -39,6 +39,8 @@ export class SignUpUserComponent {
   subObject!: Subscription;
   constructor(private _router: Router, private _authService: AuthService) {}
 
+  passwordShown: boolean = false;
+
   SinUpForm: FormGroup = new FormGroup({
     name: new FormControl('', [
       Validators.required,
@@ -76,5 +78,9 @@ export class SignUpUserComponent {
         },
       });
     }
+  }
+
+  showPassword() {
+    this.passwordShown = !this.passwordShown;
   }
 }
