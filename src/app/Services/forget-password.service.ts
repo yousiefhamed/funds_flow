@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class ForgetPasswordService {
   constructor(private _httpClient: HttpClient) {}
 
-  baseUrl: string = 'https://2552-102-41-129-198.ngrok-free.app/';
+  baseUrl: string = 'https://working-cockatoo-singularly.ngrok-free.app/';
 
   ForgetPassword(email: Object): Observable<any> {
     //6e03-102-44-160-132.ngrok-free.app/

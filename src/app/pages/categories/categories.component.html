@@ -1,31 +1,135 @@
-<section *ngIf="categories.length>0">
+<section *ngIf="categories.length>0" class="_top">
+  <div class="container mx-auto pb-5"> 
 
-    <p><strong>Choose the sector or industry you want to invest in</strong></p>
-    <div class="row">
-
-
-        <!-- display 3 categories -->
-        <!-- *ngFor="let categorie of categories | slice:0:3 " -->
-
-
-        <div *ngFor="let categorie of categories " class="col-md-6">
-
-            <div class="categories">
-
-
-                <img class="w-100" [src]="categorie." [alt]="categorie." [title]="categorie.">
-
-
-
-
-            </div>
-
+  <input type="search" placeholder="  Search..." class="form-control w-100 mt-5 p-3 "  [(ngModel)]="term">
+    <h4 class="p-3 me-4">Choose the sector or industry you want to invest in</h4>
+    <div class="row gy-5">
+     
+    <!-- display 3 categories
+    *ngFor="let categorie of categories | slice:0:3 " -->
+ 
+<div *ngFor="let category of categories |searchh:term" class="col-md-4  ">
+   <header [routerLink]="['/opportunities' , category.id]" >   
+                        
+      <div class="category position-relative  " role="button">
+        <img class="w-100 heightImg  " [src]="category.photo" [alt]="category.name" [title]="category.name">
+        <div class="test position-absolute">
+          <h3 class="h4 mx-auto text-center p-3  ">{{category.name}}</h3>
 
         </div>
+      </div>
 
 
+    </header>
 
-
-
+   </div>
     </div>
-</section>
+
+
+  </div> --
+
+</section>  
+
+
+<!-- <section>
+  <div class="container mx-auto pb-5">
+
+    <input type="search" placeholder="  Search..." class="form-control w-100 mt-5 p-3 "  [(ngModel)]="term">
+    <h4 class="p-3 me-4">Choose the sector or industry you want to invest in</h4>
+    <div class="row g-5">
+      <div class="col-md-4  ">
+        <header  >   
+                          
+        <div class="category position-relative ">
+          <img class="w-100 heightImg "    src="../../../assets/arc-welding-steel-construction-site 1.png" >
+          <div class="test position-absolute">
+            <h3 class="h4 mx-auto text-center p-3  ">Technology</h3>
+      
+          </div>
+        </div>
+      
+      
+      </header>
+      
+      </div>
+      <div class="col-md-4  ">
+        <header  >   
+                          
+        <div class="category position-relative ">
+          <img class="w-100 heightImg "    src="../../../assets/arc-welding-steel-construction-site 1.png" >
+          <div class="test position-absolute">
+            <h3 class="h4 mx-auto text-center p-3  ">Technology</h3>
+      
+          </div>
+        </div>
+      
+      
+      </header>
+      
+      </div>
+      <div class="col-md-4  ">
+        <header  >   
+                          
+        <div class="category position-relative ">
+          <img class="w-100 heightImg "    src="../../../assets/arc-welding-steel-construction-site 1.png" >
+          <div class="test position-absolute">
+            <h3 class="h4 mx-auto text-center p-3  ">Technology</h3>
+      
+          </div>
+        </div>
+      
+      
+      </header>
+      
+      </div>
+      <div class="col-md-4  ">
+        <header  >   
+                          
+        <div class="category position-relative ">
+          <img class="w-100 heightImg "    src="../../../assets/arc-welding-steel-construction-site 1.png" >
+          <div class="test position-absolute">
+            <h3 class="h4 mx-auto text-center p-3  ">Technology</h3>
+      
+          </div>
+        </div>
+      
+      
+      </header>
+      
+      </div>
+      <div class="col-md-4  ">
+        <header  >   
+                          
+        <div class="category position-relative ">
+          <img class="w-100 heightImg "    src="../../../assets/arc-welding-steel-construction-site 1.png" >
+          <div class="test position-absolute">
+            <h3 class="h4 mx-auto text-center p-3  ">Technology</h3>
+      
+          </div>
+        </div>
+      
+      
+      </header>
+      
+      </div>
+      <div class="col-md-4  ">
+        <header  routerLink="/opportunities" >   
+                          
+        <div class="category position-relative ">
+          <img class="w-100 heightImg "    src="../../../assets/arc-welding-steel-construction-site 1.png" >
+          <div class="test position-absolute">
+            <h3 class="h4 mx-auto text-center p-3  ">Technology</h3>
+      
+          </div>
+        </div>
+      
+      
+      </header>
+      
+      </div>
+    </div>
+
+
+  </div>
+
+</section> -->

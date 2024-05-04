@@ -1,12 +1,13 @@
+@import "./../../../assets/edite.scss";
+
+
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: calc(var(--padding-extra-large) * 3);
-    width: 100%;
-    padding: 0 var(--padding-medium);
-    padding-top: 98px;
+    @include flexBox(
+      $direction: column,
+      $wrap: wrap,
+      $gap: calc(var(--padding-extra-large) * 3)
+    );
+    @include boxModel(98px var(--padding-medium) 0, 0 auto);
   }
   
   .header__container {
@@ -86,17 +87,17 @@
   }
   
   .heroSection {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--padding-large);
-    justify-content: center;
-    align-items: center;
+    @include gridBox(
+      $gapRow: var(--padding-large),
+      $gapCol: var(--padding-large)
+    );
     position: relative;
     background-color: var(--color-light-white);
-    margin-top: var(--padding-regular);
-    border-radius: var(--border-radius-10);
-    padding: calc(var(--padding-extra-large) * 2.5) var(--padding-medium);
+    @include boxModel(
+      $padding: calc(var(--padding-extra-large) * 2.5) var(--padding-medium),
+      $margin: var(--padding-regular) 0 0 0,
+      $radius: var(--border-radius-10)
+    );
     z-index: 1;
     overflow: hidden;
     position: relative;
@@ -106,72 +107,53 @@
     }
   
     .text {
-      font-style: normal;
-      font-weight: var(--font-weight-bold);
-      line-height: normal;
       padding-inline-start: var(--padding-small);
   
       h1 {
-        font-size: 72px;
+        @include fonts($size: 72px, $weight: var(--font-weight-medium));
       }
     }
   
     .img {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flexBox($gap: 0);
       position: relative;
   
       > img {
-        width: 100%;
-        max-width: 484.5px;
-        max-height: 484.5px;
+        @include widthHeight(
+          $width: 100%,
+          $maxWidth: 484.5px,
+          $maxHeight: 484.5px
+        );
       }
   
       .icons {
-        width: 100%;
-        height: 100%;
-        position: absolute;
+        @include absolute($height: 100%);
   
         img {
-          width: 50px;
-          position: absolute;
-          top: 0;
-          left: 0;
+          @include absolute($width: 50px);
         }
   
         .icon1 {
-          width: 65px;
-          top: 45%;
-          left: 0%;
+          @include absolute($width: 65px, $top: 45%);
           z-index: -1;
         }
         .icon2 {
-          width: 150px;
-          top: calc(100% - 90px);
-          left: 45%;
+          @include absolute($width: 150px, $top: calc(100% - 90px), $left: 45%);
           z-index: 2;
         }
         .icon3 {
-          width: 100px;
-          top: 5%;
-          left: 45%;
+          @include absolute($width: 100px, $top: 5%, $left: 45%);
           z-index: -1;
         }
       }
     }
   
     .shadow {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      @include absolute($height: 100%);
       z-index: -1;
   
       img {
-        width: 100%;
-        height: 100%;
+        @include widthHeight($width: 100%, $height: 100%);
       }
     }
     @media (max-width: 1000px) {
@@ -180,8 +162,8 @@
   
     @media (max-width: 500px) {
       .text h1 {
-        font-size: 50px;
-        word-break: break-all;
+        font-size: 45px;
+        word-break: break-word;
       }
     }
   }
@@ -190,10 +172,7 @@
     width: 100%;
   
     &__title {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flexBox($gap: 0);
       position: relative;
       padding-block: var(--padding-extra-large);
   
@@ -203,21 +182,14 @@
         padding: 0 var(--padding-regular);
         text-align: center;
         z-index: 2;
-        font-size: var(--font-size-38);
-        font-style: normal;
-        font-weight: var(--font-weight-extra-bold);
-        line-height: normal;
+        @include fonts(var(--font-size-38), var(--font-weight-extra-bold));
       }
   
       &::after {
-        content: "";
+        @include after($height: 2px);
         background-color: var(--color-black);
-        width: 100%;
-        height: 2px;
         flex: 1 0 100%;
-        position: absolute;
-        top: 50%;
-        left: 0;
+        @include absolute($top: 50%, $height: 2px);
         transform: translateY(-50%);
         z-index: -1;
       }
@@ -233,14 +205,8 @@
   
       .main,
       .duplicate {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        flex-wrap: nowrap;
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
+        @include flexBox($justify: space-evenly, $gap: 0);
+        @include absolute($top: 50%);
         min-width: 1000px;
         transform: translate(0, -50%);
         animation: showBrands 10s infinite linear;
@@ -310,8 +276,7 @@
     }
   
     &__logo {
-      font-size: var(--font-size-26);
-      font-weight: var(--font-weight-extra-bold);
+      @include fonts(var(--font-size-26), var(--font-weight-bold));
       color: var(--color-white);
   
       p {
@@ -321,18 +286,12 @@
   }
   
   .vision {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    grid-template-columns: repeat(2, 1fr);
+    @include gridBox($gapRow: 0, $gapCol: 0);
   
     &__img {
       background-color: var(--color-beige);
       border-top-left-radius: calc(var(--border-radius-50) * 6);
-      display: flex;
-      width: 100%;
-      justify-content: center;
-      align-items: center;
+      @include flexBox($gap: 0);
   
       img {
         width: 100%;
@@ -342,10 +301,6 @@
   
     &__text {
       padding-inline-start: var(--padding-large);
-  
-      p {
-        font-size: var(--font-size-34);
-      }
     }
   
     @media (max-width: 1000px) {
@@ -359,29 +314,28 @@
   }
   
   .videos {
-    display: grid;
-    justify-content: center;
-    align-items: stretch;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--padding-regular);
+    @include gridBox(
+      $align: stretch,
+      $gapCol: var(--padding-regular),
+      $gapRow: var(--padding-regular),
+      $colsNum: 3
+    );
   
     .video {
-      display: grid;
-      justify-content: center;
-      align-items: stretch;
+      @include gridBox(
+        $align: stretch,
+        $gapRow: var(--padding-small),
+        $gapCol: 0,
+        $colsNum: 1
+      );
       grid-template-rows: 436px auto;
-      gap: var(--padding-small);
   
       figure {
-        width: 100%;
-        height: 436px;
+        @include flexBox($gap: 0);
+        @include widthHeight($width: 100%, $height: 436px, $maxHeight: 436px);
         border-radius: var(--border-radius-20);
         overflow: hidden;
         position: relative;
-        max-height: 436px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         background: linear-gradient(
             0deg,
             rgba(0, 101, 255, 0.27),
@@ -396,32 +350,28 @@
         }
   
         .play__video {
-          position: absolute;
-          top: 50%;
-          left: 50%;
+          @include absolute($top: 50%, $left: 50%, $width: 60px, $height: 60px);
           transform: translate(-50%, -50%);
-          width: 60px;
-          height: 60px;
           z-index: 4;
           cursor: pointer;
         }
       }
   
       &__description {
-        border: 1px solid var(--color-grey);
-        border-radius: var(--border-radius-10);
-        padding: var(--padding-regular);
+        @include boxModel(
+          $border: 1px solid var(--color-grey),
+          $radius: var(--border-radius-10),
+          $padding: var(--padding-regular)
+        );
   
         h2 {
-          font-size: var(--font-size-22);
-          font-weight: var(--font-weight-medium);
+          @include fonts(var(--font-size-22), var(--font-weight-medium));
           color: var(--color-light-blue);
           margin-bottom: var(--padding-small);
         }
   
         p {
-          font-size: var(--font-size-16);
-          font-weight: var(--font-weight-regular);
+          @include fonts(var(--font-size-16), var(--font-weight-regular));
           color: var(--color-gray);
         }
       }
@@ -441,44 +391,31 @@
     }
   
     &__steps {
-      display: flex;
-      justify-content: space-around;
-      align-items: flex-start;
+      @include flexBox($justify: space-around, $align: flex-start, $gap: 0);
   
       .step {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+        @include flexBox($direction: column, $gap: 0);
         flex: 0 0 25%;
   
         h3 {
-          font-size: calc(var(--font-size-34) * 2);
+          @include fonts(calc(var(--font-size-34) * 2));
           color: var(--color-white);
           background-color: var(--color-main-blue);
-          padding: var(--padding-extra-large);
-          border-radius: 50%;
+          @include flexBox($gap: 0);
           width: 160px;
           height: 160px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          padding: var(--padding-extra-large);
           margin-top: var(--padding-extra-large);
+          border-radius: 50%;
         }
         p {
-          font-size: var(--font-size-32);
-          font-style: normal;
           font-weight: var(--font-weight-bold);
-          line-height: normal;
           text-align: center;
         }
       }
   
       @media (max-width: 720px) {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-  
+        @include flexBox($direction: column, $gap: 0);
         .step {
           flex: 0 0 100%;
         }
@@ -492,12 +429,13 @@
       text-align: center;
     }
     .squares {
-      display: grid;
-      grid-template-columns: repeat(3, 30%);
-      justify-content: space-between;
-      align-items: center;
-      gap: var(--padding-regular);
-      margin-top: var(--padding-extra-large);
+      @include gridBox(
+        $justify: space-between,
+        $gapCol: var(--padding-regular),
+        $gapRow: var(--padding-regular),
+        $colsNum: 3,
+        $colsWidth: 30%
+      );
   
       @media (max-width: 1000px) {
         grid-template-columns: repeat(2, 45%);
@@ -508,9 +446,7 @@
       }
     }
     .square {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flexBox($gap: 0);
       padding: var(--padding-extra-large);
       background-color: var(--color-beige);
       height: 400px;
@@ -518,10 +454,7 @@
   
       h3 {
         text-align: center;
-        font-size: var(--font-size-34);
-        font-style: normal;
-        font-weight: var(--font-weight-extra-bold);
-        line-height: normal;
+        font-weight: var(--font-weight-bold);
       }
     }
   }
@@ -534,20 +467,17 @@
     &::after {
       content: "";
       background-color: var(--color-main-blue);
-      width: 100vw;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 50%;
+      @include absolute($left: 50%, $width: 100vw, $height: 100%);
       transform: translate(-50%, 0);
       z-index: -5;
     }
     .contact {
-      width: 100%;
-      display: grid;
-      justify-content: space-between;
-      align-items: center;
-      grid-template-columns: repeat(2, auto);
+      @include gridBox(
+        $justify: space-between,
+        $colsWidth: auto,
+        $gapCol: 0,
+        $gapRow: 0
+      );
       padding-top: calc(var(--padding-extra-large) * 2);
   
       &::after {
@@ -560,24 +490,22 @@
       }
   
       .text p {
-        font-size: var(--font-size-38);
-        font-style: normal;
         font-weight: var(--font-weight-bold);
-        line-height: normal;
         padding-inline-start: var(--padding-regular);
       }
       .social__media {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        flex-direction: column;
-        gap: var(--padding-large);
+        @include flexBox(
+          $align: flex-start,
+          $direction: column,
+          $gap: var(--padding-large)
+        );
   
         .social {
-          display: flex;
-          justify-content: flex-start;
-          align-items: flex-start;
-          gap: var(--padding-regular);
+          @include flexBox(
+            $justify: flex-start,
+            $align: flex-start,
+            $gap: var(--padding-regular)
+          );
   
           img {
             width: 50px;
@@ -585,21 +513,15 @@
           }
   
           p a {
-            font-size: var(--font-size-32);
-            font-style: normal;
+            font-size: var(--font-size-22);
             font-weight: var(--font-weight-light);
-            line-height: normal;
             max-width: 350px;
           }
         }
       }
   
       @media (max-width: 1000px) {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        gap: var(--padding-large);
+        @include flexBox($direction: column, $gap: var(--padding-large));
   
         > div {
           width: 100%;
@@ -616,33 +538,23 @@
     }
   
     .copyright {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include flexBox($justify: space-between, $gap: 0);
       margin-bottom: var(--padding-regular);
   
       .social__icons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: var(--padding-regular);
+        @include flexBox($justify: flex-start, $gap: var(--padding-regular));
   
         img {
-          width: 64px;
-          height: 64px;
+          width: 40px;
+          height: 40px;
         }
       }
       .terms {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: var(--padding-regular);
+        @include flexBox($justify: flex-end, $gap: var(--padding-regular));
   
         p a {
-          font-size: var(--font-size-32);
-          font-style: normal;
+          font-size: var(--font-size-18);
           font-weight: var(--font-weight-light);
-          line-height: normal;
         }
       }
   
@@ -662,9 +574,7 @@
   .header__with__nav {
     width: 100%;
     max-width: var(--max-width);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flexBox($justify: space-between, $gap: 0);
     padding: var(--padding-regular) var(--padding-medium) var(--padding-small);
     position: fixed;
     top: 0;
@@ -687,22 +597,24 @@
     }
   
     .nav__bar ul {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: var(--padding-extra-large);
+      @include flexBox($gap: var(--padding-extra-large));
       list-style: none;
   
       li a {
         position: relative;
       }
       li a:hover::after {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 80%;
-        height: 3px;
+        content: "";
+        @include absolute($top: 100%, $width: 80%, $height: 3px);
         background-color: var(--color-main-blue);
+        animation: progressBar var(--timing) ease-in-out;
+        transition: all var(--timing);
+      }
+  
+      @keyframes progressBar {
+        0% {
+          width: 0;
+        }
       }
   
       @media (max-width: 720px) {
@@ -711,9 +623,7 @@
     }
   
     .logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flexBox($justify: flex-start, $gap: 0, $width: auto);
       margin: 0;
   
       img {
@@ -732,12 +642,10 @@
   }
   
   .heroSection__with__bg {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--padding-large);
-    justify-content: center;
-    align-items: center;
+    @include gridBox(
+      $gapCol: var(--padding-large),
+      $gapRow: var(--padding-large)
+    );
     position: relative;
     background-color: var(--color-light-white);
     margin-top: var(--padding-regular);
@@ -755,16 +663,17 @@
     min-height: 600px;
   
     .sign__btns {
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-end;
-      gap: var(--padding-large);
+      @include flexBox(
+        $justify: flex-start,
+        $align: flex-end,
+        $gap: var(--padding-large)
+      );
       height: 85%;
   
       button {
-        padding: var(--padding-small) var(--padding-medium);
+        padding: var(--padding-small) var(--padding-large);
         border-radius: var(--border-radius-10);
-        font-size: var(--font-size-14);
+        font-size: var(--font-size-20);
         transition: all var(--timing);
       }
       &__main {
@@ -792,9 +701,7 @@
   
   .categories {
     .heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      @include flexBox($justify: space-between, $gap: 0);
   
       a {
         text-decoration: underline;
@@ -805,29 +712,24 @@
       }
     }
     .categories__container {
-      display: grid;
-      justify-content: center;
-      align-items: stretch;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--padding-regular);
+      @include gridBox(
+        $align: stretch,
+        $colsNum: 3,
+        $gapCol: var(--padding-regular),
+        $gapRow: var(--padding-regular)
+      );
   
       .category {
-        display: grid;
-        justify-content: center;
-        align-items: stretch;
+        @include gridBox($align: stretch, $colsNum: 1, $gapCol: 0, $gapRow: 0);
         grid-template-rows: 358px auto;
         margin-bottom: -70px;
   
         img {
-          width: 100%;
-          height: 358px;
+          @include flexBox($gap: 0);
+          @include widthHeight($width: 100%, $height: 358px, $maxHeight: 358px);
           border-radius: var(--border-radius-20);
           overflow: hidden;
           position: relative;
-          max-height: 358px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
           background: linear-gradient(
               0deg,
               rgba(0, 101, 255, 0.27),
@@ -839,10 +741,6 @@
           background-color: var(--color-main-blue);
           color: var(--color-white);
           border-radius: var(--border-radius-20);
-          font-size: var(--font-size-32);
-          font-style: normal;
-          font-weight: var(--font-weight-medium);
-          line-height: normal;
           text-align: center;
           padding-block: var(--padding-regular);
           transform: translate(0, -100%);
@@ -864,35 +762,32 @@
     }
     .best__container {
       position: relative;
-      display: grid;
-      justify-content: space-between;
-      align-items: stretch;
-      grid-template-columns: repeat(4, 20%);
+      @include gridBox(
+        $justify: space-between,
+        $align: stretch,
+        $colsNum: 4,
+        $colsWidth: 20%,
+        $gapCol: 0,
+        $gapRow: 0
+      );
       padding-block: var(--padding-extra-large);
   
       &::after {
         content: "";
         background-color: var(--color-main-blue);
-        position: absolute;
-        top: 0;
-        left: 50%;
+        @include absolute($left: 50%, $width: 100vw, $height: 100%);
         transform: translate(-50%, 0);
-        width: 100vw;
-        height: 100%;
         z-index: -5;
       }
   
       .best,
       .best img {
         width: 100%;
+        margin-bottom: var(--padding-small);
       }
   
       h3 {
         color: var(--color-white);
-        font-size: var(--font-size-28);
-        font-style: normal;
-        font-weight: var(--font-weight-medium);
-        line-height: normal;
         text-align: center;
       }
   
@@ -902,3 +797,331 @@
       }
     }
   }
+  
+  .about__header {
+    @include flexBox($direction: column, $gap: 0);
+    height: calc(90vh - 100px);
+    max-height: 800px;
+    margin: 0 auto;
+  
+    figure {
+      margin-block: -100px;
+      width: 500px;
+      max-width: 80%;
+  
+      img {
+        width: 100%;
+      }
+    }
+    @media (max-width: 500px) {
+      max-height: 400px;
+      figure {
+        margin-block: 0;
+      }
+  
+      h1 {
+        margin-block-start: -90px;
+        z-index: 5;
+      }
+    }
+    @media (max-width: 400px) {
+      h1 {
+        margin-block-start: -60px;
+      }
+    }
+  }
+  
+  .about {
+    @include gridBox(
+      $gapCol: var(--padding-medium),
+      $gapRow: var(--padding-medium)
+    );
+    position: relative;
+    z-index: 2;
+  
+    .background {
+      @include absolute($height: 100%);
+      .bigShape {
+        @include absolute($width: 350px, $left: 50%);
+        transform: translate(-50%, -50%);
+        z-index: -5;
+        max-width: 100%;
+      }
+      .smallShape {
+        @include absolute($width: 250px, $top: 100%, $left: 30%);
+        z-index: 2;
+        transform: rotate(125deg) translate(0, 100%);
+      }
+    }
+  
+    figure {
+      background-color: var(--color-white);
+      border-radius: 10px;
+      border: 1px solid var(--color-main-blue);
+      background: #fff;
+      box-shadow: 8px 5px 10px 0px var(--color-main-blue);
+      @include flexBox($gap: 0);
+      margin-inline-end: var(--padding-medium);
+      padding-block: var(--padding-extra-large);
+  
+      img {
+        width: 500px;
+        max-width: 80%;
+      }
+    }
+    .text {
+      @include flexBox($align: flex-start, $gap: 0, $direction: column);
+    }
+  
+    @media (max-width: 800px) {
+      grid-template-columns: repeat(1, 1fr);
+  
+      .background .smallShape {
+        display: none;
+      }
+    }
+  }
+  
+  .team {
+    @include flexBox($direction: column, $gap: 0);
+  
+    @media (max-width: 720px) {
+      p {
+        text-align: center;
+      }
+    }
+  
+    &__container {
+      @include gridBox(
+        $justify: space-evenly,
+        $colsNum: 4,
+        $gapCol: 0,
+        $gapRow: 50px
+      );
+      margin-top: 20px;
+    }
+    &__member {
+      @include flexBox($gap: 0);
+  
+      img {
+        width: 50%;
+        border-radius: 50%;
+      }
+    }
+  
+    @media (max-width: 850px) {
+      &__container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  
+    @media (max-width: 720px) {
+      &__container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  
+    @media (max-width: 400px) {
+      &__container {
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  }
+  
+  .contactForm {
+    width: 100%;
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--padding-regular);
+  
+    .text {
+      h1.h2__heading {
+        margin-bottom: 0;
+      }
+      p.big {
+        font-size: 50px;
+      }
+    }
+  
+    form {
+      background-color: var(--color-main-blue);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      padding: var(--padding-medium) var(--padding-large);
+      border-radius: var(--border-radius-10);
+      gap: var(--padding-small);
+  
+      input,
+      textarea {
+        width: 100%;
+        border: none;
+        border-radius: var(--border-radius-10);
+        padding: var(--padding-regular) var(--padding-medium);
+        font-size: var(--font-size-18);
+      }
+      textarea {
+        height: 200px;
+      }
+  
+      button[type="submit"] {
+        background-color: var(--color-white);
+        color: var(--color-main-blue);
+        font-weight: var(--font-weight-bold);
+        border: none;
+        border-radius: var(--border-radius-50);
+        padding: var(--padding-small) var(--padding-large);
+      }
+    }
+  
+    @media (max-width: 1000px) {
+      grid-template-columns: 100%;
+      gap: var(--padding-extra-large);
+  
+      form {
+        width: 100%;
+        max-width: 500px;
+        padding: var(--padding-regular) var(--padding-medium);
+        margin: 0 auto;
+      }
+    }
+  }
+  
+  .social__links {
+    > div {
+      width: 30%;
+      min-width: 300px;
+      max-width: 30%;
+      background-color: var(--color-main-blue);
+      border-radius: var(--border-radius-10);
+  
+      .h2__heading {
+        font-size: var(--font-size-26);
+        margin-bottom: 0;
+      }
+      .p__text {
+        word-break: break-word;
+      }
+    }
+  
+    img {
+      max-width: 80px;
+    }
+  
+    @media (max-width: 720px) {
+      > div {
+        width: 100%;
+        max-width: 400px;
+        min-width: 100%;
+      }
+    }
+  }
+  
+  .hours {
+    .float-end {
+      margin-inline-start: 25%;
+  
+      > .p__text {
+        background-color: var(--color-main-blue);
+        color: var(--color-white);
+        border-radius: var(--border-radius-30);
+        padding: var(--padding-small) var(--padding-regular);
+      }
+  
+      .day {
+        color: var(--color-main-blue);
+        font-weight: var(--font-weight-medium);
+      }
+      .time {
+        font-size: var(--font-size-22);
+      }
+    }
+  
+    @media (max-width: 700px) {
+      > div.w-75 {
+        width: 100% !important;
+      }
+      > .float-end {
+        margin-inline-start: 0;
+      }
+    }
+  }
+  
+  .faq {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+  
+    p {
+      font-size: 80px;
+      font-style: normal;
+      font-weight: var(--font-weight-regular);
+      line-height: normal;
+    }
+  
+    form {
+      width: 100%;
+      border-radius: var(--border-radius-50);
+      border: 3px solid var(--color-main-blue);
+      padding: var(--padding-small) var(--padding-small) var(--padding-small)
+        var(--padding-regular);
+      margin-top: var(--padding-large);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
+      gap: var(--padding-small);
+      max-width: 800px;
+  
+      &:focus-within,
+      &:hover,
+      &:active {
+        box-shadow: 8px 5px 10px var(--color-main-blue);
+      }
+  
+      input {
+        font-size: var(--font-size-24);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        border: none;
+        width: 100%;
+  
+        &:focus {
+          outline: none;
+        }
+      }
+      button[type="submit"] {
+        background-color: var(--color-main-blue);
+        color: var(--color-white);
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: var(--border-radius-50);
+        padding: var(--padding-regular) var(--padding-large);
+        max-width: 150px;
+        max-height: 50px;
+        transition: all var(--timing);
+  
+        &:hover {
+          background-color: var(--color-white);
+          border: 1px solid var(--color-main-blue);
+          color: var(--color-main-blue);
+          transform: scale(1.1);
+        }
+      }
+    }
+  
+    @media (max-width: 450px) {
+      p {
+        font-size: 50px;
+        word-break: break-word;
+      }
+    }
+  }
+  

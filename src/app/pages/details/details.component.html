@@ -1,0 +1,173 @@
+<section class="w-75 mx-auto _top" *ngFor="let detail of details"  >
+
+    
+    <button  [routerLink]="['/opportunities', detail.id]"  class="btn mt-5 text-muted"><i class="fa-regular fa-circle-left" style="color: #888d96;"  ></i>Back</button>
+    <img class="w-100 m-4" [src]="detail.photo">
+
+
+    </section>
+<section>
+
+    <div class="container">
+        <mat-tab-group>
+            <mat-tab label="About">
+
+                <div class="paragraph m-5" *ngFor="let detail of details">
+
+                    <p *ngFor="let detail of details" class="fs">
+                        {{detail.description}}
+                    </p>
+                </div>
+                <div *ngFor="let detail of details">
+                    <ul class=" ">
+
+                        <div class=" d-flex justify-content-between mb-3 w-75 mx-auto">
+                            <li>
+                                <h2 class="h5 fw-bold">Category </h2>
+                            </li>
+
+                            <p *ngFor="let detail of details">{{categoreyName}}</p>
+                        </div>
+                        <div class=" d-flex justify-content-between mb-3 w-75 mx-auto">
+                            <li cla>
+                                <h2 class="h5 fw-bold"> Products or Services</h2>
+                            </li>
+
+                            <p class="fs">{{detail.products_or_services}}</p>
+                        </div>
+                        <div class=" d-flex justify-content-between mb-3 w-75 mx-auto">
+                            <li>
+                                <h2 class="h5 fw-bold"> Future Growth</h2>
+                            </li>
+
+                            <p class="fs">{{detail.future_growth}}</p>
+                        </div>
+                        <div class=" d-flex justify-content-between mb-3 w-75 mx-auto">
+                            <li>
+                                <h2 class="h5 fw-bold"> Returns percentage</h2>
+                            </li>
+
+                            <p class="fs">{{detail.returns_percentage}}</p>
+                        </div>
+                        <div class=" d-flex justify-content-between mb-3 w-75 mx-auto">
+                            <li>
+                                <h2 class="h5 fw-bold"> Company Valuation</h2>
+                            </li>
+
+                            <p class="fs">{{detail.company_valuation}}</p>
+                        </div>
+                        <div class=" d-flex justify-content-between mb-3 w-75 mx-auto">
+                            <li>
+                                <h2 class="h5 fw-bold"> Potential Risks</h2>
+                            </li>
+
+                            <p class="fs">{{detail.potential_risks}}</p>
+                        </div>
+                        <div class=" d-flex justify-content-between mb-3 w-75 mx-auto">
+                            <li>
+                                <h2 class="h5 fw-bold"> Start Date</h2>
+                            </li>
+
+                            <p class="fs">{{detail.start_date}}</p>
+                        </div>
+                        <div class=" d-flex justify-content-between mb-3 w-75 mx-auto">
+                            <li>
+                                <h2 class="h5 fw-bold"> End Date</h2>
+                            </li>
+
+                            <p class="fs">{{detail.end_date}}</p>
+                        </div>
+                    </ul>
+
+                    <div class="text-center mt-5  w-75 mx-auto p-0">
+                        <h3 class="mb-3 ">The Total Funding Needed {{detail.amount_needed | currency:"E£" |slice: 0:9}}
+                        </h3>
+                    </div>
+                    <div class="text-center m-3  w-75 mx-auto ">
+
+                        <h3>Remaining Amount {{detail.remaining_amount | currency:"E£" |slice: 0:9}}</h3>
+
+                        <button class="btn btn1 m-3">Invest Now</button>
+                    </div>
+
+                </div>
+
+            </mat-tab>
+            <mat-tab label="Financial Performance">
+
+
+
+                <div class="ms-5" *ngFor="let detail of details">
+
+                    <div class="m-5  mx-auto">
+                        <h3 class="fw-bold">Revenues</h3>
+                        <div class="card w-75">
+                            <p class="fs">
+                                {{detail.revenues }}
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="m-5 mx-auto ">
+                        <h3 class="fw-bold">Net Profits</h3>
+                        <div class="card w-75">
+                            <p class="fs">
+                                {{detail.net_profit}}
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="m-5 mx-auto ">
+                        <h3 class="fw-bold">Profit Margins</h3>
+                        <div class="card w-75">
+                            <p class="fs">
+                                {{detail.profit_margin}}
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="m-5 mx-auto ">
+                        <h3 class="fw-bold">Cash Flow</h3>
+                        <div class="card w-75">
+                            <p class="fs">
+                                {{detail.cash_flow}}
+                            </p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="m-5 mx-auto ">
+                        <h3 class="fw-bold">Return on Investment (ROI)</h3>
+                        <div class="card w-75">
+                            <p class="fs">
+                                {{detail.ROI}}
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+            </mat-tab>
+            <!-- <mat-tab label="Reviews">
+            </mat-tab> -->
+        </mat-tab-group>
+
+
+    </div>
+</section>

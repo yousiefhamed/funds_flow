@@ -21,6 +21,7 @@ import {
 import { AuthService } from 'src/app/Services/auth.service';
 import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CategoriesService } from 'src/app/Services/categories.service';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
@@ -40,7 +41,26 @@ export class SignInComponent implements OnDestroy {
   isLoading: boolean = false;
   subObject!: Subscription;
 
-  constructor(private _router: Router, private _AuthService: AuthService) {}
+  constructor(private _router: Router, private _AuthService: AuthService ) {}
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   SinInForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [

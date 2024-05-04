@@ -1,4 +1,4 @@
-<section class="signUpUser">
+<section class="signUpUser ">
   <div class="background">
     <h1>Sign Up</h1>
     <p>Empower Your Financial Journey with Us.</p>
@@ -23,9 +23,10 @@
   </div>
 
   <div class="signUpUser__content">
-    <!-- <figure>
+    <figure>
       <img src="./../../../assets/logo.png" alt="Funds Flow Logo" />
-    </figure> -->
+    </figure>
+
 
     <form class="signUp__form" [formGroup]="SinUpForm" (ngSubmit)="handelForm()">
 
@@ -158,7 +159,6 @@
         <input type="password" class="form-control border-0 border-bottom" id="floatingPassword" placeholder="Password"
           formControlName="password" />
         <label for="floatingPassword" class="text-muted mb-3">Password </label>
-        <i class="fa-regular fa-eye-slash"></i>
         <div class="mb-3" *ngIf="
             SinUpForm.get('password')?.errors &&
             SinUpForm.get('password')?.touched

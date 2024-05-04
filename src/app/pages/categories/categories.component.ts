@@ -1,38 +1,52 @@
+import { Categories } from './../interface/categories';
 import { CategoriesService } from './../../Services/categories.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpErrorResponse } from '@angular/common/http';
-import { Categories } from '../interface/categories';
 import { CuttextPipe } from '../pipe/cuttext.pipe';
+import { FormsModule } from '@angular/forms';
+import { SearchhPipe } from '../pipe/searchh.pipe';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [CommonModule,CuttextPipe],
+  imports: [CommonModule,CuttextPipe ,SearchhPipe,FormsModule, RouterLink],
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent  implements   OnInit{
   constructor(private  _categoriesService:CategoriesService){}
+  
+  term:string='';
+  categories:Categories[]=[];
+_method:object={ _method:'get'}
 
-allCategories:Categories[]=[];
 
+
+
+getAllGategories(){
+
+  this._categoriesService.getCategories(this._method).subscribe({
+    next:(res)=>{
+      console.log(res.data);
+      this.categories=res.data
+
+    },
+    error:(err)=>{
+      console.log(err);
+      
+
+    }
+
+  })
+
+}
 
 
 
   ngOnInit(): void {
-    this._categoriesService.getCategories().subscribe({
-      next:(res)=>{
-        console.log(res);
-        
 
-      },
-      error:(err:HttpErrorResponse)=>{
-        console.log();
-        
-
-      }
-
-    })
+    this.getAllGategories()
+  
   }
 }

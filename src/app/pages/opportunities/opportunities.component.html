@@ -1,0 +1,42 @@
+<section class="_top" >
+
+    <div class="container mx-auto p-5">
+
+        <div class="search">
+
+            <input type="search" placeholder="  Search Company Name" class="form-control w-100 m-4 p-3 " [(ngModel)]="term">
+            <h1 class="p-3 h2">All Advertisments</h1>
+
+        </div>
+
+
+        <div class="row g-5  justify-content-between">
+
+
+            <div *ngFor="let opportunity of opportunites |searchOppo:term " class="col-md-4 opportunity  ">
+
+                <div>
+                    <img class=" w-100" [src]="opportunity.photo" title="opportunity.business_name"
+                        alt="opportunity.business_name">
+                </div>
+                <div class="contant ">
+                    <h2 class="h4">{{opportunity.business_name}}</h2>
+                    <p class="p-0 m-0"><strong>Total Amount: {{opportunity.amount_needed | currency:"E£" }}</strong></p>
+                    <p><strong>Remaining Amount: {{opportunity.remaining_amount | currency:"E£"}}</strong> </p>
+
+                    <div class="d-flex justify-content-between" >
+                        <p>{{opportunity.created_at |slice:0:10}}<span class="text-primary ps-2">/</span>
+                            {{opportunity.created_at |slice:11:16}}</p>  
+                        <p   [routerLink]="['/details' , opportunity.id]"   role="button"  class="details-color">Details <span> <i class="fa-solid fa-arrow-right" style="color: #fffafa;"></i></span></p>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>

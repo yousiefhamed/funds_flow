@@ -10,7 +10,7 @@ export class AuthService {
   constructor(private _httpClient:HttpClient) { }
 
 
-baseUrl:string=`https://2552-102-41-129-198.ngrok-free.app/`;
+baseUrl:string=`https://working-cockatoo-singularly.ngrok-free.app/`;
 
   Signup(info:any):Observable<any>{
 

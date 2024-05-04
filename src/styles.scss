@@ -41,49 +41,56 @@ $graduationProject-theme: mat.define-light-theme(
 
 /* You can add global styles to this file, and also import other style files */
 
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-/* You can add global styles to this file, and also import other style files */
-
-.btn-main {
-  background-color: var(--main-color);
-  padding: 7px 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-  transition: background-color 0.5s;
-}
-// .btn-main:disabled {
-//   cursor: not-allowed;
-//   background-color: #ccc;
-// }
-// .btn-main:disabled:hover {
-//   background-color: #ccc;
-// }
-// .btn-main:hover {
-//   background-color: #11bd11;
-// }
-
-/* You can add global styles to this file, and also import other style files */
-
 :root {
+  --timing: 0.5s;
+
+  /* spaces and pixels of elements, padding and margin */
+  --max-width: 1700px;
+  --border-radius-5: 5px;
+  --border-radius-10: 10px;
+  --border-radius-20: 20px;
+  --border-radius-30: 30px;
+  --border-radius-50: 50px;
+  --padding-extra-small: 0.5rem;
+  --padding-small: 1rem;
+  --padding-regular: 2rem;
+  --padding-medium: 3rem;
+  --padding-semi-large: 3.5rem;
+  --padding-large: 4rem;
+  --padding-extra-large: 5rem;
+
   // colors and backgrounds
   --color-black: #000;
   --color-white: #fff;
+  --color-light-white: #f5f5f5;
   --color-main-blue: #0054a2;
-  --color-beige: #ffe995;
+  --color-beige: #f6eca9;
   --color-grey: #8e8e8e;
-  --color-main: #0054a2;
-  // fonts and typos
+  --color-gray: #464646;
+  --color-light-blue: #0065ff;
+
+  // font sizes and weights
   --font-family: "Roboto", sans-serif;
+  --font-size-14: 1.4rem;
+  --font-size-16: 1.6rem;
+  --font-size-18: 1.8rem;
+  --font-size-20: 2rem;
+  --font-size-22: 2.2rem;
+  --font-size-24: 2.4rem;
+  --font-size-26: 2.6rem;
+  --font-size-28: 2.8rem;
+  --font-size-30: 3rem;
+  --font-size-32: 3.2rem;
+  --font-size-34: 3.4rem;
+  --font-size-36: 3.6rem;
+  --font-size-38: 3.8rem;
+  --font-size-45: 4.5rem;
+  --font-weight-extra-light: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
   --font-weight-extra-light: 100;
   --font-weight-light: 300;
   --font-weight-regular: 400;
@@ -92,8 +99,8 @@ body {
   --font-weight-bold: 900;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+
+body{
+
+  overflow-x: hidden;
 }

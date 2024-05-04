@@ -4,6 +4,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { DialogboxComponent } from 'src/app/dialogbox/dialogbox.component';
 import { MatButtonModule } from '@angular/material/button';
+import { NavAuthComponent } from '../nav-auth/nav-auth.component';
 
 @Component({
   selector: 'app-landing-page',
@@ -11,7 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [CommonModule  ,  RouterLink,
     RouterLinkActive,
     MatDialogModule,
-    MatButtonModule,],
+    MatButtonModule,
+    NavAuthComponent],
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss']
 })
