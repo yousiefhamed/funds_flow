@@ -1,15 +1,71 @@
-.btn1{
+.header {
+  width: 100%;
+  max-width: var(--max-width);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px var(--padding-medium);
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: 5;
+  transform: translate(-50%, 0);
 
-    background-color: #0054A2 ;
-    color: white;
+  &::after {
+    content: "";
+    background-color: transparent;
+    backdrop-filter: blur(50px);
+    width: 100vw;
+    height: 98px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: -1;
+    box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.5);
+  }
 
-}
-.btn2 {
-    border: 1px solid  #0054A2;
-    color:  #0054A2;
-}
-.btn2:hover{
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 
-    background-color: #0054A2 ;
-    color: white;
+    img {
+      width: 80px;
+    }
+  }
+
+  .sign__btns {
+    display: flex;
+    gap: var(--padding-regular);
+
+    button {
+      padding: var(--padding-extra-small) var(--padding-small);
+      border-radius: var(--border-radius-10);
+      font-size: var(--font-size-14);
+      transition: all var(--timing);
+    }
+    &__main {
+      background-color: var(--color-main-blue);
+      color: var(--color-white);
+      border: none;
+
+      &:hover {
+        background-color: var(--color-white);
+        color: var(--color-black);
+        border: 1px solid var(--color-main-blue);
+      }
+    }
+    &__secondary {
+      background-color: var(--color-white);
+      color: var(--color-black);
+      border: 1px solid var(--color-main-blue);
+
+      &:hover {
+        background-color: var(--color-main-blue);
+        color: var(--color-white);
+      }
+    }
+  }
 }

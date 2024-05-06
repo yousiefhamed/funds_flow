@@ -97,17 +97,19 @@ export class ForgetPasswordComponent implements OnDestroy {
     resetCode.email = this.email;
     this.isLoading = true;
     if (this.resetCodeForm.valid) {
-      this.resetCodeSubObject = this._forgetPasswordService.resetCode(resetCode).subscribe({
+      this.resetCodeSubObject = this._forgetPasswordService
+        .resetCode(resetCode)
+        .subscribe({
           next: (Response) => {
             // console.log(Response);
-            
+
             // this.displayMassage = Response.message;
             this.errorMassage = Response.message;
-                // console.log(Response.message);
+            // console.log(Response.message);
 
             this.isLoading = false;
             if (Response.status == true) {
-              this.errorMassage ='';
+              this.errorMassage = '';
               this.step2 = false;
               this.step3 = true;
             }
@@ -116,7 +118,7 @@ export class ForgetPasswordComponent implements OnDestroy {
             // console.log(err);
             this.errorMassage = err.message;
             console.log(err.message);
-            
+
             this.isLoading = false;
           },
         });
@@ -129,20 +131,22 @@ export class ForgetPasswordComponent implements OnDestroy {
     resetPassword.email = this.email;
     this.isLoading = true;
     if (this.resetPasswordForm.valid) {
-      this.resetPassSubObject = this._forgetPasswordService.resetPassword(resetPassword).subscribe({
+      this.resetPassSubObject = this._forgetPasswordService
+        .resetPassword(resetPassword)
+        .subscribe({
           next: (res) => {
             console.log(res);
-            
+
             this.displayMassage = res.massege;
             this.isLoading = false;
- 
+
             if (res.status == true) {
               this._router.navigate(['/signIn']);
             }
           },
           error: (err: HttpErrorResponse) => {
             console.log(err);
-            
+
             this.errorMassage = err.message;
             this.isLoading = false;
           },

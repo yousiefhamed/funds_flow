@@ -19,10 +19,10 @@ export class DialogboxComponent {
     this._Router.navigate(['/signUpUser'])
 
   }
-  
+
   business(){
     this._Router.navigate(['/signUpBusiness'])
-    
+
 
   }
 
