@@ -98,6 +98,17 @@ $graduationProject-theme: mat.define-light-theme(
   --font-weight-semi-bold: 700;
   --font-weight-bold: 900;
 }
+html {
+  font-size: 90%;
+  scroll-behavior: smooth;
+  scroll-padding-block-start: 98px;
+}
+
+@media (max-width: 550px) {
+  html {
+    font-size: 70%;
+  }
+}
 
 body {
   overflow-x: hidden;
