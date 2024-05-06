@@ -103,7 +103,7 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      gap: var(--padding-regular);
+      gap: var(--padding-small);
 
       p a {
         font-size: var(--font-size-14);
@@ -123,6 +123,19 @@
       .social__icons,
       .terms {
         justify-content: center;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .terms {
+        gap: 0;
+        width: 100%;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+        p.p__text {
+          display: none;
+        }
       }
     }
   }
