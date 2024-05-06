@@ -3,7 +3,7 @@
 
   > div {
     width: 30%;
-    min-width: 300px;
+    min-width: 350px;
     max-width: 30%;
     background-color: var(--color-main-blue);
     border-radius: var(--border-radius-10);
@@ -11,7 +11,7 @@
     padding-inline: var(--padding-small);
 
     .h2__heading {
-      font-size: var(--font-size-18);
+      font-size: var(--font-size-16);
       margin-bottom: 0;
     }
     .p__text {
@@ -26,9 +26,9 @@
 
   @media (max-width: 720px) {
     > div {
-      width: 100%;
+      width: 90%;
       max-width: 400px;
-      min-width: 100%;
+      min-width: 90%;
     }
   }
 }
@@ -47,9 +47,6 @@
     .day {
       color: var(--color-main-blue);
       font-weight: var(--font-weight-medium);
-    }
-    .time {
-      font-size: var(--font-size-16);
     }
   }
 

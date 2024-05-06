@@ -130,16 +130,13 @@
 }
 
 .heroSection__with__bg {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--padding-large) var(--padding-large);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
   position: relative;
   background-color: var(--color-light-white);
   margin-top: var(--padding-regular);
   border-radius: var(--border-radius-10);
-  padding: 0 var(--padding-medium);
   z-index: 1;
   overflow: hidden;
   background: linear-gradient(
@@ -153,16 +150,21 @@
 
   .sign__btns {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    gap: var(--padding-large);
+    justify-content: stretch;
+    align-items: stretch;
+    gap: var(--padding-medium);
     height: 85%;
+    margin-block: 30px;
+    margin-inline: 20px;
+    max-width: 500px;
+    flex-wrap: wrap;
 
     button {
-      padding: var(--padding-extra-small) var(--padding-medium);
+      padding: var(--padding-extra-small) 40px;
       border-radius: var(--border-radius-10);
       font-size: var(--font-size-16);
       transition: all var(--timing);
+      min-width: 155px;
     }
     &__main {
       background-color: var(--color-main-blue);
