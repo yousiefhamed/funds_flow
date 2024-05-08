@@ -86,20 +86,20 @@
       <!-- ==============================================  Tax Id  =============================================== -->
 
       <div class="form-floating">
-        <input type="text" formControlName="national_id" class="form-control border-0 border-bottom" id="tax_id"
+        <input type="text" formControlName="tax_card_number" class="form-control border-0 border-bottom" id="tax_id"
           placeholder="Tax Id" />
         <label for="tax_id" class="text-muted mb-3">Tax ID </label>
         <div class="mb-3" *ngIf="
-            SinUpForm.get('national_id')?.errors &&
-            SinUpForm.get('national_id')?.touched
+            SinUpForm.get('tax_card_number')?.errors &&
+            SinUpForm.get('tax_card_number')?.touched
           ">
-          <p *ngIf="SinUpForm.get('national_id')?.getError('required')" class="text-danger">
+          <p *ngIf="SinUpForm.get('tax_card_number')?.getError('required')" class="text-danger">
             * The tax id field is required
           </p>
-          <p *ngIf="SinUpForm.get('national_id')?.getError('pattern')" class="text-danger">
+          <p *ngIf="SinUpForm.get('tax_card_number')?.getError('pattern')" class="text-danger">
             *The Tax ID field must be 12 characters.
           </p>
-          <p *ngIf="SinUpForm.get('national_id')?.getError('maxlength')" class="text-danger">
+          <p *ngIf="SinUpForm.get('tax_card_number')?.getError('maxlength')" class="text-danger">
             *The Tax ID field must be 12 characters.
           </p>
         </div>

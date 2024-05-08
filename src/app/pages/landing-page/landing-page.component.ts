@@ -1,3 +1,4 @@
+import { ForminvestService } from 'src/app/Services/forminvest.service';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
@@ -19,7 +20,7 @@ import { NavAuthComponent } from '../nav-auth/nav-auth.component';
 })
 export class LandingPageComponent {
 
-  constructor(public dialog: MatDialog ,private _router:Router) {}
+  constructor(public dialog: MatDialog ,private _router:Router ,private ForminvestService:ForminvestService) {}
 
   openDialog(
     enterAnimationDuration: string,
@@ -32,5 +33,24 @@ export class LandingPageComponent {
     });
   }
 
+
+
+
+
+
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+
+    console.log(file);
+    
+    this.ForminvestService.uploadFile(file).subscribe(
+      (response) => {
+        console.log('File uploaded successfully', response);
+      },
+      (error) => {
+        console.error('Error uploading file', error);
+      }
+    );
+  }
 
 }

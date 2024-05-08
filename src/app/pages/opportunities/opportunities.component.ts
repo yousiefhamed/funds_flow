@@ -5,6 +5,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CategoriesService } from 'src/app/Services/categories.service';
 import { FormsModule } from '@angular/forms';
 import { SearchOppoPipe } from '../pipe/search-oppo.pipe';
+import { ForminvestService } from 'src/app/Services/forminvest.service';
 
 @Component({
   selector: 'app-opportunities',
@@ -15,7 +16,7 @@ import { SearchOppoPipe } from '../pipe/search-oppo.pipe';
 })
 export class OpportunitiesComponent  implements OnInit{
 
-  constructor(private _ActivatedRoute:ActivatedRoute , private _categoriesService:CategoriesService){}
+  constructor(private _ActivatedRoute:ActivatedRoute , private _categoriesService:CategoriesService ,private _ForminvestService:ForminvestService){}
   opportunitiesId!:string|null|number;
   term:string='';
   opportunites:Opportunites[]=[]
