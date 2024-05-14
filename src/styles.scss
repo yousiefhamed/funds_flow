@@ -40,6 +40,8 @@ $graduationProject-theme: mat.define-light-theme(
 @include mat.all-component-themes($graduationProject-theme);
 
 /* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
 
 :root {
   --timing: 0.5s;

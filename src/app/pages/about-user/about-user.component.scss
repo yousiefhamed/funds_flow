@@ -1,0 +1,121 @@
+
+$main-color: #0054a2;
+
+
+
+// ===========================================
+.m{
+    margin-top: 200px;
+}
+.edd{
+    align-items: center;
+}
+
+
+
+// ===============================================
+
+
+    .borderAll{
+        border-radius:  5px !important;
+        border: 2px solid #0054a2 ;
+    }
+
+   .inpuCss{
+    color: #0054a2 ;
+    margin-right: 14%;
+   }
+   .dd{
+
+    left: 47%;
+    // bottom: 5%;
+    top:88%
+   }
+
+.imgabout{
+
+    border: 1px solid  transparent;
+    border-radius: 30px;
+    width:300px;
+    height: 400px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    overflow: hidden;
+}
+
+.textarea-no-formatting {
+    padding: 5px;
+    // border: none;
+    resize: none;
+    outline: none;
+    width: 100%; 
+    box-sizing: border-box; 
+  
+  }
+.btn1{
+    background-color: #0054a2;
+    color: aliceblue;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.opportunity{
+
+    border-radius: 15px;
+    border: 1px solid  #0054a2;
+    // width: 30;
+    padding: 10px 20px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px #0054a2 ;
+    margin-right: 5px;
+
+    }
+    .details-color{
+    
+        background-color: #0054a2;
+        color: white;
+    }
+    
+ 
+    .styleinput{
+
+        font-size: 3.125rem;
+       color: 0054a2;
+    }
+    #path_file{
+
+        display: none;
+    }
+ 
+
+
+    .dashed{
+        border:1px dashed #0054a2;
+        border-radius: 20px;
+        padding: 10px 10px 0px 20px;
+
+
+
+    }
+
+    .stylePen{
+
+        border: 1px solid $main-color;
+        border-radius:50%;
+        display: flex;
+        align-items: center;
+        padding: 4px;
+        margin-bottom: 10px;
+    }
+
+    .advertismentsBorder{
+
+        border:1px solid #0054a2;
+        // box-shadow: 0px 0px 5px #0054a2;
+        border-radius: 20px;
+        padding: 10px 10px 0px 20px;
+    }
+    
+    
+    

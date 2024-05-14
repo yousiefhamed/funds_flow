@@ -24,161 +24,115 @@
 
   <div class="signUpUser__content">
     <figure>
-    <figure>
       <img src="./../../../assets/logo.png" alt="Funds Flow Logo" />
     </figure>
 
 
-    <form
-      class="signUp__form"
-      [formGroup]="SinUpForm"
-      (ngSubmit)="handelForm()"
-    >
+    <form class="signUp__form" [formGroup]="SinUpForm" (ngSubmit)="handelForm()">
+
       <!-- ==============================================  CompanyName  =============================================== -->
 
       <div class="form-floating">
-        <input
-          type="text"
-          class="form-control border-0 border-bottom"
-          id="floatingCompanyName"
-          placeholder="CompanyName"
-          formControlName="name"
-        />
-        <label for="floatingCompanyName" class="text-muted mb-3"
-          >CompanyName
+        <input type="text" class="form-control border-0 border-bottom" id="floatingCompanyName"
+          placeholder="CompanyName" formControlName="name" />
+        <label for="floatingCompanyName" class="text-muted mb-3">CompanyName
         </label>
-        <div
-          class="mb-3"
-          *ngIf="
-            SinUpForm.get('name')?.errors && SinUpForm.get('name')?.touched
-          "
-        >
-          <p
-            *ngIf="SinUpForm.get('name')?.getError('required')"
-            class="text-danger"
-          >
+        <div class="mb-3" *ngIf="
+            SinUpForm.get('name')?.errors &&
+            SinUpForm.get('name')?.touched
+          ">
+          <p *ngIf="SinUpForm.get('name')?.getError('required')" class="text-danger">
             * CompanyName is required
           </p>
-          <p
-            *ngIf="SinUpForm.get('name')?.getError('minlength')"
-            class="text-danger"
-          >
+          <p *ngIf="SinUpForm.get('name')?.getError('minlength')" class="text-danger">
             *must be at least 4 letters
           </p>
-          <p
-            *ngIf="SinUpForm.get('name')?.getError('maxlength')"
-            class="text-danger"
-          >
+          <p *ngIf="SinUpForm.get('name')?.getError('maxlength')" class="text-danger">
             *must be at a maximum of 20 letters
           </p>
         </div>
       </div>
 
+
+
+
+
       <!-- ==============================================  Email  =============================================== -->
 
       <div class="form-floating">
-        <input
-          type="email"
-          class="form-control border-0 border-bottom bor"
-          id="floatingInput"
-          placeholder="name@example.com"
-          formControlName="email"
-        />
+        <input type="email" class="form-control border-0 border-bottom bor" id="floatingInput"
+          placeholder="name@example.com" formControlName="email" />
         <label for="floatingInput" class="text-muted"> Email </label>
-        <div
-          class="mb-3"
-          *ngIf="
+        <div class="mb-3" *ngIf="
             SinUpForm.get('email')?.errors && SinUpForm.get('email')?.touched
-          "
-        >
-          <p
-            *ngIf="SinUpForm.get('email')?.getError('required')"
-            class="text-danger"
-          >
+          ">
+          <p *ngIf="SinUpForm.get('email')?.getError('required')" class="text-danger">
             * Email is required
           </p>
-          <p
-            *ngIf="SinUpForm.get('email')?.getError('email')"
-            class="text-danger"
-          >
+          <p *ngIf="SinUpForm.get('email')?.getError('email')" class="text-danger">
             * Email InValid Format
           </p>
         </div>
-        <p class="text-danger">{{ errorEmail }}</p>
+        <p class="text-danger"> {{errorEmail}}</p>
+
       </div>
+
+
+
+
+
+
 
       <!-- ==============================================  Tax Id  =============================================== -->
 
       <div class="form-floating">
-        <input
-          type="text"
-          formControlName="national_id"
-          class="form-control border-0 border-bottom"
-          id="tax_id"
-          placeholder="Tax Id"
-        />
+        <input type="text" formControlName="tax_card_number" class="form-control border-0 border-bottom" id="tax_id"
+          placeholder="Tax Id" />
         <label for="tax_id" class="text-muted mb-3">Tax ID </label>
-        <div
-          class="mb-3"
-          *ngIf="
-            SinUpForm.get('national_id')?.errors &&
-            SinUpForm.get('national_id')?.touched
-          "
-        >
-          <p
-            *ngIf="SinUpForm.get('national_id')?.getError('required')"
-            class="text-danger"
-          >
+        <div class="mb-3" *ngIf="
+            SinUpForm.get('tax_card_number')?.errors &&
+            SinUpForm.get('tax_card_number')?.touched
+          ">
+          <p *ngIf="SinUpForm.get('tax_card_number')?.getError('required')" class="text-danger">
             * The tax id field is required
           </p>
-          <p
-            *ngIf="SinUpForm.get('national_id')?.getError('pattern')"
-            class="text-danger"
-          >
+          <p *ngIf="SinUpForm.get('tax_card_number')?.getError('pattern')" class="text-danger">
             *The Tax ID field must be 12 characters.
           </p>
-          <p
-            *ngIf="SinUpForm.get('national_id')?.getError('maxlength')"
-            class="text-danger"
-          >
+          <p *ngIf="SinUpForm.get('tax_card_number')?.getError('maxlength')" class="text-danger">
             *The Tax ID field must be 12 characters.
           </p>
         </div>
-        <p class="text-danger">{{ errorNational_id }}</p>
+        <p class="text-danger"> {{errorNational_id}}</p>
+
       </div>
+
+
+
+
 
       <!-- ==============================================  Description  =============================================== -->
 
       <div class="form-floating">
-        <input
-          type="text"
-          formControlName="description"
-          class="form-control border-0 border-bottom"
-          id="floatingDesc"
-          placeholder="Password"
-        />
+        <input type="text" formControlName="description" class="form-control border-0 border-bottom" id="floatingDesc"
+          placeholder="Password" />
         <label for="floatingDesc" class="text-muted mb-3">Description </label>
-        <div
-          class="mb-3"
-          *ngIf="
-            SinUpForm.get('description')?.errors &&
-            SinUpForm.get('description')?.touched
-          "
-        >
-          <p
-            *ngIf="SinUpForm.get('description')?.getError('required')"
-            class="text-danger"
-          >
+        <div class="mb-3" *ngIf="
+            SinUpForm.get('description')?.errors && SinUpForm.get('description')?.touched
+          ">
+          <p *ngIf="SinUpForm.get('description')?.getError('required')" class="text-danger">
             * Description is required
           </p>
-          <p
-            *ngIf="SinUpForm.get('desc')?.getError('minlength')"
-            class="text-danger"
-          >
+          <p *ngIf="SinUpForm.get('desc')?.getError('minlength')" class="text-danger">
             *must be at least 8 letters
           </p>
         </div>
       </div>
+
+
+
+
+
 
       <!-- ==============================================  Deta of Establishment  =============================================== -->
 
@@ -202,51 +156,35 @@
       <!-- ==============================================  Password  =============================================== -->
 
       <div class="form-floating">
-        <input
-          type="{{ passwordShown ? 'text' : 'password' }}"
-          class="form-control border-0 border-bottom"
-          id="floatingPassword"
-          placeholder="Password"
-          formControlName="password"
-        />
+        <input type="password" class="form-control border-0 border-bottom" id="floatingPassword" placeholder="Password"
+          formControlName="password" />
         <label for="floatingPassword" class="text-muted mb-3">Password </label>
         <div class="mb-3" *ngIf="
             SinUpForm.get('password')?.errors &&
             SinUpForm.get('password')?.touched
-          "
-        >
-          <p
-            *ngIf="SinUpForm.get('password')?.getError('required')"
-            class="text-danger"
-          >
+          ">
+          <p *ngIf="SinUpForm.get('password')?.getError('required')" class="text-danger">
             * password is required
           </p>
-          <p
-            *ngIf="SinUpForm.get('password')?.getError('pattern')"
-            class="text-danger"
-          >
+          <p *ngIf="SinUpForm.get('password')?.getError('pattern')" class="text-danger">
             *must be at least 8 letters
           </p>
         </div>
       </div>
 
+
+
       <!-- ==============================================   Sign Up  =============================================== -->
 
-      <button
-        class="w-100 mx-auto d-flex mt-4 mb-2 btn btn-sginUp"
-        [disabled]="SinUpForm.invalid"
-      >
-        Sign Up
-        <span *ngIf="isLoading"> <i class="fa fa-spin fa-spinner"></i></span>
+      <button class="w-100 mx-auto d-flex mt-4 mb-2 btn btn-sginUp" [disabled]="SinUpForm.invalid">
+        Sign Up <span *ngIf="isLoading"> <i class="fa fa-spin fa-spinner"></i></span>
       </button>
 
       <p class="text-center mb-5 mt-3">
         Already have an account?
 
         <span>
-          <a class="link-primary cursor-pointer" routerLink="/signIn"
-            >Sign In
-          </a>
+          <a class="link-primary cursor-pointer" routerLink="/signIn">Sign In </a>
         </span>
       </p>
     </form>

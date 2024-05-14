@@ -633,7 +633,11 @@
 
   .profile {
     width: 60px;
-
+    height: 60px;
+    overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     img {
       width: 100%;
       border-radius: 50%;

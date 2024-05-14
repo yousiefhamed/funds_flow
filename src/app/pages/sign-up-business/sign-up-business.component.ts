@@ -62,7 +62,7 @@ export class SignUpBusinessComponent implements OnDestroy {
       Validators.maxLength(20),
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    national_id: new FormControl('', [
+      tax_card_number: new FormControl('', [
       Validators.required,
       Validators.pattern(/^[0-9]{12}$/),
       // Validators.maxLength(12),

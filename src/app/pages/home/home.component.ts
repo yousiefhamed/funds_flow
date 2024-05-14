@@ -27,18 +27,22 @@ import { DialogboxComponent } from 'src/app/dialogbox/dialogbox.component';
 })
 export class HomeComponent {
   userName: string = '';
-  constructor(public dialog: MatDialog, private _router: Router) {}
+  bussines:string='';
+  constructor( private _router: Router) {}
 
-  openDialog(
-    enterAnimationDuration: string,
-    exitAnimationDuration: string
-  ): void {
-    this.dialog.open(DialogboxComponent, {
-      width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
-  }
+
+  // res.data.role=="bussines"
+// if(){
+
+
+// this.
+// }
+                                                      
+
+
+
+
+
 
   signOut() {
     localStorage.removeItem('userToken');

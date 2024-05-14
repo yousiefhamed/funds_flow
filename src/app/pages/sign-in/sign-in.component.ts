@@ -76,24 +76,25 @@ export class SignInComponent implements OnDestroy {
     this.errMsg = '';
     this.isLoading = true;
     const userDate = this.SinInForm.value;
-    if (this.SinInForm.valid) {
-      this.subObject = this._AuthService.Signin(userDate).subscribe({
+    if (true) {
+     this._AuthService.Signin(userDate).subscribe({
         next: (res) => {
           this.isLoading = false;
-          if (res.message == 'User Logged In Successfully') {
+          // if (res.message == 'User Logged In Successfully') {
             localStorage.setItem('userToken', res.token);
             this._router.navigate(['/home']);
-          }
+          // }
         },
         error: (err: HttpErrorResponse) => {
           this.errMsg = err.error.message;
           this.isLoading = false;
+
         },
       });
     }
   }
 
-  showPassword() {
-    this.passwordShown = !this.passwordShown;
-  }
+  // showPassword() {
+  //   this.passwordShown = !this.passwordShown;
+  // }
 }

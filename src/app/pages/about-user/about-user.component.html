@@ -1,0 +1,463 @@
+<section class="m mb-5 " *ngIf="roleInvestor">
+    <form [formGroup]="investorForm" (ngSubmit)="update()">
+
+        <div class="container">
+
+
+            <div class="row g-5 align-items-center mb-5">
+                <!-- ================================ P H O T O ==================================== -->
+                <div class="col-md-4 position-relative">
+
+                    <div class="imgabout position-relative" *ngIf="photo">
+
+                        <img [src]="photo" alt="" class="w-100 imgabout">
+                        <label for="path_file" class=" position-absolute dd ">
+                            <span class="material-symbols-outlined styleinput inpuCss">
+                                add_circle
+                            </span>
+                            <!-- <span class="material-symbols-outlined styleinput">
+                                    photo_camera
+                                    </span>    -->
+                            <!-- <span class="material-symbols-outlined styleinput">
+                                    add_photo_alternate
+                                    </span>    -->
+                        </label>
+                        <input type="file" id="path_file" onchange="console.log(event.target.files)"
+                            (change)="onFileSelected($event)" accept="image/*">
+
+                    </div>
+                </div>
+
+
+                <!-- =================================== about & name========================================== -->
+                <div class="col-md-8 mt-5 pe-5  ">
+
+
+
+                    <span class="d-flex edd mb-3 align-items-center">
+                        <input formControlName="name" id="name" type="text"
+                            class="form-control w-75 me-3 text-center border-3 borderAll ">
+
+
+
+                        <label for="name"> <span class="material-symbols-outlined fs-1 inpuCss" role="button">
+                                border_color
+                            </span>
+                        </label>
+                    </span>
+
+                    <div class="contant">
+                        <h1 class="h4 mb-3 fw-bold">About</h1>
+                        <div class="para">
+                            <textarea id="area" rows="10" cols="80" formControlName="about"
+                                class="textarea-no-formatting borderAll" [(ngModel)]="data.about">
+                            </textarea>
+                            <label class="d-flex flex-row-reverse" for="area">
+
+                                <span class="material-symbols-outlined fs-1 inpuCss " role="button">
+                                    border_color
+                                </span>
+                            </label>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <h4 class="h5 fw-bolder mb-3">Personal Information </h4>
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control  borderAll" id="floatingInput"
+                            placeholder="name@example.com" formControlName="gender" [(ngModel)]="data.gender" />
+                        <label for="floatingInput" class="text-muted"> Gander </label>
+
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control  borderAll" id="floatingInput"
+                            placeholder="name@example.com" formControlName="age" [(ngModel)]="data.age" />
+                        <label for="floatingInput" class="text-muted"> Age </label>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control  borderAll" id="floatingInput"
+                            placeholder="name@example.com" formControlName="nationality"
+                            [(ngModel)]="data.nationality" />
+                        <label for="floatingInput" class="text-muted"> Nationality </label>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control  borderAll" id="floatingInput"
+                            placeholder="name@example.com" formControlName="national_id"
+                            [(ngModel)]="data.national_id" />
+                        <label for="floatingInput" class="text-muted"> National ID </label>
+
+                    </div>
+                </div>
+            </div>
+            <h4 class="h5 fw-bolder mb-3">Contact Information</h4>
+            <div class="row mb-5">
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control borderAll" id="floatingInput"
+                            placeholder="name@example.com" formControlName="email" />
+                        <div class="m-5" *ngIf="
+                            investorForm.get('email')?.errors && investorForm.get('email')?.touched
+   ">
+
+                            <p *ngIf="investorForm.get('email')?.getError('required')" class="text-danger">
+                                * ROI is required
+                            </p>
+                            pp
+                        </div>
+                        ll
+                        <label for="floatingInput" class="text-muted"> E- Mail </label>
+
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control  borderAll" id="floatingInput"
+                            placeholder="name@example.com" formControlName="phone" [(ngModel)]="data.phone" />
+                        <label for="floatingInput" class="text-muted"> Phone Number </label>
+
+                    </div>
+                </div>
+
+            </div>
+            <h4 class="h5 fw-bolder mb-3">Investiment Performance</h4>
+            <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                    <div class="form-control borderAll text-center">
+
+                        <p class="h3">Total Investiment :<span>{{data.total_invested}}</span></p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-control borderAll text-center">
+
+                        <p class="h3">Total Return :<span>{{data.total_return}}</span></p>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mb-5">
+                <div class="form-control borderAll text-center w-50 ">
+
+                    <p class="h3">Total Investiment :<span>20000</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="container mb-4">
+            <h4 class="h5 fw-bolder mb-3">Investiment Portfolio</h4>
+
+            <div class="row  g-5 justify-content-around">
+                <div class=" opportunity  col-md-5" *ngFor="let opportunity of opportunites  ">
+                    <div>
+                        <img class=" w-100" [src]="opportunity.photo" title="opportunity.business_name"
+                            alt="opportunity.business_name">
+                    </div>
+                    <div class="contant ">
+                        <h2 class="h4">{{opportunity.business_name}}</h2>
+                        <p class="p-0 m-0"><strong>Total Amount: {{opportunity.amount_needed | currency:"E£" }}</strong>
+                        </p>
+                        <p><strong>Remaining Amount: {{opportunity.remaining_amount | currency:"E£"}}</strong> </p>
+
+                        <div class="d-flex justify-content-between">
+                            <p>{{opportunity.created_at |slice:0:10}}<span class="text-primary ps-2">/</span>
+                                {{opportunity.created_at |slice:11:16}}</p>
+                            <p [routerLink]="['/details' , opportunity.id]" role="button" class="details-color">Details
+                                <span> <i class="fa-solid fa-arrow-right" style="color: #fffafa;"></i></span>
+                            </p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="d-flex justify-content-center">
+            <button class="btn btn1 pe-5 ps-5 fs-6">
+                Save<span *ngIf="isLoading"> <i class="fa fa-spin fa-spinner"></i></span>
+
+            </button>
+
+        </div>
+    </form>
+
+
+
+
+
+</section>
+
+<!-- -->
+<section class="m mb-5 " *ngIf="roleBuss" >
+    <form [formGroup]="businessForm" (ngSubmit)="update()">
+
+        <div class="container">
+            <div class="row g-5 align-items-center mb-5">
+                <!-- ================================ P H O T O ==================================== -->
+                <div class="col-md-4 position-relative">
+                  
+                    <div class="imgabout position-relative" *ngIf="photo" >
+
+                        <!-- <img [src]="photoB" alt="" class="w-100 imgabout"> -->
+                        <img [src]="photo" class=" position-relative w-100 h-100" alt="">
+                        <label for="path_file" class=" position-absolute dd ">
+                            <span class="material-symbols-outlined styleinput inpuCss">
+                                add_circle
+                            </span>
+                        </label>
+                        <input type="file" id="path_file" onchange="console.log(event.target.files)"
+                            (change)="onFileSelected($event)" accept="image/*">
+
+                    </div>
+                </div>
+
+
+                <!-- =================================== about & name========================================== -->
+                <div class="col-md-8 mt-5 pe-5  ">
+
+
+                    <!-- Name    -->
+                    <span class="d-flex edd mb-3 align-items-center">
+                        <input formControlName="name" id="name" type="text"
+                            class="form-control w-75 me-3 text-center border-3 borderAll " [(ngModel)]="data.name" >
+
+
+                        <label for="name"> <span class="material-symbols-outlined fs-1 inpuCss" role="button">
+                                border_color
+                            </span>
+                        </label>
+                    </span>
+                    <!-- Email -->
+                    <div>
+                        <i class="fa-regular fa-envelope fa-2xl text-muted"></i>
+
+                        <input type="email" class="border-0 text-muted w-75 m-3" formControlName="email" [(ngModel)]="data.email">
+                    </div>
+                    <!-- about -->
+                    <div class="contant">
+                        <h1 class="h4 mb-3 fw-bold">About</h1>
+                        <div class="para">
+                            <textarea id="area" rows="6" cols="10" formControlName="about"
+                                class="textarea-no-formatting w-75 borderAll" [(ngModel)]="data.about">
+                            </textarea>
+                            <label class="d-flex flex-row-reverse" for="area">
+
+                                <span class="material-symbols-outlined fs-1 inpuCss " role="button">
+                                    border_color
+                                </span>
+                            </label>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <h4 class="h5 fw-bolder mb-3">Company Information </h4>
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control  borderAll" id="floatingInput"
+                            placeholder="name@example.com" formControlName="gender" [(ngModel)]="data.tex_card_number" />
+                        <label for="floatingInput" class="text-muted"> Tax card number </label>
+
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="tel" class="form-control  borderAll" id="floatingInput"
+                            placeholder="name@example.com" formControlName="age" [(ngModel)]="data.phone" />
+                        <label for="floatingInput" class="text-muted">Phone Number</label>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control  borderAll" id="floatingInput"
+                            placeholder="name@example.com" formControlName="nationality"
+                            [(ngModel)]="data.nationality" />
+                        <label for="floatingInput" class="text-muted"> Nationality </label>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control  borderAll" id="floatingInput"
+                            placeholder="name@example.com" formControlName="current_address"
+                            [(ngModel)]="data.current_address" />
+                        <label for="floatingInput" class="text-muted">Current Address </label>
+
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="h5 fw-bolder mb-3">Investiment Performance</h4>
+            <div class="row mb-5">
+                <div class="col-md-6 mb-3">
+                    <div class="form-control borderAll text-center">
+
+                        <p class="h3">Total funds raised:<span>{{data.total_invested}}</span></p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-control borderAll text-center">
+
+                        <p class="h3">Total Return :<span>{{data.total_return}}</span></p>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="container mb-4">
+            <h4 class="h5 fw-bolder mb-3">Advertisments</h4>
+
+            <div class="row gy-5 mb-5">
+
+                <div class="col-md-4  ">
+                    <header>
+                        <div class="advertismentsBorder">
+                            <div class="contant ">
+                                <div class="d-flex justify-content-between">
+                                    <h2 class="h5 fw-bolder">Trucks</h2>
+                                    <i class="fa-solid fa-pencil stylePen" role="button"></i>
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                    <p class="p-0 m-0"><strong>Total Amount: 400000</strong>
+                                    </p>
+                                    <i class="fa-solid fa-trash-can" role="button" style="color: #fc0303;"></i>
+
+                                </div>
+
+
+
+                                <p><strong>Remaining Amount: 200000</strong> </p>
+
+                                <div class="d-flex justify-content-between">
+                                    <!-- {{opportunity.created_at |slice:0:10}} -->
+                                    <!-- {{opportunity.created_at |slice:11:16}} -->
+                                    <p> 2020/5/12<span class="text-primary ps-2">/</span>
+                                        5:12
+                                    </p>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </header>
+                </div>
+            </div>
+            <h4 class="h5 fw-bolder mb-3">Advertisments History</h4>
+
+            <div class="row gy-5 justify-content-between">
+
+                <div class="col-md-4 ">
+                    <header>
+                        <div class="dashed pt-3">
+                      
+                                <div class="d-flex justify-content-between">
+                                    <h2 class="h5 fw-bolder">Trucks</h2>
+                                    <i class="fa-solid fa-trash-can" style="color: #fc0303;" role="button"></i>
+
+                                </div>
+
+                                    <p class="p-0 m-0"><strong>Total Amount: 400000</strong>
+                                    </p>
+                                <div class="d-flex justify-content-between">
+                                    <p> 2020-5-12<span class="text-primary ps-2">/</span>
+                                        5:12
+                                    </p>
+
+                                </div>
+                            </div>
+                    </header>
+                </div>  
+              
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="d-flex justify-content-center">
+            <button class="btn btn1 pe-5 ps-5 fs-6">
+                Save<span *ngIf="isLoading"> <i class="fa fa-spin fa-spinner"></i></span>
+
+            </button>
+
+        </div>
+    </form>
+
+
+
+
+
+</section>

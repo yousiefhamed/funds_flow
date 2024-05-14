@@ -14,8 +14,8 @@
           <li><a routerLink="/contact-us">Contact Us</a></li>
         </ul>
       </nav>
-      <figure class="profile">
-        <img src="./../../../assets/profile.jpeg" alt="profile icon" />
+      <figure class="profile " routerLink="/about-user" role="button" *ngIf="photo">
+        <img [src]="photo" alt="profile icon"  class="w-100 h-100"/>
       </figure>
     </header>
 

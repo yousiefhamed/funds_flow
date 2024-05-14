@@ -7,21 +7,23 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-dialogbox',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, MatButtonModule],
+  imports: [CommonModule ,MatDialogModule, MatButtonModule],
   templateUrl: './dialogbox.component.html',
-  styleUrls: ['./dialogbox.component.scss'],
+  styleUrls: ['./dialogbox.component.scss']
 })
 export class DialogboxComponent {
-  constructor(
-    public dialogRef: MatDialogRef<DialogboxComponent>,
-    private _Router: Router
-  ) {}
+  constructor(public dialogRef: MatDialogRef <DialogboxComponent> , private  _Router:Router) {}
 
-  handleSignUpInvestor() {
-    this._Router.navigate(['/signUpUser']);
+
+ investor(){
+    this._Router.navigate(['/signUpUser'])
+
+  }
+  
+  business(){
+    this._Router.navigate(['/signUpBusiness'])
+    
+
   }
 
-  handleSignUpBusiness() {
-    this._Router.navigate(['/signUpBusiness']);
-  }
 }
