@@ -28,11 +28,6 @@ export class ForminvestService {
 
 
 
-  getForm(data: object): Observable<any> {
-
-    return this._httpClient.post(`${this.baseUrl}api/opportunity/create`, data);
-  } 
-  
 
 
 

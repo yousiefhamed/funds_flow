@@ -32,6 +32,7 @@ children:[
 {path:'about', loadComponent:()=>import('./pages/about/about.component').then((m)=>m.AboutComponent),title:'about'},
 {path:'test', loadComponent:()=>import('./test/test.component').then((m)=>m.TestComponent),title:'test'},
 {path:'order', loadComponent:()=>import('./order/order.component').then((m)=>m.OrderComponent),title:'order'},
+{path:'admin', loadComponent:()=>import('./pages/admin/admin.component').then((m)=>m.AdminComponent),title:'admin'},
 {path:'about-user', loadComponent:()=>import('./pages/about-user/about-user.component').then((m)=>m.AboutUserComponent),title:'about-user'},
 {path:'contact-us', loadComponent:()=>import('./pages/contact-us/contact-us.component').then((m)=>m.ContactUsComponent),title:'contact-us'},
 {path:'categories', loadComponent:()=>import('./pages/categories/categories.component').then((m)=>m.CategoriesComponent),title:'categories'},
@@ -47,7 +48,7 @@ children:[
 
 
 
-  // notFound
+// notFound
 
   {path:"**",loadComponent:()=>import('./pages/not-fonud/not-fonud.component').then((m)=>m.NotFonudComponent)}
 ];

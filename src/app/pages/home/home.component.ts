@@ -22,31 +22,28 @@ import { DialogboxComponent } from 'src/app/dialogbox/dialogbox.component';
     MatButtonModule,
   ],
 
-  templateUrl: './home.component.html',
+  templateUrl: './home.component .html',
   styleUrls: [
-    './home.component.scss',
-    './homeSections.scss',
+    './home.component .scss',
+    './home.component .scss',
     './homeOtherSec.scss',
+    './homeSections .scss'
   ],
 })
 export class HomeComponent {
   userName: string = '';
-  bussines:string='';
-  constructor( private _router: Router) {}
+  constructor(public dialog: MatDialog, private _router: Router) {}
 
-
-  // res.data.role=="bussines"
-// if(){
-
-
-// this.
-// }
-                                                      
-
-
-
-
-
+  openDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
+    this.dialog.open(DialogboxComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
 
   signOut() {
     localStorage.removeItem('userToken');
