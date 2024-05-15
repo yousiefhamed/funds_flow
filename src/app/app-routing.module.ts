@@ -47,7 +47,7 @@ children:[
 
 
 
-// notFound
+  // notFound
 
   {path:"**",loadComponent:()=>import('./pages/not-fonud/not-fonud.component').then((m)=>m.NotFonudComponent)}
 ];

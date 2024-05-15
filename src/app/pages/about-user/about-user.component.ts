@@ -41,7 +41,10 @@ _method2:object={ _method:'put'};
 data:any;
 photo: string | undefined;
 photoB:string='';
-opportunites:any
+opportunites:any;
+opportunities:any;
+investment_history:any;
+
 file!: any;
 formData = new FormData();
 isLoading:boolean=false;
@@ -113,24 +116,35 @@ roleBuss:string='';
   
   })
    
-  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
 businessForm: FormGroup = new FormGroup({
-    name: new FormControl('', [
-      Validators.required,
-    ]),
-    about: new FormControl('', [
+    
+    description: new FormControl('', [
       // Validators.required,
     ]),
   
   
-    email: new FormControl('Egyotian_Steel@gmail.com', [
-      // Validators.required,
-      // Validators.minLength(3),
-      // Validators.maxLength(15),
-    ]),
+    // email: new FormControl('', [
+    //   // Validators.required,
+    //   // Validators.minLength(3),
+    //   // Validators.maxLength(15),
+    // ]),
   
   
-    Tax_card_number: new FormControl('', [
+    tax_card_number: new FormControl('', [
       // Validators.required,
       // Validators.minLength(3),
       // Validators.maxLength(15),
@@ -151,7 +165,7 @@ businessForm: FormGroup = new FormGroup({
   
   
    
-current_address: new FormControl('', [
+  current_address: new FormControl('', [
       // Validators.required,
       // Validators.minLength(3),
       // Validators.maxLength(15),
@@ -203,17 +217,19 @@ current_address: new FormControl('', [
       next:(res)=>{
         console.log(res)
 
-        this.data=res.data       
+        this.photo=res.photo
 
         if(res.role == 'investor'){
-         
+          this.data=res.data       
           this.roleInvestor=res.role;
-          this.photo=res.photo
 
        
         }else if (res.role == 'business') {
           this.roleBuss=res.role;
-          this.photo=res.photo
+          this.data=res.data ;
+          this.opportunities= res.business_opportunities;
+          this.investment_history=res.investment_history;
+      
         } else {
           console.log(" not found");
           
@@ -236,20 +252,23 @@ current_address: new FormControl('', [
     formData1.append('nationality',this.investorForm.get('nationality')?.value)
     formData1.append('phone',this.investorForm.get('phone')?.value)
     formData1.append('national_id',this.investorForm.get('national_id')?.value)
-    formData1.append('email',this.investorForm.get('email')?.value)
+    // formData1.append('email',this.investorForm.get('email')?.value)
     formData1.append('about',this.investorForm.get('about')?.value)
     // formData1.append('photo',this.file)
     // console.log(this.investorForm.value);
     // console.log(this.file);
     //  console.log(formData1);
      this.isLoading=true
+     console.log(this.businessForm.value);
 
     this._profileService.update(formData1 ).subscribe({
+     
 
       next:(res)=>{
         this.isLoading=false
         this._Router.navigate(['/about-user'])
         console.log(res);
+        
       },
       error:(err)=>{
         this.isLoading=false

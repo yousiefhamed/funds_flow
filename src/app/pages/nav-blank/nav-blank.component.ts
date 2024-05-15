@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './nav-blank.component.html',
   styleUrls: ['./nav-blank.component.scss']
 })
-export class NavBlankComponent {
+export class NavBlankComponent implements OnInit {
 
   _method:object={ _method:'get'};
   data:any;
@@ -47,4 +47,8 @@ export class NavBlankComponent {
     })
   }
   
+
+ngOnInit(): void {
+  this.getData()
+}
 }

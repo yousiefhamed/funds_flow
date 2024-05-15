@@ -47,6 +47,11 @@ export class SignUpUserComponent {
       Validators.minLength(4),
       Validators.maxLength(20),
     ]),
+    gender: new FormControl('', [
+      Validators.required,
+      // Validators.minLength(4),
+      // Validators.maxLength(20),
+    ]),
     email: new FormControl('', [Validators.required, Validators.email]),
     national_id: new FormControl('', [
       Validators.required,
@@ -75,6 +80,10 @@ export class SignUpUserComponent {
           this.isLoading = false;
           this.errorEmail = err.error.message.email;
           this.errorNational_id = err.error.message.national_id;
+
+
+          console.log("Error " +err);
+          
         },
       });
     }

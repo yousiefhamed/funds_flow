@@ -14,6 +14,11 @@ export class ForminvestService {
   investForm(data: FormData): Observable<any> {
 
     return this._httpClient.post(`${this.baseUrl}api/opportunity/create`, data);
+  }  
+  
+  getForm(data: object): Observable<any> {
+
+    return this._httpClient.post(`${this.baseUrl}api/opportunity/create`, data);
   } 
   
       uploadFile(file: File): Observable<any> {
