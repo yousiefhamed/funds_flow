@@ -1,5 +1,5 @@
 import { MatSelectModule } from '@angular/material/select';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,28 +13,16 @@ import {
 
 } from '@angular/forms';
 import { Route, Router, RouterLink, RouterLinkActive } from '@angular/router';
-
-import { RxwebValidators } from '@rxweb/reactive-form-validators';
-import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from 'src/app/app.component';
-import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideToastr } from 'ngx-toastr';
-import { ToastrService } from 'ngx-toastr';
 import { ForminvestService } from 'src/app/Services/forminvest.service';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
-// bootstrapApplication(AppComponent, {
-//   providers: [
-//     provideAnimations(), // required animations providers
-//     provideToastr(), // Toastr providers
-//   ]
-// });
-
-
 interface UploadEvent {
   originalEvent: Event;
   files: File[];
 }
+
+
+
 @Component({
   selector: 'app-invest',
   standalone: true,
@@ -55,7 +43,7 @@ interface UploadEvent {
   styleUrls: ['./invest.component.scss'],
   providers: [MessageService]
 })
-export class InvestComponent {
+export class InvestComponent  implements OnInit{
   constructor(
     private _ForminvestService: ForminvestService,
     private _http: HttpClient ,
@@ -67,7 +55,12 @@ export class InvestComponent {
   file!: any;
    formData = new FormData();
    isLoading: boolean = false;
+   investUpdate:any;
+  done:number=0;
+  _method:{}={
 
+   _method:'put'
+  }
 
   investForm: FormGroup = new FormGroup({
     category_name: new FormControl('', [
@@ -152,17 +145,70 @@ let formData = this.investForm.value;
 
 formData.photo=this.file
 
-this._ForminvestService.investForm(formData1).subscribe({
-      next: (res) => {
-        console.log(res);
-        this.isLoading = false;
-         this._router.navigate(['/categories'])
-      },
-      error: (err) => {
-        console.log(err);
-        this.isLoading = false;
 
-      },
-    });
-  }
+if(this.done){
+  this._ForminvestService.investForm(formData1).subscribe({
+    next: (res) => {
+      console.log(res);
+      this.isLoading = false;
+       this._router.navigate(['/about-user'])
+    },
+    error: (err) => {
+      console.log(err);
+      this.isLoading = false;
+
+    },
+  });
+
+}else if (true) {
+  this._ForminvestService.investForm(formData1).subscribe({
+    next: (res) => {
+      console.log(res);
+      this.isLoading = false;
+       this._router.navigate(['/categories'])
+    },
+    error: (err) => {
+      console.log(err);
+      this.isLoading = false;
+
+    },
+  });
+}
+  
+} 
+
+
+
+
+getInvest(){
+
+
+  this._ForminvestService.getForm(this._method).subscribe({
+    next: (res) => {
+      console.log(res);
+      this.isLoading = false;
+       this.investUpdate=res
+
+    },
+    error: (err) => {
+      console.log(err);
+      this.isLoading = false;
+
+    },
+  });
+
+
+
+}
+
+
+
+
+
+
+
+ngOnInit(): void {
+  this.getInvest()
+}
+
 }

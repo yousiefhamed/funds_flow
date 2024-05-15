@@ -36,7 +36,7 @@
 
                     <span class="d-flex edd mb-3 align-items-center">
                         <input formControlName="name" id="name" type="text"
-                            class="form-control w-75 me-3 text-center border-3 borderAll ">
+                            class="form-control w-75 me-3 text-center border-3 borderAll " [(ngModel)]="data.name">
 
 
 
@@ -70,7 +70,7 @@
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control  borderAll" id="floatingInput"
                             placeholder="name@example.com" formControlName="gender" [(ngModel)]="data.gender" />
-                        <label for="floatingInput" class="text-muted"> Gander </label>
+                        <label for="floatingInput" class="text-muted"> Gender </label>
 
                     </div>
 
@@ -111,7 +111,7 @@
             <div class="row mb-5">
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control borderAll" id="floatingInput"
+                        <input type="email" readonly class="form-control borderAll" id="floatingInput"
                             placeholder="name@example.com" formControlName="email" />
                         <div class="m-5" *ngIf="
                             investorForm.get('email')?.errors && investorForm.get('email')?.touched
@@ -208,15 +208,15 @@
 </section>
 
 <!-- -->
-<section class="m mb-5 " *ngIf="roleBuss" >
+<section class="m mb-5 " *ngIf="roleBuss">
     <form [formGroup]="businessForm" (ngSubmit)="update()">
 
         <div class="container">
             <div class="row g-5 align-items-center mb-5">
                 <!-- ================================ P H O T O ==================================== -->
                 <div class="col-md-4 position-relative">
-                  
-                    <div class="imgabout position-relative" *ngIf="photo" >
+
+                    <div class="imgabout position-relative" *ngIf="photo">
 
                         <!-- <img [src]="photoB" alt="" class="w-100 imgabout"> -->
                         <img [src]="photo" class=" position-relative w-100 h-100" alt="">
@@ -239,7 +239,7 @@
                     <!-- Name    -->
                     <span class="d-flex edd mb-3 align-items-center">
                         <input formControlName="name" id="name" type="text"
-                            class="form-control w-75 me-3 text-center border-3 borderAll " [(ngModel)]="data.name" >
+                            class="form-control w-75 me-3 text-center border-3 borderAll " [(ngModel)]="data.name">
 
 
                         <label for="name"> <span class="material-symbols-outlined fs-1 inpuCss" role="button">
@@ -250,15 +250,17 @@
                     <!-- Email -->
                     <div>
                         <i class="fa-regular fa-envelope fa-2xl text-muted"></i>
-
-                        <input type="email" class="border-0 text-muted w-75 m-3" formControlName="email" [(ngModel)]="data.email">
+                        <!-- formControlName="email" -->
+                        <input type="email" class="border-0 text-muted w-75 m-3" 
+                            [(ngModel)]="data.email" readonly>
                     </div>
                     <!-- about -->
                     <div class="contant">
                         <h1 class="h4 mb-3 fw-bold">About</h1>
                         <div class="para">
-                            <textarea id="area" rows="6" cols="10" formControlName="about"
-                                class="textarea-no-formatting w-75 borderAll" [(ngModel)]="data.about">
+                            <textarea id="area" rows="6" cols="10" formControlName="description"
+                                class="textarea-no-formatting w-75 borderAll" [(ngModel)]="data.description
+                                ">
                             </textarea>
                             <label class="d-flex flex-row-reverse" for="area">
 
@@ -276,8 +278,9 @@
             <div class="row mb-2">
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="number" class="form-control  borderAll" id="floatingInput"
-                            placeholder="name@example.com" formControlName="gender" [(ngModel)]="data.tex_card_number" />
+                        <input type="text" class="form-control  borderAll" id="floatingInput"
+                            placeholder="name@example.com" formControlName="tax_card_number"
+                            [(ngModel)]="data.tax_card_number" />
                         <label for="floatingInput" class="text-muted"> Tax card number </label>
 
                     </div>
@@ -286,7 +289,7 @@
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
                         <input type="tel" class="form-control  borderAll" id="floatingInput"
-                            placeholder="name@example.com" formControlName="age" [(ngModel)]="data.phone" />
+                            placeholder="name@example.com" formControlName="phone" [(ngModel)]="data.phone" />
                         <label for="floatingInput" class="text-muted">Phone Number</label>
 
                     </div>
@@ -316,12 +319,18 @@
                 </div>
             </div>
 
+            <div class="d-flex justify-content-between">
+            <h2 class="h5 fw-bolder">Trucks</h2>
+            <i class="fa-solid fa-pencil stylePen" role="button"  routerLink="/invest"></i>
+        </div>
+
+             
             <h4 class="h5 fw-bolder mb-3">Investiment Performance</h4>
             <div class="row mb-5">
                 <div class="col-md-6 mb-3">
                     <div class="form-control borderAll text-center">
 
-                        <p class="h3">Total funds raised:<span>{{data.total_invested}}</span></p>
+                        <p class="h3">Total funds raised:<span>{{data.total_funds_raised}}</span></p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -336,21 +345,21 @@
 
         </div>
         <div class="container mb-4">
-            <h4 class="h5 fw-bolder mb-3">Advertisments</h4>
+            <h4 class="h5 fw-bolder mb-3" *ngIf="opportunities">Advertisments</h4>
 
             <div class="row gy-5 mb-5">
 
-                <div class="col-md-4  ">
+                <div class="col-md-4  " *ngFor="let opportunity of opportunities">
                     <header>
                         <div class="advertismentsBorder">
                             <div class="contant ">
                                 <div class="d-flex justify-content-between">
                                     <h2 class="h5 fw-bolder">Trucks</h2>
-                                    <i class="fa-solid fa-pencil stylePen" role="button"></i>
+                                    <i class="fa-solid fa-pencil stylePen" role="button"  routerLink="/invest"></i>
                                 </div>
 
                                 <div class="d-flex justify-content-between">
-                                    <p class="p-0 m-0"><strong>Total Amount: 400000</strong>
+                                    <p class="p-0 m-0"><strong>Total Amount: {{opportunity.amount_needed}}</strong>
                                     </p>
                                     <i class="fa-solid fa-trash-can" role="button" style="color: #fc0303;"></i>
 
@@ -358,13 +367,14 @@
 
 
 
-                                <p><strong>Remaining Amount: 200000</strong> </p>
+                                <p><strong>Remaining Amount: {{opportunity.remaining_amount}}</strong> </p>
 
                                 <div class="d-flex justify-content-between">
                                     <!-- {{opportunity.created_at |slice:0:10}} -->
                                     <!-- {{opportunity.created_at |slice:11:16}} -->
-                                    <p> 2020/5/12<span class="text-primary ps-2">/</span>
-                                        5:12
+                                    <p> {{opportunity.created_at |slice:0:10}}<span class="text-primary ps-2">/</span>
+                                        {{opportunity.created_at |slice:11:16}}
+
                                     </p>
 
                                 </div>
@@ -377,32 +387,40 @@
                     </header>
                 </div>
             </div>
-            <h4 class="h5 fw-bolder mb-3">Advertisments History</h4>
+            <h4 class="h5 fw-bolder mb-3"  *ngIf="investment_history">Advertisments History</h4>
 
             <div class="row gy-5 justify-content-between">
+                <!-- *ngFor="let history of investment_history" -->
 
-                <div class="col-md-4 ">
+
+                <div class="col-md-4 " *ngFor="let history of investment_history">
                     <header>
                         <div class="dashed pt-3">
-                      
-                                <div class="d-flex justify-content-between">
-                                    <h2 class="h5 fw-bolder">Trucks</h2>
-                                    <i class="fa-solid fa-trash-can" style="color: #fc0303;" role="button"></i>
 
-                                </div>
+                            <div class="d-flex justify-content-between">
+                                <!-- {{ history.business_name}} -->
+                                <h2 class="h5 fw-bolder">{{ history.business_name}}</h2>
+                                <i class="fa-solid fa-trash-can" style="color: #fc0303;" role="button"></i>
 
-                                    <p class="p-0 m-0"><strong>Total Amount: 400000</strong>
-                                    </p>
-                                <div class="d-flex justify-content-between">
-                                    <p> 2020-5-12<span class="text-primary ps-2">/</span>
-                                        5:12
-                                    </p>
-
-                                </div>
                             </div>
+                            <!-- {{history.amount_needed}} -->
+                            <p class="p-0 m-0"><strong>Total Amount:{{history.amount_needed}}</strong>
+                            </p>
+                            <div class="d-flex justify-content-between">
+
+                                <p> {{history.created_at |slice:0:10}}<span class="text-primary ps-2">/</span>
+                                    {{history.created_at |slice:11:16}}
+
+                                </p> 
+                                <!-- <p> 2020-5-12<span class="text-primary ps-2">/</span>
+                                    5:12
+                                </p> -->
+
+                            </div>
+                        </div>
                     </header>
-                </div>  
-              
+                </div>
+
             </div>
 
 

@@ -53,6 +53,28 @@
 
       </div>
 
+      <!-- ==============================================  UserName  =============================================== -->
+      <div class="form-floating">
+        <input type="text" class="form-control border-0 border-bottom" id="floatingUserGender" placeholder="userName"
+          formControlName="gender" />
+        <label for="floatingUserGender" class="text-muted mb-3">Gender </label>
+        <div class="mb-3" *ngIf="
+          SinUpForm.get('gender')?.errors && SinUpForm.get('gender')?.touched
+        ">
+
+          <p *ngIf="SinUpForm.get('gender')?.getError('required')" class="text-danger">
+            * Name is required
+          </p>
+          <p *ngIf="SinUpForm.get('gender')?.getError('minlength')" class="text-danger">
+            *must be at least 4 letters
+          </p>
+          <p *ngIf="SinUpForm.get('gender')?.getError('maxlength')" class="text-danger">
+            *must be at a maximum of 20 letters
+          </p>
+        </div>
+
+      </div>
+
 
 
 
