@@ -16,11 +16,40 @@ export class ForminvestService {
     return this._httpClient.post(`${this.baseUrl}api/opportunity/create`, data);
   } 
   
+  updateForm(data: FormData): Observable<any> {
+
+    return this._httpClient.post(`${this.baseUrl}api/opportunity/create`, data);
+  } 
+
+
+
+  getForm(data: object): Observable<any> {
+
+    return this._httpClient.post(`${this.baseUrl}api/opportunity/create`, data);
+  } 
+  
+
+
+
+
+
+
+
+
+
       uploadFile(file: File): Observable<any> {
         const formData = new FormData();
         formData.append('file', file);
     
         return this._httpClient.post<any>('http://your-backend-url/upload.php', formData);
       }
+      
+
+
+
+
+
+
+
       
 }

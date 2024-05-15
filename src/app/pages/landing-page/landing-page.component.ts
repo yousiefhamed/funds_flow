@@ -10,13 +10,16 @@ import { NavAuthComponent } from '../nav-auth/nav-auth.component';
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [CommonModule  ,  RouterLink,
+  imports: [
+    CommonModule,
+    RouterLink,
     RouterLinkActive,
     MatDialogModule,
     MatButtonModule,
-    NavAuthComponent],
+    NavAuthComponent,
+  ],
   templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.component.scss']
+  styleUrls: ['./landing-page.component.scss', './landingSections.scss'],
 })
 export class LandingPageComponent {
 

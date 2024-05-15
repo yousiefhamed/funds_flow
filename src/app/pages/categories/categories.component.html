@@ -1,8 +1,14 @@
-<section *ngIf="categories.length>0" class="_top">
-  <div class="container mx-auto pb-5"> 
-
-  <input type="search" placeholder="  Search..." class="form-control w-100 mt-5 p-3 "  [(ngModel)]="term">
-    <h4 class="p-3 me-4">Choose the sector or industry you want to invest in</h4>
+<section *ngIf="categories.length > 0" class="_top">
+  <div class="container mx-auto pb-5">
+    <input
+      type="search"
+      placeholder="  Search..."
+      class="form-control w-100 mt-5 p-3"
+      [(ngModel)]="term"
+    />
+    <h4 class="p-3 me-4">
+      Choose the sector or industry you want to invest in
+    </h4>
     <div class="row gy-5">
       
 <div *ngFor="let category of categories |searchh:term" class="col-md-4  ">

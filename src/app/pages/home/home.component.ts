@@ -23,7 +23,11 @@ import { DialogboxComponent } from 'src/app/dialogbox/dialogbox.component';
   ],
 
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  styleUrls: [
+    './home.component.scss',
+    './homeSections.scss',
+    './homeOtherSec.scss',
+  ],
 })
 export class HomeComponent {
   userName: string = '';
