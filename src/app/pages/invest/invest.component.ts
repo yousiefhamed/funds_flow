@@ -3,25 +3,20 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { FileUploadModule } from 'primeng/fileupload';
 import {
   FormControl,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
   Validators,
-
 } from '@angular/forms';
 import { Route, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ForminvestService } from 'src/app/Services/forminvest.service';
 import { HttpClient } from '@angular/common/http';
-import { MessageService } from 'primeng/api';
 interface UploadEvent {
   originalEvent: Event;
   files: File[];
 }
-
-
 
 @Component({
   selector: 'app-invest',
@@ -36,31 +31,28 @@ interface UploadEvent {
     ReactiveFormsModule,
     FormsModule,
     RouterLinkActive,
-    FileUploadModule
   ],
 
   templateUrl: './invest.component.html',
   styleUrls: ['./invest.component.scss'],
-  providers: [MessageService]
+  providers: [],
 })
-export class InvestComponent  implements OnInit{
+export class InvestComponent implements OnInit {
   constructor(
     private _ForminvestService: ForminvestService,
-    private _http: HttpClient ,
-    private messageService: MessageService,
-    private _router:Router
+    private _http: HttpClient,
+    private _router: Router
   ) {}
 
   term: string = '';
   file!: any;
-   formData = new FormData();
-   isLoading: boolean = false;
-   investUpdate:any;
-  done:number=0;
-  _method:{}={
-
-   _method:'put'
-  }
+  formData = new FormData();
+  isLoading: boolean = false;
+  investUpdate: any;
+  done: number = 0;
+  _method: {} = {
+    _method: 'put',
+  };
 
   investForm: FormGroup = new FormGroup({
     category_name: new FormControl('', [
@@ -102,113 +94,113 @@ export class InvestComponent  implements OnInit{
     photo: new FormControl('', [Validators.required]),
   });
 
-
-
-
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
 
-    if(file){
-      this.file= file
-     this.formData.append('photo', file);
-        }
- 
+    if (file) {
+      this.file = file;
+      this.formData.append('photo', file);
+    }
   }
-
 
   handelForm() {
     this.isLoading = true;
 
-const formData1 = new FormData();
-formData1.append('category_name',this.investForm.get('category_name')?.value)
-formData1.append('business_name',this.investForm.get('business_name')?.value)
-formData1.append('description',this.investForm.get('description')?.value)
-formData1.append('amount_needed',this.investForm.get('amount_needed')?.value)
-formData1.append('potential_risks',this.investForm.get('potential_risks')?.value)
-formData1.append('future_growth',this.investForm.get('future_growth')?.value)
-formData1.append('products_or_services',this.investForm.get('products_or_services')?.value)
-formData1.append('returns_percentage',this.investForm.get('returns_percentage')?.value)
-formData1.append('company_valuation',this.investForm.get('company_valuation')?.value)
-formData1.append('start_date',this.investForm.get('start_date')?.value)
-formData1.append('end_date',this.investForm.get('end_date')?.value)
-formData1.append('revenues',this.investForm.get('revenues')?.value)
-formData1.append('net_profit',this.investForm.get('net_profit')?.value)
-formData1.append('cash_flow',this.investForm.get('cash_flow')?.value)
-formData1.append('profit_margin',this.investForm.get('profit_margin')?.value)
-formData1.append('ROI',this.investForm.get('ROI')?.value)
-formData1.append('photo',this.file)
-console.log(this.file);
-console.log(formData1);
-console.log(this.investForm);
+    const formData1 = new FormData();
+    formData1.append(
+      'category_name',
+      this.investForm.get('category_name')?.value
+    );
+    formData1.append(
+      'business_name',
+      this.investForm.get('business_name')?.value
+    );
+    formData1.append('description', this.investForm.get('description')?.value);
+    formData1.append(
+      'amount_needed',
+      this.investForm.get('amount_needed')?.value
+    );
+    formData1.append(
+      'potential_risks',
+      this.investForm.get('potential_risks')?.value
+    );
+    formData1.append(
+      'future_growth',
+      this.investForm.get('future_growth')?.value
+    );
+    formData1.append(
+      'products_or_services',
+      this.investForm.get('products_or_services')?.value
+    );
+    formData1.append(
+      'returns_percentage',
+      this.investForm.get('returns_percentage')?.value
+    );
+    formData1.append(
+      'company_valuation',
+      this.investForm.get('company_valuation')?.value
+    );
+    formData1.append('start_date', this.investForm.get('start_date')?.value);
+    formData1.append('end_date', this.investForm.get('end_date')?.value);
+    formData1.append('revenues', this.investForm.get('revenues')?.value);
+    formData1.append('net_profit', this.investForm.get('net_profit')?.value);
+    formData1.append('cash_flow', this.investForm.get('cash_flow')?.value);
+    formData1.append(
+      'profit_margin',
+      this.investForm.get('profit_margin')?.value
+    );
+    formData1.append('ROI', this.investForm.get('ROI')?.value);
+    formData1.append('photo', this.file);
+    console.log(this.file);
+    console.log(formData1);
+    console.log(this.investForm);
 
-let formData = this.investForm.value;
+    let formData = this.investForm.value;
 
-formData.photo=this.file
+    formData.photo = this.file;
 
+    if (this.done) {
+      this._ForminvestService.investForm(formData1).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.isLoading = false;
+          this._router.navigate(['/about-user']);
+        },
+        error: (err) => {
+          console.log(err);
+          this.isLoading = false;
+        },
+      });
+    } else if (true) {
+      this._ForminvestService.investForm(formData1).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.isLoading = false;
+          this._router.navigate(['/categories']);
+        },
+        error: (err) => {
+          console.log(err);
+          this.isLoading = false;
+        },
+      });
+    }
+  }
 
-if(this.done){
-  this._ForminvestService.investForm(formData1).subscribe({
-    next: (res) => {
-      console.log(res);
-      this.isLoading = false;
-       this._router.navigate(['/about-user'])
-    },
-    error: (err) => {
-      console.log(err);
-      this.isLoading = false;
+  getInvest() {
+    this._ForminvestService.getForm(this._method).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.isLoading = false;
+        this.investUpdate = res;
+      },
+      error: (err) => {
+        console.log(err);
+        this.isLoading = false;
+      },
+    });
+  }
 
-    },
-  });
-
-}else if (true) {
-  this._ForminvestService.investForm(formData1).subscribe({
-    next: (res) => {
-      console.log(res);
-      this.isLoading = false;
-       this._router.navigate(['/categories'])
-    },
-    error: (err) => {
-      console.log(err);
-      this.isLoading = false;
-
-    },
-  });
-}
-  
-} 
-
-
-
-
-getInvest(){
-
-
-  this._ForminvestService.getForm(this._method).subscribe({
-    next: (res) => {
-      console.log(res);
-      this.isLoading = false;
-       this.investUpdate=res
-
-    },
-    error: (err) => {
-      console.log(err);
-      this.isLoading = false;
-
-    },
-  });
-
-
-
-}
-
-
-
-
-
-
-
-ngOnInit(): void {
-  this.getInvest()
-}
-
+  ngOnInit(): void {
+    this.getInvest();
+  }
 }
