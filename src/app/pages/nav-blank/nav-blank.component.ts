@@ -8,47 +8,49 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-nav-blank',
   standalone: true,
-  imports: [CommonModule ,RouterLink,FormsModule ,RouterLinkActive],
+  imports: [CommonModule, RouterLink, FormsModule, RouterLinkActive],
   templateUrl: './nav-blank.component.html',
-  styleUrls: ['./nav-blank.component.scss']
+  styleUrls: ['./nav-blank.component.scss'],
 })
 export class NavBlankComponent implements OnInit {
-
-  _method:object={ _method:'get'};
-  data:any;
+  _method: object = { _method: 'get' };
+  data: any;
   photo: string | undefined;
-  photoB:string='';
-  roleInvestor:string='';
-  roleBuss:string='';
+  photoB: string = '';
+  roleInvestor: string = '';
+  roleBuss: string = '';
 
-  constructor( private _profileService:ProfileService , private _httpClient:HttpClient , private _Router:Router)  {}
+  constructor(
+    private _profileService: ProfileService,
+    private _httpClient: HttpClient,
+    private _Router: Router
+  ) {}
 
-  getData(){
+  getData() {
     this._profileService.getData(this._method).subscribe({
-      next:(res)=>{
-        console.log(res)
-        if(res.role == 'investor'){
-         
-          this.roleInvestor=res.role;
-          this.photo=res.photo
-       
-        }else if (res.role == 'business') {
-          this.roleBuss=res.role;
-          this.photo=res.photo
+      next: (res) => {
+        console.log(res);
+        if (res.role == 'investor') {
+          this.roleInvestor = res.role;
+          this.photo = res.photo;
+        } else if (res.role == 'business') {
+          this.roleBuss = res.role;
+          this.photo = res.photo;
         } else {
-          console.log(" not found");
-          
+          console.log(' not found');
         }
-        
       },
-      error:(err)=>{
-        console.log(err)
-      }
-    })
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
-  
 
-ngOnInit(): void {
-  this.getData()
-}
+  toggleActive() {
+    document.querySelector('ul')?.classList.toggle('active');
+  }
+
+  ngOnInit(): void {
+    this.getData();
+  }
 }
