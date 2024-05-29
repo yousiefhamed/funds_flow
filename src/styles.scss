@@ -61,7 +61,7 @@ $graduationProject-theme: mat.define-light-theme(
   --timing: 0.5s;
 
   /* spaces and pixels of elements, padding and margin */
-  --max-width: 1700px;
+  --max-width: 1500px;
   --border-radius-5: 5px;
   --border-radius-10: 10px;
   --border-radius-20: 20px;
@@ -141,19 +141,36 @@ $graduationProject-theme: mat.define-light-theme(
   --font-weight-bold: 900;
 }
 html {
-  font-size: 90%;
+  font-size: 70%;
   scroll-behavior: smooth;
   scroll-padding-block-start: 98px;
 }
 
-@media (max-width: 550px) {
-  html {
-    font-size: 85%;
-  }
-}
-
 body {
   overflow-x: hidden;
+}
+
+body .container-me {
+  max-width: var(--max-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  box-sizing: border-box;
+  gap: calc(var(--padding-medium) * 3);
+  flex-wrap: wrap;
+  padding-top: 98px;
+  padding-inline: var(--padding-small);
+  margin: 0 auto;
+
+  > header,
+  > main,
+  > footer,
+  > section {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .footer {
