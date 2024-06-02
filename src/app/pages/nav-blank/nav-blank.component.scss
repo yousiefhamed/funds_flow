@@ -31,28 +31,33 @@
     display: none;
 
     @media (max-width: 720px) {
-      display: inline-block;
-      background-color: black;
-      width: 30px;
-      height: 5px;
-      border-radius: 10px;
-      position: relative;
+      display: block;
       overflow: visible;
+      height: 21px;
+      background-color: #fff;
 
-      &::after,
-      &::before {
-        content: "";
-        display: block;
+      p {
         background-color: black;
         width: 30px;
         height: 5px;
         border-radius: 10px;
-        position: absolute;
-        top: -8px;
-        left: 0;
-      }
-      &::after {
-        top: calc(100% + 3px);
+        position: relative;
+
+        &::after,
+        &::before {
+          content: "";
+          display: block;
+          background-color: black;
+          width: 30px;
+          height: 5px;
+          border-radius: 10px;
+          position: absolute;
+          top: -8px;
+          left: 0;
+        }
+        &::after {
+          top: calc(100% + 3px);
+        }
       }
     }
   }
@@ -89,7 +94,7 @@
     @media (max-width: 720px) {
       position: fixed;
       top: 98px;
-      backdrop-filter: blur(50px);
+      background-color: #fff;
       box-shadow: -4px 0 10px #0000001c;
       width: 200px;
       height: calc(100vh - 98px);

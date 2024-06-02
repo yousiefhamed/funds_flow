@@ -1,15 +1,12 @@
-<p class="m-5">test works!</p>
+<div class="container-me">
+  <p class="m-5">test works!</p>
 
-
-<form        [formGroup]="payForm"
-(ngSubmit)="handelForm()"
-
-class="mt-5">
-
-        <label for="name">name</label>
-    <input  formControlName="name"  type="text" id="name">
+  <form [formGroup]="payForm" (ngSubmit)="handelForm()" class="mt-5">
+    <label for="name">name</label>
+    <input formControlName="name" type="text" id="name" />
     <label for="number">num</label>
 
-    <input type="number" formControlName="amount"  id="num">
+    <input type="number" formControlName="amount" id="num" />
     <button class="btn btn-primary">pay</button>
-</form>
+  </form>
+</div>
