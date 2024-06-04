@@ -1,0 +1,87 @@
+.borderAll{
+    border-radius:  5px !important;
+    border: 1px solid #0054a2;
+}
+
+.styleinput{
+
+    font-size: 60px;
+    color:#0054a2;
+}
+#path_id{
+
+    display: none;
+}
+.mytextArea{
+    resize: none;
+}
+
+.FinancialPerformance h4{
+
+    position: relative;
+}
+.FinancialPerformance h4::after{
+content: "";
+width: 100px;
+height: 50px;
+position: absolute;
+background-color: #0054a2;
+
+}
+
+.btn1{
+    background-color: #0054a2;
+    color: aliceblue;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+// .FinancialPerformance{
+
+//     height: 4px;
+//     width: 100%;
+    
+// }
+
+
+._top{
+
+    margin-top: 100px;
+}
+
+
+h4{
+
+    position: relative;
+}
+
+  h4::after{
+
+content: "";
+
+width:  27.5rem;
+height: 2px;
+background-color: #080808;
+position: absolute;
+
+top:45%;
+right: 0%;
+
+
+
+}
+
+h4::before{
+content: "";
+
+width: 27.5rem;
+height: 2px;
+background-color: #080808;
+position: absolute;
+
+top:45%;
+
+left: 0%;
+
+
+}

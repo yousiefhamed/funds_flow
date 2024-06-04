@@ -44,9 +44,9 @@ getAllGategories(){
 
 
 
-  ngOnInit(): void {
+ngOnInit(): void {
 
     this.getAllGategories()
   
-  }
+}
 }

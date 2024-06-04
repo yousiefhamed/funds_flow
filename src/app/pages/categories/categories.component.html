@@ -12,7 +12,7 @@
     <div class="row gy-5">
       
 <div *ngFor="let category of categories |searchh:term" class="col-md-4  ">
-   <header [routerLink]="['/opportunities' , category.id]" >   
+   <header [routerLink]="['/opportunities' , category.uuid]" >   
                         
       <div class="category position-relative  " role="button">
         <img class="w-100 heightImg  " [src]="category.photo" [alt]="category.name" [title]="category.name">

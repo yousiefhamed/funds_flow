@@ -1,15 +1,149 @@
-<p class="m-5">test works!</p>
+<section class="m mb-5 ">
+    <div class="container">
+        <form [formGroup]="adminForm" (ngSubmit)="saveDate()">
 
 
-<form        [formGroup]="payForm"
-(ngSubmit)="handelForm()"
+            <div class="row g-5 align-items-center mb-5">
+                <!-- ================================ P H O T O ==================================== -->
+                <div class="col-md-5 position-relative">
 
-class="mt-5">
+                    <div class="imgabout position-relative" *ngIf="photoA">
 
-        <label for="name">name</label>
-    <input  formControlName="name"  type="text" id="name">
-    <label for="number">num</label>
+                        <img [src]="photoA" alt="" class="w-100 imgabout">
 
-    <input type="number" formControlName="amount"  id="num">
-    <button class="btn btn-primary">pay</button>
-</form>
+                   
+                        <!-- <img [src]="photo" class=" position-relative w-100 h-100" alt=""> -->
+                        <label for="path_file" class=" position-absolute dd ">
+                            <span class="material-symbols-outlined styleinput ms-5 inpuCss">
+                                add_circle
+                            </span>
+                        </label>
+                        <input type="file" id="path_file" onchange="console.log(event.target.files)"
+                        (change)="onFileSelected($event)" accept="image/*">
+
+
+                    </div>
+                </div>
+
+
+                <!-- =================================== email & name========================================== -->
+                <div class="col-md-7  pe-5  ">
+
+                    <!-- Name    -->
+                    <span class="d-flex edd mb-3 align-items-center">
+                        <input formControlName="name" id="name" type="text"
+                            class="form-control p-3  w-75 me-3 text-center border-3 borderAll fw-bolder fs-6"
+                            [(ngModel)]="userInfo.name">
+
+
+                        <label for="name"> <span class="material-symbols-outlined fs-1 inpuCss" role="button">
+                                border_color
+                            </span>
+                        </label>
+                    </span>
+                    <!-- Email -->
+
+                    <div class="form-floating mb-3">
+                        <input formControlName="email" type="text" class="form-control w-75 borderAll"
+                            id="floatingInput" placeholder="name@example.com" [(ngModel)]="userInfo.email" />
+                        <label for="floatingInput" class="fw-bold text-muted"> E-mail </label>
+
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control w-75 borderAll" id="floatingInput"
+                            placeholder="name@example.com" formControlName="pass" value="ex123456" />
+                        <label for="floatingInput" class="fw-bold text-muted"> Password</label>
+
+                    </div>
+                    <div class="w-75">
+                        <button class="btn btninfo  d-block ms-auto ">Save</button>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+        <button
+        routerLink="/wating"
+            class="btn p-2  text-white w-50 shadow-sm fw-bold d-flex btn1 justify-content-center mx-auto fs-5 ">Waiting
+            list</button>
+
+        <form [formGroup]="commissionForm"  >
+
+            <div class="row m-4 g-4">   
+                <div class="col-md-6" *ngFor="let  opportunity  of opportunities">
+                
+                    <div class="stylediv ">
+                        <div class="d-flex justify-content-between  align-self-center">
+                            <div class="mt-5">
+                                <p class="fw-bolder fs-5"> {{opportunity.business_name }}</p>
+                                <p class="fw-bolder  fs-6">Business Field: <span>{{opportunity.category.name}}</span>
+                                </p>
+                                <p class="fw-bolder  fs-6">Total Amount: <span>{{opportunity.amount_needed}}</span>
+                                </p>
+                            </div>
+
+                            <div>
+                                <figure class="logo ">
+                                    <img class="w-100" [src]="opportunity.photo" alt="logo">
+                                </figure>
+
+                                <div>
+                                    <p>Start Date: {{opportunity.start_date}}
+                                    </p>
+                                    <p>End Date: {{opportunity.end_date}}</p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                  <div class="d-flex">
+                    <!-- <div class="text-center align-items-center  justify-content-center ms-5 borderAll w-75  ">
+                        <span>Commission
+                             <input type="text" formControlName="commission_amount"
+                                class="border-0 w-25 pt-1 pb-1" 
+                                [(ngModel)]="opportunity.commission_amount"
+                                >
+                            <input type="text" formControlName="uuid" hidden  [(ngModel)]="opportunity.uuid">
+                            </span>
+                            
+                    </div> -->
+
+
+
+                 <div class="text-center align-items-center  justify-content-center ms-5 borderAll w-75  ">
+                        <span>Commission : {{opportunity.commission_amount}}
+    
+                            <input type="text" formControlName="commission_amount"   >
+                            </span>
+                            
+
+                    </div>
+
+
+                    <button class="btn btn11 small"  (click)="sandCommission(opportunity.uuid)" >
+
+                        <i class="fa-solid fa-check fs-4 " style="color: #ffffff;"></i>
+                       
+                    </button>
+                  </div>
+                    </div>
+
+                </div>
+            
+
+            </div>
+
+ <button class="btn btn-primary">save</button>
+
+        </form>
+
+
+    </div>
+</section>
+
+
+
+
+

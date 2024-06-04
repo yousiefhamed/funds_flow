@@ -207,8 +207,8 @@
 
 </section>
 
-<!-- -->
-<section class="m mb-5 " *ngIf="roleBuss">
+<!-- *ngIf="roleBuss"-->
+<section class="m mb-5 " >
     <form [formGroup]="businessForm" (ngSubmit)="update()">
 
         <div class="container">
@@ -239,7 +239,7 @@
                     <!-- Name    -->
                     <span class="d-flex edd mb-3 align-items-center">
                         <input formControlName="name" id="name" type="text"
-                            class="form-control w-75 me-3 text-center border-3 borderAll " [(ngModel)]="data.name">
+                            class="form-control w-75 me-3 text-center border-3 borderAll"  [(ngModel)]="data.name">
 
 
                         <label for="name"> <span class="material-symbols-outlined fs-1 inpuCss" role="button">
@@ -252,13 +252,13 @@
                         <i class="fa-regular fa-envelope fa-2xl text-muted"></i>
                         <!-- formControlName="email" -->
                         <input type="email" class="border-0 text-muted w-75 m-3" 
-                            [(ngModel)]="data.email" readonly>
-                    </div>
+                            [(ngModel)]="data.email" readonly  formControlName="email">
+                    </div>                             
                     <!-- about -->
                     <div class="contant">
                         <h1 class="h4 mb-3 fw-bold">About</h1>
                         <div class="para">
-                            <textarea id="area" rows="6" cols="10" formControlName="description"
+                            <textarea id="area" rows="6" cols="10"  formControlName="description"
                                 class="textarea-no-formatting w-75 borderAll" [(ngModel)]="data.description
                                 ">
                             </textarea>
@@ -279,7 +279,7 @@
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control  borderAll" id="floatingInput"
-                            placeholder="name@example.com" formControlName="tax_card_number"
+                            placeholder="name@example.com"  formControlName="tax_card_number"
                             [(ngModel)]="data.tax_card_number" />
                         <label for="floatingInput" class="text-muted"> Tax card number </label>
 
@@ -288,7 +288,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="tel" class="form-control  borderAll" id="floatingInput"
+                        <input type="text" class="form-control  borderAll" id="floatingInput"
                             placeholder="name@example.com" formControlName="phone" [(ngModel)]="data.phone" />
                         <label for="floatingInput" class="text-muted">Phone Number</label>
 
@@ -320,8 +320,8 @@
             </div>
 
             <div class="d-flex justify-content-between">
-            <h2 class="h5 fw-bolder">Trucks</h2>
-            <i class="fa-solid fa-pencil stylePen" role="button"  routerLink="/invest"></i>
+            <h2 class="h5 fw-bolder">{{data.business_name}}</h2>
+            <i class="fa-solid fa-pencil stylePen" role="button"  ></i>
         </div>
 
              
@@ -354,17 +354,16 @@
                         <div class="advertismentsBorder">
                             <div class="contant ">
                                 <div class="d-flex justify-content-between">
-                                    <h2 class="h5 fw-bolder">Trucks</h2>
-                                    <i class="fa-solid fa-pencil stylePen" role="button"  routerLink="/invest"></i>
+                                    <h2 class="h5 fw-bolder">{{opportunity.business_name}}</h2>                     
+                                    <i class="fa-solid fa-pencil stylePen" role="button"  [routerLink]="['/detailsForm' , opportunity.uuid]" ></i>
                                 </div>
 
                                 <div class="d-flex justify-content-between">
                                     <p class="p-0 m-0"><strong>Total Amount: {{opportunity.amount_needed}}</strong>
                                     </p>
-                                    <i class="fa-solid fa-trash-can" role="button" style="color: #fc0303;"></i>
+                                    <i         (click)="delete(opportunity.uuid)"     class="fa-solid fa-trash-can" role="button" style="color: #fc0303;"></i>
 
                                 </div>
-
 
 
                                 <p><strong>Remaining Amount: {{opportunity.remaining_amount}}</strong> </p>

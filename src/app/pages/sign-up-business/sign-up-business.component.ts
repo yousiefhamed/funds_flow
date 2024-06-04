@@ -4,6 +4,11 @@ import {
   formatCurrency,
   getLocaleMonthNames,
 } from '@angular/common';
+interface UploadEvent {
+  originalEvent: Event;
+  files: File[];
+}
+
 import {
   FormControl,
   FormGroup,
@@ -50,6 +55,11 @@ export class SignUpBusinessComponent implements OnDestroy {
   errorNational_id: string = '';
   errorDate: string = '';
   subObject!: Subscription;
+  formData = new FormData();
+
+  term: string = '';
+  file!: any;
+  role:string = 'business';
 
   constructor(private _router: Router, private _authService: AuthService) {}
 
@@ -82,6 +92,9 @@ export class SignUpBusinessComponent implements OnDestroy {
       Validators.required,
       Validators.pattern(/^[a-zA-Z0-9_@]{8,}$/),
     ]),
+    id_card_photo: new FormControl('', [
+      Validators.required,
+    ]),
   });
 
   handelForm() {
@@ -89,12 +102,23 @@ export class SignUpBusinessComponent implements OnDestroy {
     this.errorEmail = '';
     this.errorNational_id = '';
     this.isLoading = true;
-    const userDate = this.SinUpForm.value;
-    userDate.role = 'business';
-    console.log(this.SinUpForm.value);
+    // const userDate = this.SinUpForm.value;
+    // userDate.role = 'business';
+    // console.log(this.SinUpForm.value);
+
+
+    const formData1 = new FormData();
+    formData1.append('name',this.SinUpForm.get('name')?.value)
+    formData1.append('tax_card_number',this.SinUpForm.get('tax_card_number')?.value)
+    formData1.append('description',this.SinUpForm.get('description')?.value)
+    formData1.append('password',this.SinUpForm.get('password')?.value)
+    formData1.append('email',this.SinUpForm.get('email')?.value)
+    formData1.append('role',this.role)
+    formData1.append('id_card_photo',this.file)
+    
 
     if (this.SinUpForm.valid === true) {
-      this.subObject = this._authService.Signup(userDate).subscribe({
+      this.subObject = this._authService.Signup(formData1).subscribe({
         next: (res) => {
           this.isLoading = false;
           this._router.navigate(['/signIn']);
@@ -117,4 +141,17 @@ export class SignUpBusinessComponent implements OnDestroy {
   showPassword() {
     this.passwordShown = !this.passwordShown;
   }
+
+  
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+
+    if(file){
+      this.file= file
+     this.formData.append('photo', file);
+        }
+ 
+  }
+
+
 }

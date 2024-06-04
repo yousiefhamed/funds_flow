@@ -1,275 +1,336 @@
-<div class="container-me">
-  <section class="profile_hero row justify-content-between align-items-center">
-    <figure class="position-relative">
-      <img src="./../../../assets/admin/me.jpg" alt="admin profile picture" />
-      <img
-        class="position-absolute top-100"
-        src="./../../../assets/admin/add.png"
-        alt="plus icon"
-      />
-    </figure>
-    <form
-      class="row justify-content-center align-items-center flex-nowrap gap-3 form-container"
-    >
-      <div class="input-container">
-        <div>
-          <input
+<div class="w">
+  <div class="container-me ">
+    <section class="profile_hero row justify-content-between align-items-center">
+      <figure class="position-relative">
+        <img src="./../../../assets/admin/me.jpg" alt="admin profile picture" />
+
+        <input type="file" id="path_input" >
+        <label for="path_input">
+          <img
+          class="position-absolute top-100"
+          src="./../../../assets/admin/add.png"
+          alt="plus icon"
+        />
+
+        </label>
+      </figure>
+     
+        <!-- class="row justify-content-center align-items-center flex-nowrap gap-3 form-container" -->
+  
+        <!-- <div class="input-container">
+          <div>
+            <input
+              id="adminName"
+              type="text"
+             [(ngModel)]="userInfo.name"
+              [readonly]="isadminNameReadOnly"
+            />
+          </div>
+          <img
             id="adminName"
-            type="text"
-            value="Youssef"
-            [readonly]="isadminNameReadOnly"
+            [src]="adminNameImgSrc"
+            alt="edit icon"
+            (click)="toggleEditable('adminName')"
           />
-        </div>
-        <img
-          id="adminName"
-          [src]="adminNameImgSrc"
-          alt="edit icon"
-          (click)="toggleEditable('adminName')"
-        />
-      </div>
-    </form>
-  </section>
+        </div> -->
 
-  <section class="admin_info">
-    <h2 class="h2__heading">Admin Information</h2>
-    <form class="form-container">
-      <div class="input-container">
-        <div>
-          <label for="email">E-Mail</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Youssef@gmail.com"
-            [readOnly]="isEmailReadOnly"
-          />
-        </div>
-        <img
-          [src]="emailImgSrc"
-          alt="edit icon"
-          (click)="toggleEditable('email')"
-        />
-      </div>
-      <div class="input-container">
-        <div>
-          <label for="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="********"
-            [readOnly]="isPasswordReadOnly"
-          />
-        </div>
-        <img
-          [src]="passwordImgSrc"
-          alt="edit icon"
-          (click)="toggleEditable('password')"
-        />
-      </div>
-    </form>
-  </section>
 
-  <section class="portfolio">
-    <div class="company">
-      <div class="info">
-        <h2 class="p__text">ALGIOSHY EG</h2>
-        <h3 class="p__text">Business Field: <span>Steel</span></h3>
-        <p class="p__text">Total Amount 500,000</p>
-      </div>
-      <div class="logo">
-        <figure>
-          <img
-            src="./../../../assets/company-logos/algioshy.png"
-            alt="aligioshy logo"
-          />
-        </figure>
-        <div>
-          <p class="p__text">Start Date: 9 Feb 2024</p>
-          <p class="p__text">End Date: 9 Apr 2024</p>
-        </div>
-      </div>
-      <div class="commission">
-        <button class="p__text">Commission 15000</button>
-      </div>
-    </div>
-    <div class="company">
-      <div class="info">
-        <h2 class="p__text">PHARCO</h2>
-        <h3 class="p__text">Business Field: <span>Steel</span></h3>
-        <p class="p__text">Total Amount 500,000</p>
-      </div>
-      <div class="logo">
-        <figure>
-          <img
-            src="./../../../assets/company-logos/pharco.png"
-            alt="pharco logo"
-          />
-        </figure>
-        <div>
-          <p class="p__text">Start Date: 9 Feb 2024</p>
-          <p class="p__text">End Date: 9 Apr 2024</p>
-        </div>
-      </div>
-      <div class="commission">
-        <button class="p__text">Commission 20000</button>
-      </div>
-    </div>
-    <div class="company">
-      <div class="info">
-        <h2 class="p__text">Talaat Moustafa</h2>
-        <h3 class="p__text">Business Field: <span>Real Estate</span></h3>
-        <p class="p__text">Total Amount 500,000</p>
-      </div>
-      <div class="logo">
-        <figure>
-          <img
-            src="./../../../assets/company-logos/TMG.png"
-            alt="talaat moustafa logo"
-          />
-        </figure>
-        <div>
-          <p class="p__text">Start Date: 9 Feb 2024</p>
-          <p class="p__text">End Date: 9 Apr 2024</p>
-        </div>
-      </div>
-      <div class="commission">
-        <button class="p__text">Commission 25000</button>
-      </div>
-    </div>
-  </section>
+     <form >
+      <span class="d-flex  mb-3 align-items-center">
+        <input formControlName="name" id="name" type="text"
+            class="form-control w-75 me-3 text-center border-3 borderAll" [(ngModel)]="userInfo.email">
 
-  <section class="portfolio">
-    <div class="company">
-      <div class="info">
-        <h2 class="p__text">ALGIOSHY EG</h2>
-        <h3 class="p__text">Business Field: <span>Steel</span></h3>
-        <p class="p__text">Total Amount 500,000</p>
-      </div>
-      <div class="logo">
-        <figure>
-          <img
-            src="./../../../assets/company-logos/algioshy.png"
-            alt="aligioshy logo"
-          />
-        </figure>
-        <div>
-          <p class="p__text">Start Date: 9 Feb 2024</p>
-          <p class="p__text">End Date: 9 Apr 2024</p>
-        </div>
-      </div>
-      <div class="commission">
-        <button class="details btn-main-blue p__text">Show More Details</button>
-        <div>
-          <button class="accept btn-main-blue p__text">Accept</button>
-          <button class="reject bg-danger text-light p__text">Reject</button>
-        </div>
-      </div>
-    </div>
-    <div class="company">
-      <div class="info">
-        <h2 class="p__text">PHARCO</h2>
-        <h3 class="p__text">Business Field: <span>Steel</span></h3>
-        <p class="p__text">Total Amount 500,000</p>
-      </div>
-      <div class="logo">
-        <figure>
-          <img
-            src="./../../../assets/company-logos/pharco.png"
-            alt="pharco logo"
-          />
-        </figure>
-        <div>
-          <p class="p__text">Start Date: 9 Feb 2024</p>
-          <p class="p__text">End Date: 9 Apr 2024</p>
-        </div>
-      </div>
-      <div class="commission">
-        <button class="details btn-main-blue p__text">Show More Details</button>
-        <div>
-          <button class="accept btn-main-blue p__text">Accept</button>
-          <button class="reject bg-danger text-light p__text">Reject</button>
-        </div>
-      </div>
-    </div>
-    <div class="company">
-      <div class="info">
-        <h2 class="p__text">Talaat Moustafa</h2>
-        <h3 class="p__text">Business Field: <span>Real Estate</span></h3>
-        <p class="p__text">Total Amount 500,000</p>
-      </div>
-      <div class="logo">
-        <figure>
-          <img
-            src="./../../../assets/company-logos/TMG.png"
-            alt="talaat moustafa logo"
-          />
-        </figure>
-        <div>
-          <p class="p__text">Start Date: 9 Feb 2024</p>
-          <p class="p__text">End Date: 9 Apr 2024</p>
-        </div>
-      </div>
-      <div class="commission">
-        <button class="details btn-main-blue p__text">Show More Details</button>
-        <div>
-          <button class="accept btn-main-blue p__text">Accept</button>
-          <button class="reject bg-danger text-light p__text">Reject</button>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <footer class="footer">
-    <div class="contact">
-      <div class="text">
-        <p class="p__text">Be Connected With Us</p>
-      </div>
-      <div class="social__media">
-        <div class="social">
-          <img src="./../../../assets/contact-icons/phone.svg" alt="" />
-          <p><a href="#" class="p__text">+(65) 6654 8076</a></p>
+        <label for="name"> <span class="material-symbols-outlined fs-1 inpuCss" role="button">
+                border_color
+            </span>
+        </label>
+    </span>
+    <div class="form-group">
+
+      <label for="Products">Products Or Services</label>
+      <input type="text " id="Products"  class="w-100  form-control p-3 mb-3 borderAll"   [(ngModel)]="userInfo.email">
+
+  </div>
+     </form>
+
+      {{userInfo.name}}
+      
+    </section>
+  
+
+
+
+
+    <section class="admin_info">
+      <h2 class="h2__heading">Admin Information</h2>
+      <form class="form-container">
+        <div class="input-container">
+          <div>
+            <label for="email">E-Mail</label>
+            <input
+              type="email"
+              id="email"
+            
+              placeholder="Youssef@gmail.com"
+              [readOnly]="isEmailReadOnly"
+            />
+          </div>
+          <img
+            [src]="emailImgSrc"
+            alt="edit icon"
+            (click)="toggleEditable('email')"
+          />
         </div>
-        <div class="social">
-          <img src="./../../../assets/contact-icons/email.svg" alt="" />
-          <p><a href="#" class="p__text">Logo&#64;gmail.com</a></p>
+        <div class="input-container">
+          <div>
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="********"
+              [readOnly]="isPasswordReadOnly"
+            />
+          </div>
+          <img
+            [src]="passwordImgSrc"
+            alt="edit icon"
+            (click)="toggleEditable('password')"
+          />
         </div>
-        <div class="social">
-          <img src="./../../../assets/contact-icons/location.svg" alt="" />
-          <p>
-            <a href="#" class="p__text"
-              >13- Foaad st , 5th settlement , Cairo
-            </a>
-          </p>
-        </div>
-      </div>
+      </form>
+
+      <div class="form-group">
+
+        <label for="Products">Products Or Services</label>
+        <input type="text " id="Products"  class="w-100  form-control p-3 mb-3 borderAll"   [(ngModel)]="userInfo.email">
+
     </div>
-    <div class="copyright">
-      <div class="social__icons">
-        <img
-          src="./../../../assets/social-icons/facebook.svg"
-          alt="facebook icon"
-        />
-        <img
-          src="./../../../assets/social-icons/linkedin.svg"
-          alt="linkedin icon"
-        />
-        <img
-          src="./../../../assets/social-icons/twitter.svg"
-          alt="twitter icon"
-        />
-        <img
-          src="./../../../assets/social-icons/instagram.svg"
-          alt="instagram icon"
-        />
-        <img
-          src="./../../../assets/social-icons/youtube.svg"
-          alt="youtube icon"
-        />
+
+    </section>
+  <button class="btn btn-primary text-white w-50 align-content-center d-flex text-center justify-content-center p-3">Wating list</button>
+
+    <section class="portfolio">
+      <div class="company">
+        <div class="info">
+          <h2 class="p__text">ALGIOSHY EG</h2>
+          <h3 class="p__text">Business Field: <span>Steel</span></h3>
+          <p class="p__text">Total Amount 500,000</p>
+        </div>
+        <div class="logo">
+          <figure>
+            <img
+              src="./../../../assets/company-logos/algioshy.png"
+              alt="aligioshy logo"
+            />
+          </figure>
+          <div>
+            <p class="p__text">Start Date: 9 Feb 2024</p>
+            <p class="p__text">End Date: 9 Apr 2024</p>
+          </div>
+        </div>
+        <div class="commission">
+          <button class="p__text">Commission 15000</button>
+        </div>
       </div>
-      <div class="terms">
-        <p><a href="#" class="p__text">Terms Of Service</a></p>
-        <p class="p__text">-</p>
-        <p><a href="#" class="p__text">Privacy Policy</a></p>
+      <div class="company">
+        <div class="info">
+          <h2 class="p__text">PHARCO</h2>
+          <h3 class="p__text">Business Field: <span>Steel</span></h3>
+          <p class="p__text">Total Amount 500,000</p>
+        </div>
+        <div class="logo">
+          <figure>
+            <img
+              src="./../../../assets/company-logos/pharco.png"
+              alt="pharco logo"
+            />
+          </figure>
+          <div>
+            <p class="p__text">Start Date: 9 Feb 2024</p>
+            <p class="p__text">End Date: 9 Apr 2024</p>
+          </div>
+        </div>
+        <div class="commission">
+          <button class="p__text">Commission 20000</button>
+        </div>
       </div>
-    </div>
-  </footer>
+      <div class="company">
+        <div class="info">
+          <h2 class="p__text">Talaat Moustafa</h2>
+          <h3 class="p__text">Business Field: <span>Real Estate</span></h3>
+          <p class="p__text">Total Amount 500,000</p>
+        </div>
+        <div class="logo">
+          <figure>
+            <img
+              src="./../../../assets/company-logos/TMG.png"
+              alt="talaat moustafa logo"
+            />
+          </figure>
+          <div>
+            <p class="p__text">Start Date: 9 Feb 2024</p>
+            <p class="p__text">End Date: 9 Apr 2024</p>
+          </div>
+        </div>
+        <div class="commission">
+          <button class="p__text">Commission 25000</button>
+        </div>
+      </div>
+    </section>
+  
+    <section class="portfolio">
+      <div class="company">
+        <div class="info">
+          <h2 class="p__text">ALGIOSHY EG</h2>
+          <h3 class="p__text">Business Field: <span>Steel</span></h3>
+          <p class="p__text">Total Amount 500,000</p>
+        </div>
+        <div class="logo">
+          <figure>
+            <img
+              src="./../../../assets/company-logos/algioshy.png"
+              alt="aligioshy logo"
+            />
+          </figure>
+          <div>
+            <p class="p__text">Start Date: 9 Feb 2024</p>
+            <p class="p__text">End Date: 9 Apr 2024</p>
+          </div>
+        </div>
+        <div class="commission">
+          <button class="details btn-main-blue p__text">Show More Details</button>
+          <div>
+            <button class="accept btn-main-blue p__text">Accept</button>
+            <button class="reject bg-danger text-light p__text">Reject</button>
+          </div>
+        </div>
+      </div>
+      <div class="company">
+        <div class="info">
+          <h2 class="p__text">PHARCO</h2>
+          <h3 class="p__text">Business Field: <span>Steel</span></h3>
+          <p class="p__text">Total Amount 500,000</p>
+        </div>
+        <div class="logo">
+          <figure>
+            <img
+              src="./../../../assets/company-logos/pharco.png"
+              alt="pharco logo"
+            />
+          </figure>
+          <div>
+            <p class="p__text">Start Date: 9 Feb 2024</p>
+            <p class="p__text">End Date: 9 Apr 2024</p>
+          </div>
+        </div>
+        <div class="commission">
+          <button class="details btn-main-blue p__text">Show More Details</button>
+          <div>
+            <button class="accept btn-main-blue p__text">Accept</button>
+            <button class="reject bg-danger text-light p__text">Reject</button>
+          </div>
+        </div>
+      </div>
+      <div class="company">
+        <div class="info">
+          <h2 class="p__text">Talaat Moustafa</h2>
+          <h3 class="p__text">Business Field: <span>Real Estate</span></h3>
+          <p class="p__text">Total Amount 500,000</p>
+        </div>
+        <div class="logo">
+          <figure>
+            <img
+              src="./../../../assets/company-logos/TMG.png"
+              alt="talaat moustafa logo"
+            />
+          </figure>
+          <div>
+            <p class="p__text">Start Date: 9 Feb 2024</p>
+            <p class="p__text">End Date: 9 Apr 2024</p>
+          </div>
+        </div>
+        <div class="commission">
+          <button class="details btn-main-blue p__text">Show More Details</button>
+          <div>
+            <button class="accept btn-main-blue p__text">Accept</button>
+            <button class="reject bg-danger text-light p__text">Reject</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer class="footer">
+      <div class="contact">
+        <div class="text">
+          <p class="p__text">Be Connected With Us</p>
+        </div>
+        <div class="social__media">
+          <div class="social">
+            <img src="./../../../assets/contact-icons/phone.svg" alt="" />
+            <p><a href="#" class="p__text">+(65) 6654 8076</a></p>
+          </div>
+          <div class="social">
+            <img src="./../../../assets/contact-icons/email.svg" alt="" />
+            <p><a href="#" class="p__text">Logo&#64;gmail.com</a></p>
+          </div>
+          <div class="social">
+            <img src="./../../../assets/contact-icons/location.svg" alt="" />
+            <p>
+              <a href="#" class="p__text"
+                >13- Foaad st , 5th settlement , Cairo
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <div class="social__icons">
+          <img
+            src="./../../../assets/social-icons/facebook.svg"
+            alt="facebook icon"
+          />
+          <img
+            src="./../../../assets/social-icons/linkedin.svg"
+            alt="linkedin icon"
+          />
+          <img
+            src="./../../../assets/social-icons/twitter.svg"
+            alt="twitter icon"
+          />
+          <img
+            src="./../../../assets/social-icons/instagram.svg"
+            alt="instagram icon"
+          />
+          <img
+            src="./../../../assets/social-icons/youtube.svg"
+            alt="youtube icon"
+          />
+        </div>
+        <div class="terms">
+          <p><a href="#" class="p__text">Terms Of Service</a></p>
+          <p class="p__text">-</p>
+          <p><a href="#" class="p__text">Privacy Policy</a></p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  
 </div>

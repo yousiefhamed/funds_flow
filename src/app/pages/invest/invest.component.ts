@@ -56,11 +56,14 @@ export class InvestComponent  implements OnInit{
    formData = new FormData();
    isLoading: boolean = false;
    investUpdate:any;
-  done:number=0;
   _method:{}={
 
    _method:'put'
   }
+
+
+
+
 
   investForm: FormGroup = new FormGroup({
     category_name: new FormControl('', [
@@ -146,7 +149,6 @@ let formData = this.investForm.value;
 formData.photo=this.file
 
 
-if(this.done){
   this._ForminvestService.investForm(formData1).subscribe({
     next: (res) => {
       console.log(res);
@@ -160,25 +162,9 @@ if(this.done){
     },
   });
 
-}else if (true) {
-  this._ForminvestService.investForm(formData1).subscribe({
-    next: (res) => {
-      console.log(res);
-      this.isLoading = false;
-       this._router.navigate(['/categories'])
-    },
-    error: (err) => {
-      console.log(err);
-      this.isLoading = false;
-
-    },
-  });
-}
-  
-} 
 
 
-
+  }
 
 getInvest(){
 

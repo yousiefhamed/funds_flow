@@ -1,0 +1,28 @@
+@import '../../test/test.component';
+
+
+
+
+
+
+.ddd{
+    border: solid 1px #007ad9;
+    padding: 20px;
+}
+
+
+
+::ng-deep .p-button{
+    background-color: #007ad9;
+    color: #fff;
+    padding-left:30px !important;
+    padding-right: 30px !important;
+
+    border-radius: 10px;
+  }
+
+
+
+.btnspace{
+    width: 48%;
+}

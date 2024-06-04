@@ -36,10 +36,8 @@ import { CategoriesService } from 'src/app/Services/categories.service';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss'],
 })
-export class SignInComponent implements OnDestroy {
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
+export class SignInComponent  {
+
   errMsg: string = '';
   isLoading: boolean = false;
   subObject!: Subscription;
@@ -59,10 +57,7 @@ export class SignInComponent implements OnDestroy {
 
 
 
-
-
-
-
+ 
 
   SinInForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -76,14 +71,15 @@ export class SignInComponent implements OnDestroy {
     this.errMsg = '';
     this.isLoading = true;
     const userDate = this.SinInForm.value;
-    if (true) {
+  
      this._AuthService.Signin(userDate).subscribe({
         next: (res) => {
+          console.log(res);
           this.isLoading = false;
-          // if (res.message == 'User Logged In Successfully') {
+          if (res.message == 'User Logged In Successfully') {
             localStorage.setItem('userToken', res.token);
             this._router.navigate(['/home']);
-          // }
+          }
         },
         error: (err: HttpErrorResponse) => {
           this.errMsg = err.error.message;
@@ -91,10 +87,12 @@ export class SignInComponent implements OnDestroy {
 
         },
       });
-    }
+  
   }
 
-  // showPassword() {
-  //   this.passwordShown = !this.passwordShown;
-  // }
+
+
+
+
+
 }

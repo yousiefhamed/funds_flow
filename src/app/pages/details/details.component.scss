@@ -20,3 +20,21 @@
 
   margin-top: 100px;
 }
+.styleborder{
+
+  border:  1px solid #0054a2;
+  // padding: 20px;
+  box-shadow: 0px 0px 1px #0054a2 ;
+
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+-moz-appearance: textfield;
+}

@@ -172,6 +172,39 @@
         </div>
       </div>
 
+      <!-- ==============================================  Tax Photo  =============================================== -->
+
+      <div class="w-100 text-center form-control p-2 mb-1 borderAll">
+
+        <label for="path_id">
+          <span class="material-symbols-outlined styleinput" role="button">
+            add_photo_alternate
+          </span>
+        </label>
+
+        <input type="file" id="path_id" onchange="console.log(event.target.files)" formControlName="id_card_photo"
+          [(ngModel)]="term" (change)="onFileSelected($event)">
+        <!-- <p-fileUpload mode="basic" chooseLabel="Choose" id="path_id"  formControlName="photo"    accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)"></p-fileUpload> -->
+
+        <div *ngIf="term; else elseBlock">
+          <!-- Content to display if condition is true -->
+          <p class="text-primary">done</p>
+        </div>
+
+        <ng-template #elseBlock>
+          <!-- Content to display if condition is false -->
+          <p>Please attach a photo of your Tax ID.</p>
+        </ng-template>
+
+      </div>
+
+
+
+
+
+
+
+
 
 
       <!-- ==============================================   Sign Up  =============================================== -->

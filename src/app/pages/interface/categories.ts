@@ -4,7 +4,7 @@ export interface Categories {
   id: number;
   name: string;
   photo: string;
-  
+  uuid:string;
   // categories:{name:string},
   // categories: SubCategories;
 }

@@ -1,19 +1,23 @@
-<section class="w-75 mx-auto _top" *ngFor="let detail of details"  >
-
+<section class="w-75 mx-auto _top"  *ngIf="step1">
+<div *ngFor="let detail of details" >
     
-    <button  [routerLink]="['/opportunities', detail.id]"  class="btn mt-5 text-muted"><i class="fa-regular fa-circle-left" style="color: #888d96;"  ></i>Back</button>
+    
+    <button  [routerLink]="['/opportunities',detail.category.uuid ]"  class="btn mt-5 text-muted"><i class="fa-regular fa-circle-left" style="color: #888d96;"  ></i>Back</button>
     <img class="w-100 m-4" [src]="detail.photo">
 
-
-    </section>
-<section>
+  
+</div>   
+    </section>                                                          
+<section *ngIf="step1">
 
     <div class="container">
         <mat-tab-group>
             <mat-tab label="About">
 
                 <div class="paragraph m-5" *ngFor="let detail of details">
-
+                           <h1 class=" h4 m-3 fw-bold">
+                            {{detail.business_name}}
+                           </h1>
                     <p *ngFor="let detail of details" class="fs">
                         {{detail.description}}
                     </p>
@@ -26,7 +30,7 @@
                                 <h2 class="h5 fw-bold">Category </h2>
                             </li>
 
-                            <p *ngFor="let detail of details">{{categoreyName}}</p>
+                            <p *ngFor="let detail of details">{{detail.category.name}}</p>
                         </div>
                         <div class=" d-flex justify-content-between mb-3 w-75 mx-auto">
                             <li cla>
@@ -87,7 +91,7 @@
 
                         <h3>Remaining Amount {{detail.remaining_amount | currency:"E£" |slice: 0:9}}</h3>
 
-                        <button class="btn btn1 m-3">Invest Now</button>
+                        <button class="btn btn1 m-3" (click)="investNaw()">Invest Now</button>
                     </div>
 
                 </div>
@@ -171,3 +175,67 @@
 
     </div>
 </section>
+
+
+
+<section class="w-75 mx-auto justify-content-center d-flex flex-column align-items-center" *ngIf="step2">
+    <p class="mt-5">5</p>
+    <p class="mt-5">5</p>
+    <p class="mt-5">5</p>
+    <p class="mt-5">5</p>
+    <div class="container ">
+        <div class="row mx-auto align-self-center styleborder  ">
+        
+        <div class="col-md-8" *ngFor="let detail of details">
+            <img [src]="detail.photo" class="w-100  " alt="">
+        </div>
+        <div class="col-md-4 d-flex align-items-center">
+                <div class="div" *ngFor="let detail of details">
+                    <h1 class="h4 mt-3">
+                        {{detail.business_name}}
+                     </h1>
+                     <p>Total Amount: 
+                         <span>
+                            {{detail.amount_needed | currency:"E£" |slice: 0:9}}
+                     </span>
+
+
+                     </p>
+                     <p>
+                        Remaining Amount :
+                        <span>
+                           
+                            {{detail.remaining_amount | currency:"E£" |slice: 0:9}}
+                        </span>
+                     </p>
+                     <p>{{detail.start_date}}</p>
+                </div>
+        
+        </div>
+        </div> 
+        <form  [formGroup]="paymentForm" (ngSubmit)="sendAmount()" >
+            <p class="text-danger justify-content-center d-flex fw-bold mt-3">We will take a 3% commission from the profits you earn</p>
+        
+            <input type="number" placeholder="Enter amount you want to pay" class="form-control  text-center text-muted mb-3 styleborder w-75 mx-auto p-3"   formControlName="amount">
+             
+            <div class="alert alert-danger mb-3 w-75 mx-auto text-center" role="alert" *ngIf="displayError">
+                <i class="fa-regular fa-face-smile  " style="color: #c11a6b;"></i>
+                    {{displayError}}
+            </div>
+        <div class=" d-flex flex-column justify-content-center align-items-center">
+        <button class="btn btn1 form-control mb-3 p-3 w-50"  [disabled]="paymentForm.invalid">
+         
+            
+            Click here to pay with stripe <span *ngIf="isLoading"> <i class="fa fa-spin fa-spinner"></i></span>
+        
+        </button>
+        <button class="btn styleborder form-control p-3 w-50" (click)="backInvest()">Cancel</button>
+        
+        </div>
+        </form>
+        </div>
+        
+
+       
+</section>
+

@@ -1,0 +1,146 @@
+
+<!-- 
+  <div class="container-me">
+
+
+    <section class="portfolio">
+
+      <div class="company">
+        <div class="info">
+          <h2 class="p__text">ALGIOSHY EG</h2>
+          <h3 class="p__text">Business Field: <span>Steel</span></h3>
+          <p class="p__text">Total Amount 500,000</p>
+        </div>
+        <div class="logo">
+          <figure>
+            <img
+              src="./../../../assets/company-logos/algioshy.png"
+              alt="aligioshy logo"
+            />
+          </figure>
+          <div>
+            <p class="p__text">Start Date: 9 Feb 2024</p>
+            <p class="p__text">End Date: 9 Apr 2024</p>
+          </div>
+        </div>
+        <div class="commission">
+          <button class="details btn-main-blue p__text">Show More Details</button>
+          <div>
+            <button class="accept btn-main-blue p__text">Accept</button>
+            <button class="reject bg-danger text-light p__text">Reject</button>
+          </div>
+        </div>
+      </div>
+      <div class="company">
+        <div class="info">
+          <h2 class="p__text">PHARCO</h2>
+          <h3 class="p__text">Business Field: <span>Steel</span></h3>
+          <p class="p__text">Total Amount 500,000</p>
+        </div>
+        <div class="logo">
+          <figure>
+            <img
+              src="./../../../assets/company-logos/pharco.png"
+              alt="pharco logo"
+            />
+          </figure>
+          <div>
+            <p class="p__text">Start Date: 9 Feb 2024</p>
+            <p class="p__text">End Date: 9 Apr 2024</p>
+          </div>
+        </div>
+        <div class="commission">
+          <button class="details btn-main-blue p__text">Show More Details</button>
+          <div>
+            <button class="accept btn-main-blue p__text">Accept</button>
+            <button class="reject bg-danger text-light p__text">Reject</button>
+          </div>
+        </div>
+      </div>
+      <div class="company">
+        <div class="info">
+          <h2 class="p__text">Talaat Moustafa</h2>
+          <h3 class="p__text">Business Field: <span>Real Estate</span></h3>
+          <p class="p__text">Total Amount 500,000</p>
+        </div>
+        <div class="logo">
+          <figure>
+            <img
+              src="./../../../assets/company-logos/TMG.png"
+              alt="talaat moustafa logo"
+            />
+          </figure>
+          <div>
+            <p class="p__text">Start Date: 9 Feb 2024</p>
+            <p class="p__text">End Date: 9 Apr 2024</p>
+          </div>
+        </div>
+        <div class="commission">
+          <button class="details btn-main-blue p__text">Show More Details</button>
+          <div>
+            <button class="accept btn-main-blue p__text">Accept</button>
+            <button class="reject bg-danger text-light p__text">Reject</button>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+  
+
+
+
+  </div> -->
+
+
+<section class="mt-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti velit est quas nesciunt temporibus omnis facere sapiente cupiditate! Aliquam sed exercitationem voluptas facilis ab, minus harum hic a officia beatae, commodi quasi similique inventore dolorem, quia placeat rem natus error ipsam at quas iure praesentium! Voluptate nihil incidunt consequatur laborum?</section>
+
+
+
+<div class="search">
+
+  <input type="search" placeholder="  Search..." class="form-control w-75 m-4 p-3 mx-auto" [(ngModel)]="term">
+
+</div>
+
+
+<div class="row container g-3 m-5">
+
+  <div class="col-md-6" *ngFor="let data of data ">
+    <div class="stylediv ">
+        <div class="d-flex justify-content-between  align-self-center">
+            <div class="mt-5">
+                <p class="fw-bolder fs-5">{{data.business_name}}</p>
+                <p class="fw-bolder  fs-6">Business Field: {{data.category.name}}</p>
+                <p class="fw-bolder  fs-6">Total Amount: {{data.amount_needed}}</p>
+            </div>
+  
+            <div>
+                <figure class="logo ">
+                    <img class="w-100" [src]="data.photo" alt="logo">
+  
+  
+                </figure>
+  
+                <div>
+                    <p>Start Date: {{data.start_date}}</p>
+                    <p>End Date:  {{data.end_date}}</p>
+  
+                </div>
+            </div>
+        </div>
+  
+
+        <div>
+          <button class="btn btninfo w-100 mb-2 " [routerLink]="['/watingDetails' , data.uuid]">Show More Details</button>
+          <div class="d-flex justify-content-between">
+            <button class="btn btninfo btnspace  " (click)="accept(data.uuid)"> Accept</button>
+            <button class="btn btn-danger btnspace" (click)="delete(data.uuid)">Reject</button>
+          </div>
+        </div>
+    </div>
+  
+  </div>
+  
+</div>
+

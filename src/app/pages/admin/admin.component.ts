@@ -1,14 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ProfileService } from 'src/app/Services/profile.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule ,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterLink,
+
+  ],
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss', './waitingList.scss'],
 })
-export class AdminComponent {
+export class AdminComponent  implements OnInit{
+
+  constructor(private _profileService:ProfileService){}
+  _method: object = { _method: 'get' };
+  userInfo:any;
   isEmailReadOnly: boolean = true;
   isPasswordReadOnly: boolean = true;
   isadminNameReadOnly: boolean = true;
@@ -55,4 +67,25 @@ export class AdminComponent {
       this.passwordImgSrc = './../../../assets/admin/edit-icon.png';
     }
   }
+
+
+
+  getData() {
+    this._profileService.getData(this._method).subscribe({
+      next: (res) => {
+    this.userInfo =res.data
+       
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
+ngOnInit(): void {
+  
+  this.getData()
+}
+
+
 }
