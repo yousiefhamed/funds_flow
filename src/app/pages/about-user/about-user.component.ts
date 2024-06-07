@@ -80,7 +80,7 @@ export class AboutUserComponent implements OnInit {
     ]),
 
     email: new FormControl('', [
-      // Validators.required,
+      Validators.required,
       // Validators.minLength(3),
       // Validators.maxLength(15),
     ]),
@@ -245,6 +245,8 @@ export class AboutUserComponent implements OnInit {
 
       this._profileService.update(formData1).subscribe({
         next: (res) => {
+          window.location.reload();
+
           this.isLoading = false;
           console.log(res);
           this.opportunitiesId = res.id;
@@ -279,7 +281,7 @@ export class AboutUserComponent implements OnInit {
       this._profileService.update(formData1).subscribe({
         next: (res) => {
           this.isLoading = false;
-          this._Router.navigate(['/about-user']);
+          window.location.reload();
           console.log(res);
         },
         error: (err) => {

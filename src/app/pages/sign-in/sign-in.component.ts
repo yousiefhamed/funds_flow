@@ -78,6 +78,7 @@ export class SignInComponent  {
           this.isLoading = false;
           if (res.message == 'User Logged In Successfully') {
             localStorage.setItem('userToken', res.token);
+            localStorage.setItem('role', res.data.role);
             this._router.navigate(['/home']);
           }
         },

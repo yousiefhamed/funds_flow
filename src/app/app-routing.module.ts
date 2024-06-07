@@ -1,70 +1,20 @@
+import { authGuard } from './../core/auth.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { adminGuard } from 'src/core/admin.guard';
 
 const routes: Routes = [
-  //auth
-  {
-    path: '',
-
-    loadComponent: () =>
-      import('./layouts/auth-layout/auth-layout.component').then(
-        (m) => m.AuthLayoutComponent
-      ),
-    children: [
-      { path: '', redirectTo: 'landing', pathMatch: 'full' },
-      {
-        path: 'landing',
-        loadComponent: () =>
-          import('./pages/landing-page/landing-page.component').then(
-            (m) => m.LandingPageComponent
-          ),
-        title: 'landing',
-      },
-      {
-        path: 'signIn',
-        loadComponent: () =>
-          import('./pages/sign-in/sign-in.component').then(
-            (m) => m.SignInComponent
-          ),
-        title: 'SignIn',
-      },
-      {
-        path: 'signUpUser',
-        loadComponent: () =>
-          import('./pages/sign-up-user/sign-up-user.component').then(
-            (m) => m.SignUpUserComponent
-          ),
-        title: 'SignUpUser',
-      },
-      {
-        path: 'signUpBusiness',
-        loadComponent: () =>
-          import('./pages/sign-up-business/sign-up-business.component').then(
-            (m) => m.SignUpBusinessComponent
-          ),
-        title: 'SignUpBusiness',
-      },
-      {
-        path: 'forgetpassword',
-        loadComponent: () =>
-          import('./pages/forget-password/forget-password.component').then(
-            (m) => m.ForgetPasswordComponent
-          ),
-        title: 'forgetPassword',
-      },
-    ],
-  },
 
   // blank
   {
     path: '',
-
+     canActivate:[authGuard],
     loadComponent: () =>
       import('./layouts/blank-layout/blank-layout.component').then(
         (m) => m.BlankLayoutComponent
       ),
     children: [
-      // {path:'',redirectTo:'landing',pathMatch:'full'},
+      {path:'',redirectTo:'home',pathMatch:'full'},
       {
         path: 'invest',
         loadComponent: () =>
@@ -95,9 +45,19 @@ const routes: Routes = [
       },
       {
         path: 'test',
+        // canActivate:[adminGuard],
         loadComponent: () =>
           import('./test/test.component').then((m) => m.TestComponent),
         title: 'test',
+    
+      },
+      {
+        path: 'manageBussiness ',
+        // canActivate:[adminGuard],
+        loadComponent: () =>
+          import('./pages/manage-bussiness/manage-bussiness.component').then((m) => m.ManageBussinessComponent),
+        title: 'ManageBussiness ',
+    
       },
       {
         path: 'order',
@@ -209,6 +169,61 @@ const routes: Routes = [
       // {path:'details', loadComponent:()=>import('./pages/details/details.component').then((m)=>m.DetailsComponent),title:'Details'}
     ],
   },
+
+
+  //auth
+  {
+    path: '',
+
+    loadComponent: () =>
+      import('./layouts/auth-layout/auth-layout.component').then(
+        (m) => m.AuthLayoutComponent
+      ),
+    children: [
+      { path: '', redirectTo: 'landing', pathMatch: 'full' },
+      {
+        path: 'landing',
+        loadComponent: () =>
+          import('./pages/landing-page/landing-page.component').then(
+            (m) => m.LandingPageComponent
+          ),
+        title: 'landing',
+      },
+      {
+        path: 'signIn',
+        loadComponent: () =>
+          import('./pages/sign-in/sign-in.component').then(
+            (m) => m.SignInComponent
+          ),
+        title: 'SignIn',
+      },
+      {
+        path: 'signUpUser',
+        loadComponent: () =>
+          import('./pages/sign-up-user/sign-up-user.component').then(
+            (m) => m.SignUpUserComponent
+          ),
+        title: 'SignUpUser',
+      },
+      {
+        path: 'signUpBusiness',
+        loadComponent: () =>
+          import('./pages/sign-up-business/sign-up-business.component').then(
+            (m) => m.SignUpBusinessComponent
+          ),
+        title: 'SignUpBusiness',
+      },
+      {
+        path: 'forgetpassword',
+        loadComponent: () =>
+          import('./pages/forget-password/forget-password.component').then(
+            (m) => m.ForgetPasswordComponent
+          ),
+        title: 'forgetPassword',
+      },
+    ],
+  },
+
 
   // notFound
 

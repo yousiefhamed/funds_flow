@@ -116,7 +116,7 @@
 
 .stylediv{
 
-  border: 2px solid #0054a2;
+  border: 2px solid var(--color-main-blue);;
   border-radius: 30px;
   padding: 10px 25px;
 }
@@ -134,11 +134,11 @@
 
 }
 .btninfo{
-  background-color: #0054a2;
+  background-color:var(--color-main-blue);;
   color: white;
 }
 .btn11{
-  background-color: #0054a2;
+  background-color: var(--color-main-blue);;
 border-radius: 50%;
 margin: 2px;
 

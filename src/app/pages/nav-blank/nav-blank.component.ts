@@ -35,7 +35,14 @@ export class NavBlankComponent implements OnInit {
         }else if (res.role == 'business') {
           this.roleBuss=res.role;
           this.photo=res.photo
-        } else {
+        } 
+        
+        else if (res.role == 'admin') {
+          this.roleBuss=res.role;
+          this.photo=res.photo
+        
+        }
+        else {
           console.log(" not found");
           
         }

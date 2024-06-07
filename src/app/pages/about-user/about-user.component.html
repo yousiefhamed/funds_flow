@@ -111,18 +111,17 @@
             <div class="row mb-5">
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="email" readonly class="form-control borderAll" id="floatingInput"
-                            placeholder="name@example.com" formControlName="email" />
-                        <div class="m-5" *ngIf="
+                        <input type="email"class="form-control borderAll" id="floatingInput"
+                            placeholder="name@example.com" formControlName="email"   [(ngModel)]="data.email"/>
+                        <div class="" *ngIf="
                             investorForm.get('email')?.errors && investorForm.get('email')?.touched
    ">
-
-                            <p *ngIf="investorForm.get('email')?.getError('required')" class="text-danger">
-                                * ROI is required
+                            <p *ngIf="investorForm.get('email')?.getError('required')" class="text-danger m-0 p-0">
+                                * Email is required
                             </p>
-                            pp
+                          
                         </div>
-                        ll
+                 
                         <label for="floatingInput" class="text-muted"> E- Mail </label>
 
 
@@ -208,7 +207,7 @@
 </section>
 
 <!-- *ngIf="roleBuss"-->
-<section class="m mb-5 " >
+<section class="m mb-5 " *ngIf="roleBuss">
     <form [formGroup]="businessForm" (ngSubmit)="update()">
 
         <div class="container">
