@@ -3,15 +3,15 @@
 .opportunity{
 
 border-radius: 15px;
-border: 1px solid #0054a2;
+border: 1px solid var(--color-main-blue);;
 width: 30%;
 padding: 10px 20px;
 overflow: hidden;
-box-shadow: 0px 0px 10px #0054a2 ;
+box-shadow: 0px 0px 10px var(--color-main-blue); ;
 }
 .details-color{
 
-    background-color: #0054a2;
+    background-color: var(--color-main-blue);;
     color: white;
 }
 

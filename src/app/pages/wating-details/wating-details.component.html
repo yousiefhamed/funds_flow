@@ -1,0 +1,344 @@
+
+<section class="_top">
+    <div class="container mb-5 ">
+    
+        <img  class="w-100 " src="../../../assets/Promoting From Within Vs_ Hiring New Employees - Which Is Best_ 1.png" alt="">
+        <!-- <img  class="w-100" src="../../../assets/" alt=""> -->
+    
+    </div>
+    
+
+    
+    </section>
+    <section>
+
+
+     
+    <form [formGroup]="investForm" (ngSubmit)="handelForm()">
+    
+  
+
+    <div class="div"  *ngFor="let detail of details">
+
+                                    
+        <div class="container">
+    
+            <div class="row">
+              <!-- ==============================================  CompanyName  =============================================== -->
+                                
+                <div class="col-md-6">
+                                            
+                    <label for="Company">Company Name </label>                                             
+                    <input type="text" id="Company" class="form-control w-100 borderAll p-3" formControlName="business_name"  readonly [(ngModel)]="detail.business_name" >
+                </div>
+             
+         
+              <!-- ==============================================  Category  =============================================== -->
+        
+                <div class="col-md-6 mb-lg-5">
+
+                     <label for="Category"> Category</label>
+                     <input type="text" class="  borderAll p-3 form-control" formControlName="category_name" [(ngModel)]="detail.category.name" readonly >
+
+                </div>
+            
+              <!-- ==============================================  photo  =============================================== -->
+        
+             
+        
+            <div class="w-100 text-center form-control p-5 mb-3 borderAll">
+                   
+           <img [src]="detail.photo" alt="logo">
+            </div>
+
+          
+          </div>
+
+                  <!-- ==============================================  Products Or Services  =============================================== -->
+        
+                  <div class="form-group">
+        
+                    <label for="Products">Products Or Services</label>
+                    <input type="text " id="Products"  class="w-100  form-control p-3 mb-3 borderAll"  [(ngModel)]="detail.products_or_services" formControlName="products_or_services" readonly >
+            
+                </div>
+
+        
+     
+              <!-- ==============================================  Description  =============================================== -->
+        
+            <div class="form-group">
+        
+                <label for="Description">Description</label>                                                                     
+                <textarea name="" id="Description" cols="20" rows="5" class="w-100  form-control p-4 mytextArea mb-3 borderAll" formControlName="description"   [(ngModel)]="detail.description" readonly></textarea>
+            </div>
+      
+              <!-- ==============================================  Company Valuation  =============================================== -->
+        
+            <div class="form-group">
+        
+                <label for="Valuation">Company Valuation</label>
+                <input type="text " id="Valuation"  class="w-100  form-control p-4 mb-3 borderAll" readonly formControlName="company_valuation"  [(ngModel)]="detail.company_valuation">
+        
+            </div>
+          
+        
+                  <!-- ==============================================  Strategy  =============================================== -->
+        
+            <div class="form-group">
+        
+                <label for="Strategy">Strategy</label>
+                <input type="text " id="Strategy"  class="w-100  form-control p-4 mb-3 borderAll" formControlName="future_growth" readonly [(ngModel)]="detail.future_growth">
+        
+            </div>
+     
+        
+                  <!-- ==============================================  Potential Risks  =============================================== -->
+        
+            <div class="form-group">
+        
+                <label for="Potential">Potential Risks</label>
+                <input type="text " id="Potential "  class="w-100  form-control p-4 mb-3 borderAll" formControlName="potential_risks"  readonly [(ngModel)]="detail.potential_risks">
+        
+            </div>
+            <div class="mb-3" *ngIf="
+                investForm.get('potential_risks')?.errors && investForm.get('potential_risks')?.touched
+              ">
+        
+                <p *ngIf="investForm.get('potential_risks')?.getError('required')" class="text-danger">
+                  * Potential Risks is required
+                </p>
+                <!-- <p *ngIf="investForm.get('potential_risks')?.getError('minlength')" class="text-danger">
+                  *must be at least 3 letters
+                </p>
+                <p *ngIf="investForm.get('potential_risks')?.getError('maxlength')" class="text-danger">
+                  *must be at a maximum of 15 letters
+                </p> -->
+              </div>
+        
+                  <!-- ==============================================  Start date  =============================================== -->
+        
+            <div class="form-group ">
+        
+              <div class="row">
+                <div class="col-md-6">
+                    <label for="Start">Start date</label>
+                    <input type="date" id="Start"  class=" form-control p-4 mb-3 w-100 text-center borderAll" formControlName="start_date" readonly  [(ngModel)]="detail.start_date">
+            
+        
+                </div>
+        
+                <div class="mb-3" *ngIf="
+                investForm.get('start_date')?.errors && investForm.get('start_date')?.touched
+              ">
+        
+                <p *ngIf="investForm.get('start_date')?.getError('required')" class="text-danger">
+                  *  Start date is required
+                </p>
+              </div>
+        
+        
+                      <!-- ==============================================  End date  =============================================== -->
+        
+                <div class="col-md-6">
+                    <label for="date">End date</label>
+                    <input type="date" id="date"  class=" form-control p-4 mb-3 w-100 text-center borderAll" readonly formControlName="end_date"  [(ngModel)]="detail.end_date">
+            
+                    <div class="mb-3" *ngIf="
+                    investForm.get('end_date')?.errors && investForm.get('end_date')?.touched
+                  ">
+            
+                    <p *ngIf="investForm.get('end_date')?.getError('required')" class="text-danger">
+                      * End date is required
+                    </p>
+                  </div>
+            
+                </div>
+        
+        
+              </div>
+            </div>
+                              <!-- ==============================================  The required amount  =============================================== -->
+        
+            <div class="form-group ">
+        
+                <div class="row">
+        
+                  <div class="col-md-6">
+                      <label for="amount">The required amount</label>
+                      <input type="number" id="amount"  class=" form-control p-4 mb-3 w-100 text-center borderAll" readonly formControlName="amount_needed"  [(ngModel)]="detail.amount_needed">
+              
+                      <div class="mb-3" *ngIf="
+                      investForm.get('amount_needed')?.errors && investForm.get('amount_needed')?.touched
+                    ">
+              
+                      <p *ngIf="investForm.get('amount_needed')?.getError('required')" class="text-danger">
+                        * The Amount is Required
+                      </p>
+                    </div>
+              
+          
+                  </div>
+                        <!-- ==============================================  Returns Percentage  =============================================== -->
+        
+                  <div class="col-md-6">
+                      <label for="Percentage">Returns Percentage</label>
+                      <input type="text" id="Percentage"  class=" form-control p-4 mb-3 w-100 text-center borderAll" readonly formControlName="returns_percentage"  [(ngModel)]="detail.returns_percentage">
+              
+                      <div class="mb-3" *ngIf="
+                      investForm.get('returns_percentage')?.errors && investForm.get('returns_percentage')?.touched
+                    ">
+              
+                      <p *ngIf="investForm.get('returns_percentage')?.getError('required')" class="text-danger">
+                        * Returns Percentage is required
+                      </p>
+                      <p *ngIf="investForm.get('returns_percentage')?.getError('minlength')" class="text-danger">
+                        * Returns Percentage 0 Percentage
+                      </p>
+                      <p *ngIf="investForm.get('returns_percentage')?.getError('maxlength')" class="text-danger">
+                        *must be at a maximum of 100 Percentage
+                      </p>
+                    </div>
+              
+          
+                  </div>
+                </div>
+              </div>
+        
+        
+        
+        
+        
+           <h4 class="text-center FinancialPerformance  m-5">Financial Performance</h4>  
+         
+        
+        
+        
+        
+        
+        
+        
+        
+          <div class="form-group ">
+        
+            <div class="row">
+                      <!-- ==============================================  Revenues  =============================================== -->
+        
+              <div class="col-md-6">
+                  <label for="Revenues">Revenues</label>
+                  <input type="text" id="Revenues" readonly class=" form-control p-4 mb-3 w-100 text-center borderAll" formControlName="revenues"  [(ngModel)]="detail.revenues">
+          
+                  <div class="mb-3" *ngIf="
+                  investForm.get('revenues')?.errors && investForm.get('revenues')?.touched
+                ">
+          
+                  <p *ngIf="investForm.get('revenues')?.getError('required')" class="text-danger">
+                    * Revenues is required
+                  </p>
+                </div>
+          
+              </div>
+                    <!-- ==============================================  Net Profits  =============================================== -->
+        
+              <div class="col-md-6">
+                  <label for="Profits">Net Profits</label>
+                  <input type="text" id="Profits" readonly class=" form-control p-4 mb-3 w-100 borderAll" formControlName="net_profit"  [(ngModel)]="detail.net_profit">
+          
+                  <div class="mb-3" *ngIf="
+                  investForm.get('net_profit')?.errors && investForm.get('net_profit')?.touched
+                ">
+          
+                  <p *ngIf="investForm.get('net_profit')?.getError('required')" class="text-danger">
+                    *  Net Profits is required
+                  </p>
+                </div>
+          
+              </div>
+            </div>
+          </div>
+          <div class="form-group ">
+        
+            <div class="row">
+                      <!-- ==============================================  Profit Margins  =============================================== -->
+        
+              <div class="col-md-6">
+                  <label for="Margins">Profit Margins</label>
+                  <input type="text" id="Margins" readonly class=" form-control p-4 mb-3 w-100 borderAll" formControlName="profit_margin" [(ngModel)]="detail.profit_margin"> 
+          
+                  <div class="mb-3" *ngIf="
+                  investForm.get('profit_margin')?.errors && investForm.get('profit_margin')?.touched
+                ">
+          
+                  <p *ngIf="investForm.get('profit_margin')?.getError('required')" class="text-danger">
+                    * Profit Margins is required
+                  </p>
+                </div>
+          
+              </div>
+                    <!-- ==============================================  Cash Flow  =============================================== -->
+        
+              
+              <div class="col-md-6">
+                  <label for="Percentage">Cash Flow</label>
+                  <input type="text" id="Percentage" readonly class=" form-control p-4 mb-3 w-100 borderAll" formControlName="cash_flow" [(ngModel)]="detail.cash_flow">
+                  <div class="mb-3" *ngIf="
+                  investForm.get('cash_flow')?.errors && investForm.get('cash_flow')?.touched
+                ">
+          
+                  <p *ngIf="investForm.get('cash_flow')?.getError('required')" class="text-danger">
+                    * Cash Flow is required
+                  </p>
+                </div>
+          
+        
+              </div>
+            </div>
+          </div>
+              <!-- ==============================================  Return on Investment (ROI)  =============================================== -->
+        
+          <div class="form-group mb-5">
+        
+            <label for="ROI">Return on Investment (ROI)</label>
+            <input type="text " id="ROI" readonly  class="w-100  form-control p-4 borderAll " formControlName="ROI"  [(ngModel)]="detail.ROI">
+        
+            <div class="mb-3" *ngIf="
+            investForm.get('ROI')?.errors && investForm.get('ROI')?.touched
+          ">
+        
+            <p *ngIf="investForm.get('ROI')?.getError('required')" class="text-danger">
+              *  ROI is required
+            </p>
+          </div>
+        
+        
+        </div>
+        
+     
+
+            <!-- [disabled]="investForm.invalid" -->
+            <div class="d-flex justify-content-between w-50 mx-auto">
+                <button class="btn w-50 btn1 btnspace me-2 p-2" (click)="accept()"> Accept</button>
+                <button class="btn w-50 btn-danger btnspace p-2" (click)="delete()">Reject</button>
+              </div>
+        
+
+        
+        
+        </div>
+        
+        
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    </form>
+    
+    </section>
+    
+    
+    
+ 

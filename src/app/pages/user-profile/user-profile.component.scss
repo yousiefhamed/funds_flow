@@ -1,0 +1,32 @@
+@import '../about-user/about-user.component.scss';
+
+.idCard{
+
+    width: 400px;
+    height: 300px;
+    border-radius: 20px;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+}
+.btnspace{
+    width: 48%;
+}
+
+.mbcontact{
+    margin-bottom: 50px;
+}
+
+
+.btn1{
+    background-color: var(--color-main-blue);;
+}
+
+.kk{
+    margin-bottom: 80px;
+}
+
+
+.textarea-no-formatting{
+    border: none;
+}

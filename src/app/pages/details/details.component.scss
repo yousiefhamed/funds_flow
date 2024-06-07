@@ -1,12 +1,12 @@
 
 
 .btn1 {
-  background-color: #0054a2;
+  background-color:var(--color-main-blue);;
   color: white;
 }
 
 .card {
-  border: #0054a2 2px solid;
+  border: 2px solid var(--color-main-blue);;
   border-radius: 20px;
   padding: 0.725rem;
   background-color: #E8F0F7;
@@ -19,4 +19,22 @@
 ._top{
 
   margin-top: 100px;
+}
+.styleborder{
+
+  border:  1px solid var(--color-main-blue);;
+  // padding: 20px;
+  box-shadow: 0px 0px 1px var(--color-main-blue);;
+
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+-moz-appearance: textfield;
 }

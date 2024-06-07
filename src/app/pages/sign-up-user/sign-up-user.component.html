@@ -53,31 +53,7 @@
 
       </div>
 
-      <!-- ==============================================  UserName  =============================================== -->
-      <div class="form-floating">
-        <input type="text" class="form-control border-0 border-bottom" id="floatingUserGender" placeholder="userName"
-          formControlName="gender" />
-        <label for="floatingUserGender" class="text-muted mb-3">Gender </label>
-        <div class="mb-3" *ngIf="
-          SinUpForm.get('gender')?.errors && SinUpForm.get('gender')?.touched
-        ">
-
-          <p *ngIf="SinUpForm.get('gender')?.getError('required')" class="text-danger">
-            * Name is required
-          </p>
-          <p *ngIf="SinUpForm.get('gender')?.getError('minlength')" class="text-danger">
-            *must be at least 4 letters
-          </p>
-          <p *ngIf="SinUpForm.get('gender')?.getError('maxlength')" class="text-danger">
-            *must be at a maximum of 20 letters
-          </p>
-        </div>
-
-      </div>
-
-
-
-
+    
 
       <!-- ==============================================  Email  =============================================== -->
 
@@ -144,6 +120,73 @@
           </p>
         </div>
       </div>
+  <!-- ==============================================  gander  =============================================== -->
+ 
+
+  <div class="form-floating">
+    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" formControlName="gender">
+  <!-- <option selected>Open this select menu</option> -->
+  <option value="Male">Male</option>
+  <option value="Famel">Famel</option>
+    </select>
+    <label for="floatingSelect">Gender</label>
+
+    <div class="mb-3" *ngIf="
+    SinUpForm.get('gender')?.errors && SinUpForm.get('gender')?.touched
+  ">
+
+    <p *ngIf="SinUpForm.get('gender')?.getError('required')" class="text-danger">
+      * Gander is required
+    </p>
+
+
+  </div>
+</div>
+      <!-- ==============================================  photo id  =============================================== -->
+
+
+      <div class="w-100 text-center form-control p-2 mb-1 borderAll">
+
+        <label for="path_id">
+          <span class="material-symbols-outlined styleinput" role="button">
+            add_photo_alternate
+          </span>
+        </label>
+
+        <input   accept="image/*" type="file" id="path_id" onchange="console.log(event.target.files)" formControlName="id_card_photo"
+          [(ngModel)]="term" (change)="onFileSelected($event)">
+        <!-- <p-fileUpload mode="basic" chooseLabel="Choose" id="path_id"  formControlName="photo"    accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)"></p-fileUpload> -->
+
+        <div *ngIf="term; else elseBlock">
+          <!-- Content to display if condition is true -->
+          <p class="text-primary">done</p>
+        </div>
+
+        <ng-template #elseBlock>
+          <!-- Content to display if condition is false -->
+          <p>Please attach a photo of your national ID.</p>
+        </ng-template>
+
+      </div>
+
+      <div class="mb-3" *ngIf="
+      SinUpForm.get('id_card_photo')?.errors && SinUpForm.get('id_card_photo')?.touched
+    ">
+  
+      <p *ngIf="SinUpForm.get('id_card_photo')?.getError('pattran')" class="text-danger">
+        * The id card photo field must be an image
+      </p>
+  
+  
+    </div>
+
+
+
+
+
+
+
+
     <!-- ==============================================  Sign Up =============================================== -->
 
 

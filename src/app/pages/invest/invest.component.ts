@@ -49,7 +49,6 @@ export class InvestComponent implements OnInit {
   formData = new FormData();
   isLoading: boolean = false;
   investUpdate: any;
-  done: number = 0;
   _method: {} = {
     _method: 'put',
   };
@@ -159,31 +158,17 @@ export class InvestComponent implements OnInit {
 
     formData.photo = this.file;
 
-    if (this.done) {
-      this._ForminvestService.investForm(formData1).subscribe({
-        next: (res) => {
-          console.log(res);
-          this.isLoading = false;
-          this._router.navigate(['/about-user']);
-        },
-        error: (err) => {
-          console.log(err);
-          this.isLoading = false;
-        },
-      });
-    } else if (true) {
-      this._ForminvestService.investForm(formData1).subscribe({
-        next: (res) => {
-          console.log(res);
-          this.isLoading = false;
-          this._router.navigate(['/categories']);
-        },
-        error: (err) => {
-          console.log(err);
-          this.isLoading = false;
-        },
-      });
-    }
+    this._ForminvestService.investForm(formData1).subscribe({
+      next: (res) => {
+        console.log(res);
+        this.isLoading = false;
+        this._router.navigate(['/about-user']);
+      },
+      error: (err) => {
+        console.log(err);
+        this.isLoading = false;
+      },
+    });
   }
 
   getInvest() {

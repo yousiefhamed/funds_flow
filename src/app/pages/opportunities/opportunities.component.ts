@@ -28,7 +28,7 @@ ngOnInit(): void {
 
     next:(params)=>{
 
-      this.opportunitiesId=  params.get('id')
+      this.opportunitiesId=  params.get('uuid')
 
     }
   })
@@ -45,8 +45,6 @@ this.getOppor()
 
 
 getOppor(){
-
-
 
   this._categoriesService.getOpportunities(this.opportunitiesId).subscribe({
 

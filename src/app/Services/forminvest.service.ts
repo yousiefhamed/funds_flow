@@ -9,7 +9,8 @@ export class ForminvestService {
 
   constructor(private _httpClient:HttpClient) { }
 
-  baseUrl:string=`https://working-cockatoo-singularly.ngrok-free.app/`;
+  baseUrl:string=`
+  https://malamute-optimum-recently.ngrok-free.app/`;
   
   investForm(data: FormData): Observable<any> {
 
@@ -21,10 +22,15 @@ export class ForminvestService {
     return this._httpClient.post(`${this.baseUrl}api/opportunity/create`, data);
   } 
   
-  updateForm(data: FormData): Observable<any> {
+  updateForm(data: FormData , uuid:string|null|number): Observable<any> {
+console.log(uuid);
 
-    return this._httpClient.post(`${this.baseUrl}api/opportunity/create`, data);
+    return this._httpClient.post(`${this.baseUrl}api/opportunity/update/${uuid}`,data);
   } 
+
+  //   getDetails(id: string|null|number): Observable<any> {
+  //   return this._HttpClient.post(`${this.baseUrl}api/investment-opportunity/details/${id}`, {});
+  // }
 
 
 

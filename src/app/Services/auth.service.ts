@@ -9,10 +9,10 @@ export class AuthService {
 
   constructor(private _httpClient:HttpClient) { }
 
+baseUrl:string=`
+https://malamute-optimum-recently.ngrok-free.app/`;
 
-baseUrl:string=`https://working-cockatoo-singularly.ngrok-free.app/`;
-
-  Signup(info:any):Observable<any>{
+  Signup(info:FormData):Observable<any>{
 
     return this._httpClient.post(`${this.baseUrl}api/register
     ` , info)

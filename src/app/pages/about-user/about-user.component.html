@@ -135,14 +135,14 @@
           <div class="form-floating mb-3">
             <input
               type="email"
-              readonly
               class="form-control borderAll"
               id="floatingInput"
               placeholder="name@example.com"
               formControlName="email"
+              [(ngModel)]="data.email"
             />
             <div
-              class="m-5"
+              class=""
               *ngIf="
                 investorForm.get('email')?.errors &&
                 investorForm.get('email')?.touched
@@ -150,13 +150,12 @@
             >
               <p
                 *ngIf="investorForm.get('email')?.getError('required')"
-                class="text-danger"
+                class="text-danger m-0 p-0"
               >
-                * ROI is required
+                * Email is required
               </p>
-              pp
             </div>
-            ll
+
             <label for="floatingInput" class="text-muted"> E- Mail </label>
           </div>
         </div>
@@ -260,7 +259,7 @@
   </form>
 </section>
 
-<!-- -->
+<!-- *ngIf="roleBuss"-->
 <section class="m mb-5" *ngIf="roleBuss">
   <form [formGroup]="businessForm" (ngSubmit)="update()">
     <div class="container">
@@ -315,6 +314,7 @@
               class="border-0 text-muted w-75 m-3"
               [(ngModel)]="data.email"
               readonly
+              formControlName="email"
             />
           </div>
           <!-- about -->
@@ -362,7 +362,7 @@
         <div class="col-md-6">
           <div class="form-floating mb-3">
             <input
-              type="tel"
+              type="text"
               class="form-control borderAll"
               id="floatingInput"
               placeholder="name@example.com"
@@ -405,12 +405,8 @@
       </div>
 
       <div class="d-flex justify-content-between">
-        <h2 class="h5 fw-bolder">Trucks</h2>
-        <i
-          class="fa-solid fa-pencil stylePen"
-          role="button"
-          routerLink="/invest"
-        ></i>
+        <h2 class="h5 fw-bolder">{{ data.business_name }}</h2>
+        <i class="fa-solid fa-pencil stylePen" role="button"></i>
       </div>
 
       <h4 class="h5 fw-bolder mb-3">Investiment Performance</h4>
@@ -440,11 +436,11 @@
             <div class="advertismentsBorder">
               <div class="contant">
                 <div class="d-flex justify-content-between">
-                  <h2 class="h5 fw-bolder">Trucks</h2>
+                  <h2 class="h5 fw-bolder">{{ opportunity.business_name }}</h2>
                   <i
                     class="fa-solid fa-pencil stylePen"
                     role="button"
-                    routerLink="/invest"
+                    [routerLink]="['/detailsForm', opportunity.uuid]"
                   ></i>
                 </div>
 
@@ -455,6 +451,7 @@
                     >
                   </p>
                   <i
+                    (click)="delete(opportunity.uuid)"
                     class="fa-solid fa-trash-can"
                     role="button"
                     style="color: #fc0303"
