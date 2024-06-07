@@ -7,6 +7,7 @@ import { DialogboxComponent } from 'src/app/dialogbox/dialogbox.component';
 import { MatButtonModule } from '@angular/material/button';
 import { NavAuthComponent } from '../nav-auth/nav-auth.component';
 import { Title, Meta } from '@angular/platform-browser';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-landing-page',
@@ -18,6 +19,7 @@ import { Title, Meta } from '@angular/platform-browser';
     MatDialogModule,
     MatButtonModule,
     NavAuthComponent,
+    FooterComponent,
   ],
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.scss', './landingSections.scss'],
