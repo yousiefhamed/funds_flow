@@ -17,7 +17,6 @@ import {
 import { AuthService } from 'src/app/Services/auth.service';
 import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { FileUploadModule } from 'primeng/fileupload';
 interface UploadEvent {
   originalEvent: Event;
   files: File[];
@@ -32,7 +31,6 @@ interface UploadEvent {
     ReactiveFormsModule,
     FormsModule,
     RouterLinkActive,
-    FileUploadModule
   ],
   templateUrl: './sign-up-user.component.html',
   styleUrls: ['./sign-up-user.component.scss'],
@@ -47,10 +45,8 @@ export class SignUpUserComponent {
   passwordShown: boolean = false;
   term: string = '';
   file!: any;
-  role:string = 'investor';
+  role: string = 'investor';
   constructor(private _router: Router, private _authService: AuthService) {}
-
-
 
   SinUpForm: FormGroup = new FormGroup({
     name: new FormControl('', [
@@ -73,10 +69,7 @@ export class SignUpUserComponent {
       Validators.required,
       Validators.pattern(/^[a-zA-Z0-9_@]{8,}$/),
     ]),
-    id_card_photo: new FormControl('', [
-      Validators.required,
-
-    ]),
+    id_card_photo: new FormControl('', [Validators.required]),
   });
 
   handelForm() {
@@ -87,63 +80,39 @@ export class SignUpUserComponent {
     console.log(this.SinUpForm.value);
 
     const formData1 = new FormData();
-    formData1.append('name',this.SinUpForm.get('name')?.value)
-    formData1.append('gender',this.SinUpForm.get('gender')?.value)
-    formData1.append('password',this.SinUpForm.get('password')?.value)
-    formData1.append('email',this.SinUpForm.get('email')?.value)
-    formData1.append('national_id',this.SinUpForm.get('national_id')?.value)
-    formData1.append('role',this.role)
-    formData1.append('id_card_photo',this.file)
-    
+    formData1.append('name', this.SinUpForm.get('name')?.value);
+    formData1.append('gender', this.SinUpForm.get('gender')?.value);
+    formData1.append('password', this.SinUpForm.get('password')?.value);
+    formData1.append('email', this.SinUpForm.get('email')?.value);
+    formData1.append('national_id', this.SinUpForm.get('national_id')?.value);
+    formData1.append('role', this.role);
+    formData1.append('id_card_photo', this.file);
 
-      this.subObject = this._authService.Signup(formData1).subscribe({
-        next: (res) => {
-          this.isLoading = false;
-          this._router.navigate(['/signIn']);
-        },
-        error: (err: HttpErrorResponse) => {
-          this.isLoading = false;
-          this.errorEmail = err.error.message.email;
-          this.errorNational_id = err.error.message.national_id;
+    this.subObject = this._authService.Signup(formData1).subscribe({
+      next: (res) => {
+        this.isLoading = false;
+        this._router.navigate(['/signIn']);
+      },
+      error: (err: HttpErrorResponse) => {
+        this.isLoading = false;
+        this.errorEmail = err.error.message.email;
+        this.errorNational_id = err.error.message.national_id;
 
-
-          console.log(err);
-          
-        },
-      });
-
+        console.log(err);
+      },
+    });
   }
 
   showPassword() {
     this.passwordShown = !this.passwordShown;
   }
 
-
-
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
 
-    if(file){
-      this.file= file
-     this.formData.append('photo', file);
-        }
- 
+    if (file) {
+      this.file = file;
+      this.formData.append('photo', file);
+    }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
