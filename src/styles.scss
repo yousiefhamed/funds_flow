@@ -184,6 +184,10 @@ body .container-me {
   padding-top: 98px;
   padding-inline: var(--padding-large);
 
+  @media (max-width: 550px) {
+    padding-inline: var(--padding-regular);
+  }
+
   > header,
   > main,
   > footer,
