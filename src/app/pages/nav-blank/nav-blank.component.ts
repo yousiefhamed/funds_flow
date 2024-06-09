@@ -8,14 +8,13 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-nav-blank',
   standalone: true,
-  imports: [CommonModule ,RouterLink,FormsModule ,RouterLinkActive],
+  imports: [CommonModule, RouterLink, FormsModule, RouterLinkActive],
   templateUrl: './nav-blank.component.html',
-  styleUrls: ['./nav-blank.component.scss']
+  styleUrls: ['./nav-blank.component.scss'],
 })
 export class NavBlankComponent implements OnInit {
-
-  _method:object={ _method:'get'};
-  data:any;
+  _method: object = { _method: 'get' };
+  data: any;
   photo: string | undefined;
   photoB:string='';
   roleInvestor:string='';
@@ -43,12 +42,15 @@ name:any
         this.data=res.data
         this.name= res.name 
       },
-      error:(err)=>{
-        console.log(err)
-      }
-    })
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
-  
+
+  toggleActive() {
+    document.querySelector('ul')?.classList.toggle('active');
+  }
 
 ngOnInit(): void {
   

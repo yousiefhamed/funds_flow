@@ -8,28 +8,6 @@ html,
 body {
   max-width: 100vw;
 }
-.container-me {
-  max-width: var(--max-width);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-  box-sizing: border-box;
-  gap: calc(var(--padding-medium) * 3);
-  flex-wrap: wrap;
-  padding-top: 98px;
-  padding-inline: var(--padding-small);
-  margin: 0 auto;
-
-  > header,
-  > main,
-  > footer,
-  > section {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-}
 
 body {
   font-family: var(--font-family);
@@ -92,3 +70,30 @@ button {
   width: 100%;
   height: fit-content;
 }
+
+body .container-me {
+  max-width: var(--max-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  box-sizing: border-box;
+  gap: calc(var(--padding-medium) * 3);
+  flex-wrap: wrap;
+  padding-top: 98px;
+  padding-inline: var(--padding-large);
+
+  @media (max-width: 550px) {
+    padding-inline: var(--padding-regular);
+  }
+
+  > header,
+  > main,
+  > footer,
+  > section {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+

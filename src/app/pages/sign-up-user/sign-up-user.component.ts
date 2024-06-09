@@ -91,6 +91,19 @@ export class SignUpUserComponent {
     ]),
     id_card_photo: new FormControl('', [Validators.required]),
   });
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+
+    if (file) {
+      this.file = file;
+      this.formData.append('photo', file);
+    }
+  }
+
+
+
+
+
 
   handelForm() {
     this.errMsg = '';
@@ -103,6 +116,13 @@ export class SignUpUserComponent {
     // console.log(this.SinUpForm.value);
 
     const formData1 = new FormData();
+    formData1.append('name', this.SinUpForm.get('name')?.value);
+    formData1.append('gender', this.SinUpForm.get('gender')?.value);
+    formData1.append('password', this.SinUpForm.get('password')?.value);
+    formData1.append('email', this.SinUpForm.get('email')?.value);
+    formData1.append('national_id', this.SinUpForm.get('national_id')?.value);
+    formData1.append('role', this.role);
+    formData1.append('id_card_photo', this.file);
     formData1.append('name', this.SinUpForm.get('name')?.value);
     formData1.append('gender', this.SinUpForm.get('gender')?.value);
     formData1.append('password', this.SinUpForm.get('password')?.value);
@@ -126,23 +146,21 @@ export class SignUpUserComponent {
       },
     });
   }
+  // showPassword() {
+  //   this.passwordShown = !this.passwordShown;
+  // }
 
-  showPassword() {
-    this.passwordShown = !this.passwordShown;
-  }
 
-  onFileSelected(event: any) {
-    const file: File = event.target.files[0];
+  // onFileSelected(event: any) {
+  //   const file: File = event.target.files[0];
 
-    if (file) {
-      this.file = file;
-      this.formData.append('photo', file);
-    }
-  }
+  //   if (file) {
+  //     this.file = file;
+  //     this.formData.append('photo', file);
+  //   }
+  // }
 
   resetCodeSignUp() {
-    // this._Renderer2.setAttribute(element,"disbled","true")
-    // this.errorMassage = '';
     let resetCodeSignUp = this.resetCodeForm.value;
     resetCodeSignUp.email = this.email;
     this.isLoading = true;
@@ -153,26 +171,19 @@ export class SignUpUserComponent {
         this._router.navigate(['/signIn']);
         this.step1 = false;
         this.step2 = true;
-            // this._Renderer2.setAttribute(element,"disbled","true")
-
-        // this.displayMassage = Response.message;
-        // this.errorMassage = Response.message;
-        // console.log(Response.message);
-
         this.isLoading = false;
-        // if (Response.status == true) {
-        //   this.errorMassage = '';
-        //   this.step2 = false;
-        //   this.step3 = true;
-        // }
       },
       error: (err: HttpErrorResponse) => {
-        // console.log(err);
-        // this.errorMassage = err.message;
-        // console.log(err.message);
-
         this.isLoading = false;
       },
     });
   }
-}
+
+
+  
+
+
+
+
+  }
+

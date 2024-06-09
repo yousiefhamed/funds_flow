@@ -3,14 +3,12 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { FileUploadModule } from 'primeng/fileupload';
 import {
   FormControl,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
   Validators,
-
 } from '@angular/forms';
 import { Route, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ForminvestService } from 'src/app/Services/forminvest.service';
@@ -21,8 +19,6 @@ interface UploadEvent {
   originalEvent: Event;
   files: File[];
 }
-
-
 
 @Component({
   selector: 'app-invest',
@@ -37,14 +33,13 @@ interface UploadEvent {
     ReactiveFormsModule,
     FormsModule,
     RouterLinkActive,
-    FileUploadModule
   ],
 
   templateUrl: './invest.component.html',
   styleUrls: ['./invest.component.scss'],
-  providers: [MessageService]
+  providers: [],
 })
-export class InvestComponent  implements OnInit{
+export class InvestComponent implements OnInit {
   constructor(
     private _ForminvestService: ForminvestService,
     private _http: HttpClient ,
@@ -56,17 +51,12 @@ export class InvestComponent  implements OnInit{
 
   term: string = '';
   file!: any;
-   formData = new FormData();
-   isLoading: boolean = false;
-   investUpdate:any;
-  _method:{}={
-
-   _method:'put'
-  }
-
-
-
-
+  formData = new FormData();
+  isLoading: boolean = false;
+  investUpdate: any;
+  _method: {} = {
+    _method: 'put',
+  };
 
   investForm: FormGroup = new FormGroup({
     category_name: new FormControl('', [
@@ -108,19 +98,14 @@ export class InvestComponent  implements OnInit{
     photo: new FormControl('', [Validators.required]),
   });
 
-
-
-
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
 
-    if(file){
-      this.file= file
-     this.formData.append('photo', file);
-        }
- 
+    if (file) {
+      this.file = file;
+      this.formData.append('photo', file);
+    }
   }
-
 
   handelForm() {
     this.isLoading = true;
@@ -147,10 +132,9 @@ console.log(this.file);
 console.log(formData1);
 console.log(this.investForm.value);
 
-let formData = this.investForm.value;
+    let formData = this.investForm.value;
 
-formData.photo=this.file
-
+    formData.photo = this.file;
 
   this._ForminvestService.investForm(formData1).subscribe({
     next: (res) => {
@@ -197,8 +181,7 @@ getInvest(){
 
 
 
-ngOnInit(): void {
-  this.getInvest()
-}
-
+  ngOnInit(): void {
+    this.getInvest();
+  }
 }

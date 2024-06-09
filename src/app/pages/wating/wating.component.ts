@@ -46,6 +46,8 @@ export class WatingComponent implements OnInit {
   data: any;
   Categories: any;
 
+
+
   getData() {
     this._profileService.getUnapproved(this._method).subscribe({
       next: (res) => {
@@ -63,6 +65,7 @@ export class WatingComponent implements OnInit {
   ngOnInit(): void {
     this.getData();
   }
+
 
   reject(uuid: any ,element:HTMLButtonElement) {
     this._Renderer2.setAttribute(element ,'disabled' ,'true')

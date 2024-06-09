@@ -1,21 +1,25 @@
+import { MessageService } from 'primeng/api';
 import { MatSelectModule } from '@angular/material/select';
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { FileUploadModule } from 'primeng/fileupload';
 import {
   FormControl,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
   Validators,
-
 } from '@angular/forms';
-import { ActivatedRoute, Route, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  ActivatedRoute,
+  Route,
+  Router,
+  RouterLink,
+  RouterLinkActive,
+} from '@angular/router';
 import { ForminvestService } from 'src/app/Services/forminvest.service';
 import { HttpClient } from '@angular/common/http';
-import { MessageService } from 'primeng/api';
 import { Details } from '../interface/details';
 import { CategoriesService } from 'src/app/Services/categories.service';
 import { ToastrService } from 'ngx-toastr';
@@ -23,8 +27,6 @@ interface UploadEvent {
   originalEvent: Event;
   files: File[];
 }
-
-
 
 @Component({
   selector: 'app-details-form',
@@ -39,12 +41,10 @@ interface UploadEvent {
     ReactiveFormsModule,
     FormsModule,
     RouterLinkActive,
-    FileUploadModule
   ],
   templateUrl: './details-form.component.html',
   styleUrls: ['./details-form.component.scss'],
-  providers: [MessageService]
-
+  providers: [],
 })
 export class DetailsFormComponent implements OnInit {
 
@@ -191,51 +191,25 @@ export class DetailsFormComponent implements OnInit {
     this._categoriesService.getDetails(this.opportunitiesId).subscribe({
       next: (res) => {
         this.isLoading = false;
-        this.details=res.data ;
-        this.id=res.data.uuid ;
+        this.details = res.data;
+        this.id = res.data.uuid;
         // console.log(this.investUpdate);
         console.log(this.details);
-        
       },
       error: (err) => {
         console.log(err);
         this.isLoading = false;
-  
       },
     });
-  
-  
-  
   }
-  
-  
-  
-  
-  
-  
-  
+
   ngOnInit(): void {
-
-
     this._activatedRoute.paramMap.subscribe({
+      next: (params) => {
+        this.opportunitiesId = params.get('uuid');
+      },
+    });
 
-      next:(params)=>{
-  
-        this.opportunitiesId=  params.get('uuid')
-  
-      }
-    })
-  
-
-
-
-
-
-
-    this.getInvest()
+    this.getInvest();
   }
-  
-  }
-  
-
-
+}
