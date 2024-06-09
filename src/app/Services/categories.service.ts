@@ -57,12 +57,14 @@ return this._HttpClient.post(this.baseUrl+`api/categories`,_method )
 
   getpay(data: any): Observable<any> {
   
-    return this._HttpClient.post(` https://malamute-optimum-recently.ngrok-free.app/api/payment?successUrl=http://localhost:4200/order&cancelUrl=http://localhost:4200/cancel`, data);
+    return this._HttpClient.post(`${this.baseUrl}api/payment?successUrl=http://localhost:4200/order&cancelUrl=http://localhost:4200/cancel`, data);
   }
 
 
   getDataPayment(data: any): Observable<any> {
-    return this._HttpClient.post(` https://malamute-optimum-recently.ngrok-free.app/api/stripe/session-details/${data}`,{})
+    console.log(data);
+    
+    return this._HttpClient.post(`${this.baseUrl}api/stripe/session-details/${data}`,{})
    
   }
   // return this._HttpClient.post(`https://malamute-optimum-recently.ngrok-free.app/api/payment/7026f5ee-1478-11ef-9b50-b44506862942?successUrl=http://localhost:4200/order&cancelUrl=http://localhost:4200/cancel${data}`,{});

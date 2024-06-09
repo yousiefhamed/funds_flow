@@ -155,3 +155,42 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+.imgabout{
+  overflow: hidden;
+}
+
+h2{
+
+  text-align: center;
+  position: relative;
+}
+
+
+h2::before{
+  content: "";
+  width: 35%;
+  height: 3px;
+  background-color: var(--color-main-blue);
+  top: 45%;
+  position: absolute;
+  right: 0;
+}
+
+h2::after{
+  content: "";
+  width: 35%;
+  height: 3px;
+  background-color: var(--color-main-blue);
+  top: 45%;
+  position: absolute;
+  left: 0;
+}
+
+.borderCom{
+  border: 2px solid var(--color-main-blue);
+  width: fit-content;
+  margin: auto;
+  border-radius: 10px;
+  font-size: 20px;
+  padding: 0 10px ;
+}

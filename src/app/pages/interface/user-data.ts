@@ -7,4 +7,6 @@ export interface UserData {
   created_at: string;
   updated_at: string;
   investor: { national_id: string; user_id: number };
+  business: { tax_card_number: string; user_id: number };
+  
 }

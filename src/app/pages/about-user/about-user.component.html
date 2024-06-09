@@ -1,4 +1,4 @@
-<section class="m mb-5 " *ngIf="roleInvestor">
+<section class="m m-5 " *ngIf="roleInvestor">
     <form [formGroup]="investorForm" (ngSubmit)="update()">
 
         <div class="container">
@@ -10,17 +10,12 @@
 
                     <div class="imgabout position-relative" *ngIf="photo">
 
-                        <img [src]="photo" alt="" class="w-100 imgabout">
+                        <img [src]="photo.photo" alt="" class="w-100 imgabout">
                         <label for="path_file" class=" position-absolute dd ">
                             <span class="material-symbols-outlined styleinput inpuCss">
                                 add_circle
                             </span>
-                            <!-- <span class="material-symbols-outlined styleinput">
-                                    photo_camera
-                                    </span>    -->
-                            <!-- <span class="material-symbols-outlined styleinput">
-                                    add_photo_alternate
-                                    </span>    -->
+
                         </label>
                         <input type="file" id="path_file" onchange="console.log(event.target.files)"
                             (change)="onFileSelected($event)" accept="image/*">
@@ -29,23 +24,37 @@
                 </div>
 
 
-                <!-- =================================== about & name========================================== -->
-                <div class="col-md-8 mt-5 pe-5  ">
+                <!-- =================================== stuts & name========================================== -->
+                <div class="col-md-8 mt-5 d-flex flex-column align-items-center   ">
 
 
 
-                    <span class="d-flex edd mb-3 align-items-center">
+                    <span class="d-flex edd mb-3 align-items-center w-75">
                         <input formControlName="name" id="name" type="text"
-                            class="form-control w-75 me-3 text-center border-3 borderAll " [(ngModel)]="data.name">
-
-
+                            class="form-control  me-3 text-center border-3 borderAll " [(ngModel)]="data.name">
 
                         <label for="name"> <span class="material-symbols-outlined fs-1 inpuCss" role="button">
                                 border_color
                             </span>
                         </label>
                     </span>
+                    <!-- *ngIf="checkData.is_approved == 1" -->
+                    <div class="status mx-auto w-50 " *ngIf="checkData.is_approved == 1">
+                        <h3 class="">Status</h3>
+                        <p>
+                            After verification and approval of your account, you are now able to start investing
 
+                        </p>
+                        <span class="on">ON</span>
+                    </div>
+                    <div class="status mx-auto w-50 " *ngIf="checkData.is_approved == 0">
+                        <h3>Status</h3>
+                        <p>
+                            Your account is currently being verified.You are unable to invest at the moment                        </p>
+                        <span class="off">OFF</span>
+                    </div>
+
+<!-- 
                     <div class="contant">
                         <h1 class="h4 mb-3 fw-bold">About</h1>
                         <div class="para">
@@ -61,7 +70,7 @@
 
                         </div>
 
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <h4 class="h5 fw-bolder mb-3">Personal Information </h4>
@@ -103,6 +112,14 @@
                             placeholder="name@example.com" formControlName="national_id"
                             [(ngModel)]="data.national_id" />
                         <label for="floatingInput" class="text-muted"> National ID </label>
+                        <div class="" *ngIf="
+                        investorForm.get('national_id')?.errors && investorForm.get('national_id')?.touched
+">
+                        <p *ngIf="investorForm.get('national_id')?.getError('required')" class="text-danger m-0 p-0">
+                            * National ID is required
+                        </p>
+
+                    </div>
 
                     </div>
                 </div>
@@ -111,17 +128,17 @@
             <div class="row mb-5">
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
-                        <input type="email"class="form-control borderAll" id="floatingInput"
-                            placeholder="name@example.com" formControlName="email"   [(ngModel)]="data.email"/>
+                        <input type="email" class="form-control borderAll" id="floatingInput"
+                            placeholder="name@example.com" formControlName="email" [(ngModel)]="data.email" />
                         <div class="" *ngIf="
                             investorForm.get('email')?.errors && investorForm.get('email')?.touched
    ">
                             <p *ngIf="investorForm.get('email')?.getError('required')" class="text-danger m-0 p-0">
                                 * Email is required
                             </p>
-                          
+
                         </div>
-                 
+
                         <label for="floatingInput" class="text-muted"> E- Mail </label>
 
 
@@ -145,7 +162,7 @@
                         <p class="h3">Total Investiment :<span>{{data.total_invested}}</span></p>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 mb-3">
                     <div class="form-control borderAll text-center">
 
                         <p class="h3">Total Return :<span>{{data.total_return}}</span></p>
@@ -154,15 +171,9 @@
 
                 </div>
             </div>
-            <div class="d-flex justify-content-center mb-5">
-                <div class="form-control borderAll text-center w-50 ">
-
-                    <p class="h3">Total Investiment :<span>20000</span></p>
-                </div>
-            </div>
         </div>
         <div class="container mb-4">
-            <h4 class="h5 fw-bolder mb-3">Investiment Portfolio</h4>
+            <h4 class="h5 fw-bolder mb-5">Investiment Portfolio</h4>
 
             <div class="row  g-5 justify-content-around">
                 <div class=" opportunity  col-md-5" *ngFor="let opportunity of opportunites  ">
@@ -207,20 +218,20 @@
 </section>
 
 <!-- *ngIf="roleBuss"-->
-<section class="m mb-5 " *ngIf="roleBuss">
+<section class="m m-5 " *ngIf="roleBuss">
     <form [formGroup]="businessForm" (ngSubmit)="update()">
 
         <div class="container">
-            <div class="row g-5 align-items-center mb-5">
+            <div class="row g-5 align-items-center justify-content-center  mb-5">
                 <!-- ================================ P H O T O ==================================== -->
                 <div class="col-md-4 position-relative">
 
                     <div class="imgabout position-relative" *ngIf="photo">
 
                         <!-- <img [src]="photoB" alt="" class="w-100 imgabout"> -->
-                        <img [src]="photo" class=" position-relative w-100 h-100" alt="">
+                        <img [src]="photo.photo" class=" position-relative w-100 h-100" alt="">
                         <label for="path_file" class=" position-absolute dd ">
-                            <span class="material-symbols-outlined styleinput inpuCss">
+                            <span class="material-symbols-outlined styleinput inpuCss" role="button">
                                 add_circle
                             </span>
                         </label>
@@ -231,14 +242,14 @@
                 </div>
 
 
-                <!-- =================================== about & name========================================== -->
-                <div class="col-md-8 mt-5 pe-5  ">
+                <!-- =================================== stutas & name========================================== -->
+                <div class="col-md-8 mt-5 d-flex flex-column align-items-center  ">
 
 
                     <!-- Name    -->
-                    <span class="d-flex edd mb-3 align-items-center">
+                    <span class="d-flex  mb-3 align-items-center w-75">
                         <input formControlName="name" id="name" type="text"
-                            class="form-control w-75 me-3 text-center border-3 borderAll"  [(ngModel)]="data.name">
+                            class="form-control  me-3 text-center border-3 borderAll" [(ngModel)]="data.name">
 
 
                         <label for="name"> <span class="material-symbols-outlined fs-1 inpuCss" role="button">
@@ -246,39 +257,50 @@
                             </span>
                         </label>
                     </span>
-                    <!-- Email -->
-                    <div>
-                        <i class="fa-regular fa-envelope fa-2xl text-muted"></i>
-                        <!-- formControlName="email" -->
-                        <input type="email" class="border-0 text-muted w-75 m-3" 
-                            [(ngModel)]="data.email" readonly  formControlName="email">
-                    </div>                             
-                    <!-- about -->
-                    <div class="contant">
-                        <h1 class="h4 mb-3 fw-bold">About</h1>
-                        <div class="para">
-                            <textarea id="area" rows="6" cols="10"  formControlName="description"
-                                class="textarea-no-formatting w-75 borderAll" [(ngModel)]="data.description
-                                ">
-                            </textarea>
-                            <label class="d-flex flex-row-reverse" for="area">
 
-                                <span class="material-symbols-outlined fs-1 inpuCss " role="button">
-                                    border_color
-                                </span>
-                            </label>
+                    <div class="status mx-auto w-50 " *ngIf="checkData.is_approved == 1">
+                        <h3 class="">Status</h3>
+                        <p>
+                            After verification and approval of your account, you are now able to Post Advertisment
 
-                        </div>
 
+                        </p>
+                        <span class="on">ON</span>
                     </div>
+                    <div class="status mx-auto w-50 " *ngIf="checkData.is_approved == 0">
+                        <h3>Status</h3>
+                        <p>
+                            Your account is currently being verified.You are unable to post any advertisement at the moment
+
+                        </p>
+                        <span class="off">OFF</span>
+                    </div>
+
                 </div>
             </div>
+            <!-- about -->
+            <div class="contant w-100">
+                <h1 class="h4 mb-3 fw-bold">Description</h1>
+                <div class="para">
+                    <textarea id="area" rows="4" cols="200" class="w-100 " formControlName="description"
+                        class="textarea-no-formatting  borderAll" [(ngModel)]="data.description">
+                            </textarea>
+                    <label class="d-flex flex-row-reverse" for="area">
+
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
             <h4 class="h5 fw-bolder mb-3">Company Information </h4>
             <div class="row mb-2">
                 <div class="col-md-6">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control  borderAll" id="floatingInput"
-                            placeholder="name@example.com"  formControlName="tax_card_number"
+                            placeholder="name@example.com" formControlName="tax_card_number"
                             [(ngModel)]="data.tax_card_number" />
                         <label for="floatingInput" class="text-muted"> Tax card number </label>
 
@@ -316,14 +338,18 @@
 
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control  borderAll" id="floatingInput"
+                            placeholder="name@example.com" formControlName="email" [(ngModel)]="data.email" />
+                        <label for="floatingInput" class="text-muted">Email </label>
+
+                    </div>
+                </div>
+                <!-- Email -->
             </div>
 
-            <div class="d-flex justify-content-between">
-            <h2 class="h5 fw-bolder">{{data.business_name}}</h2>
-            <i class="fa-solid fa-pencil stylePen" role="button"  ></i>
-        </div>
 
-             
             <h4 class="h5 fw-bolder mb-3">Investiment Performance</h4>
             <div class="row mb-5">
                 <div class="col-md-6 mb-3">
@@ -353,14 +379,16 @@
                         <div class="advertismentsBorder">
                             <div class="contant ">
                                 <div class="d-flex justify-content-between">
-                                    <h2 class="h5 fw-bolder">{{opportunity.business_name}}</h2>                     
-                                    <i class="fa-solid fa-pencil stylePen" role="button"  [routerLink]="['/detailsForm' , opportunity.uuid]" ></i>
+                                    <h2 class="h5 fw-bolder">{{opportunity.business_name}}</h2>
+                                    <i class="fa-solid fa-pencil stylePen" role="button"
+                                        [routerLink]="['/detailsForm' , opportunity.uuid]"></i>
                                 </div>
 
                                 <div class="d-flex justify-content-between">
                                     <p class="p-0 m-0"><strong>Total Amount: {{opportunity.amount_needed}}</strong>
                                     </p>
-                                    <i         (click)="delete(opportunity.uuid)"     class="fa-solid fa-trash-can" role="button" style="color: #fc0303;"></i>
+                                    <i (click)="delete(opportunity.uuid)" class="fa-solid fa-trash-can" role="button"
+                                        style="color: #fc0303;"></i>
 
                                 </div>
 
@@ -385,7 +413,7 @@
                     </header>
                 </div>
             </div>
-            <h4 class="h5 fw-bolder mb-3"  *ngIf="investment_history">Advertisments History</h4>
+            <h4 class="h5 fw-bolder m-3">Advertisments History</h4>
 
             <div class="row gy-5 justify-content-between">
                 <!-- *ngFor="let history of investment_history" -->
@@ -409,7 +437,7 @@
                                 <p> {{history.created_at |slice:0:10}}<span class="text-primary ps-2">/</span>
                                     {{history.created_at |slice:11:16}}
 
-                                </p> 
+                                </p>
                                 <!-- <p> 2020-5-12<span class="text-primary ps-2">/</span>
                                     5:12
                                 </p> -->
@@ -418,53 +446,10 @@
                         </div>
                     </header>
                 </div>
-
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div class="d-flex justify-content-center">
-            <button class="btn btn1 pe-5 ps-5 fs-6">
+            <button class="btn btn1  m-4 fs-6">
                 Save<span *ngIf="isLoading"> <i class="fa fa-spin fa-spinner"></i></span>
 
             </button>

@@ -1,5 +1,5 @@
 import { MatSelectModule } from '@angular/material/select';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,6 +19,7 @@ import { MessageService } from 'primeng/api';
 import { CategoriesService } from 'src/app/Services/categories.service';
 import { Details } from '../interface/details';
 import { ProfileService } from 'src/app/Services/profile.service';
+import { Toast, ToastrService } from 'ngx-toastr';
 interface UploadEvent {
   originalEvent: Event;
   files: File[];
@@ -57,7 +58,9 @@ export class  WatingDetailsComponent implements OnInit{
     private _router:Router,
     private _activatedRoute:ActivatedRoute ,
     private  _categoriesService:CategoriesService,
-    private  _ProfileService:ProfileService
+    private  _ProfileService:ProfileService,
+    private _Renderer2:Renderer2,
+    private _ToastrService:ToastrService
   ) {}
 
   term: string = '';
@@ -213,31 +216,43 @@ getInvest(){
 
 
 
-delete(){
+delete(element:HTMLButtonElement){
+  this._Renderer2.setAttribute(element ,'disabled' ,'true')
 
   this._ProfileService.delete( this._method2,this.opportunitiesId ).subscribe({
     next: (res) => {
     console.log(res);
-    this._router.navigate(['/wating'])
+    this._ToastrService.success(res.message)
+    this._Renderer2.removeAttribute(element ,'disabled')
+
+    // this._router.navigate(['/wating'])
     
     },
     error: (err) => {
       console.log(err);
+      this._Renderer2.removeAttribute(element ,'disabled' )
+
     },
   });
 
 
 }
-accept(){
+accept(element:HTMLButtonElement){
+  this._Renderer2.setAttribute(element ,'disabled' ,'true')
 
   this._ProfileService.accept( this._method3,this.opportunitiesId ).subscribe({
     next: (res) => {
     console.log(res);
-    this._router.navigate(['/wating'])
+    this._ToastrService.success(res.message)
+    this._Renderer2.removeAttribute(element ,'disabled')
+
+    // this._router.navigate(['/wating'])
 
     },
     error: (err) => {
       console.log(err);
+      this._Renderer2.removeAttribute(element ,'disabled' )
+
     },
   });
 

@@ -1,17 +1,17 @@
-<section class="m mb-5 ">
+<section class="m mb-5 mx-auto ">
     <div class="container">
         <form [formGroup]="adminForm" (ngSubmit)="saveDate()">
 
 
-            <div class="row g-5 align-items-center mb-5">
+            <div class="row  align-items-center mb-5">
                 <!-- ================================ P H O T O ==================================== -->
-                <div class="col-md-5 position-relative">
+                <div class="col-md-6 position-relative mb-5">
 
                     <div class="imgabout position-relative" *ngIf="photoA">
 
                         <img [src]="photoA" alt="" class="w-100 imgabout">
 
-                   
+
                         <!-- <img [src]="photo" class=" position-relative w-100 h-100" alt=""> -->
                         <label for="path_file" class=" position-absolute dd ">
                             <span class="material-symbols-outlined styleinput ms-5 inpuCss">
@@ -19,7 +19,7 @@
                             </span>
                         </label>
                         <input type="file" id="path_file" onchange="console.log(event.target.files)"
-                        (change)="onFileSelected($event)" accept="image/*">
+                            (change)="onFileSelected($event)" accept="image/*">
 
 
                     </div>
@@ -27,7 +27,7 @@
 
 
                 <!-- =================================== email & name========================================== -->
-                <div class="col-md-7  pe-5  ">
+                <div class="col-md-6  ">
 
                     <!-- Name    -->
                     <span class="d-flex edd mb-3 align-items-center">
@@ -49,12 +49,7 @@
                         <label for="floatingInput" class="fw-bold text-muted"> E-mail </label>
 
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="password" class="form-control w-75 borderAll" id="floatingInput"
-                            placeholder="name@example.com" formControlName="pass" value="ex123456" />
-                        <label for="floatingInput" class="fw-bold text-muted"> Password</label>
 
-                    </div>
                     <div class="w-75">
                         <button class="btn btninfo  d-block ms-auto ">Save</button>
 
@@ -63,17 +58,57 @@
 
             </div>
 
+
         </form>
-        <button
-        routerLink="/wating"
-            class="btn p-2  text-white w-50 shadow-sm fw-bold d-flex btn1 justify-content-center mx-auto fs-5 ">Waiting
-            list</button>
 
-        <form [formGroup]="commissionForm"  >
+        <div>
 
-            <div class="row m-4 g-4">   
+            <div class="   row  ">
+
+
+                <div class="col-md-12">
+
+                    <button routerLink="/wating"
+                        class="btn p-2 mb-3 text-white shadow-sm w-75 mx-auto fw-bold d-flex btn1 justify-content-center  fs-5 ">Waiting
+                        list</button>
+
+                </div>
+
+
+            </div>
+            <div class="row d-flex justify-content-">
+                <div class="col-md-6 ">
+                    <button routerLink="/manageUsers"
+                        class="btn p-2 mb-3 text-white shadow-sm w-75 mx-auto fw-bold d-flex btn1 justify-content-center  fs-5 ">Manage
+                        Users </button>
+                </div>
+
+                <div class="col-md-6">
+                    <button routerLink="/manageBussiness"
+                        class="btn p-2 mb-3 text-white shadow-sm w-75 mx-auto fw-bold d-flex btn1 justify-content-center  fs-5 ">Manage
+                        Business
+                    </button>
+                </div>
+            </div>
+        </div>
+
+<h2 class="mb-3 h4">Our Commission</h2>
+
+<div class="borderCom">
+    <p class="fw-bold mt-2">3% Commission of investor profit</p>
+</div>
+<!-- 
+<div class="line">
+    <h3>Our Commission</h3>
+</div> -->
+
+
+
+        <form [formGroup]="commissionForm">
+
+            <div class="row m-4 g-4">
                 <div class="col-md-6" *ngFor="let  opportunity  of opportunities">
-                
+
                     <div class="stylediv ">
                         <div class="d-flex justify-content-between  align-self-center">
                             <div class="mt-5">
@@ -98,8 +133,8 @@
                             </div>
                         </div>
 
-                  <div class="d-flex">
-                    <!-- <div class="text-center align-items-center  justify-content-center ms-5 borderAll w-75  ">
+                        <div class="d-flex">
+                            <!-- <div class="text-center align-items-center  justify-content-center ms-5 borderAll w-75  ">
                         <span>Commission
                              <input type="text" formControlName="commission_amount"
                                 class="border-0 w-25 pt-1 pb-1" 
@@ -112,38 +147,33 @@
 
 
 
-                 <div class="text-center align-items-center  justify-content-center ms-5 borderAll w-75  ">
-                        <span>Commission : {{opportunity.commission_amount}}
-    
-                            <input type="text" formControlName="commission_amount"   >
-                            </span>
-                            
+                            <div class="text-center align-items-center  justify-content-center ms-5 borderAll w-75  ">
+                                <span>Commission : {{opportunity.commission_amount}}
 
-                    </div>
+                                    <input type="text" formControlName="commission_amount">
+                                </span>
 
 
-                    <button class="btn btn11 small"  (click)="sandCommission(opportunity.uuid)" >
+                            </div>
 
-                        <i class="fa-solid fa-check fs-4 " style="color: #ffffff;"></i>
-                       
-                    </button>
-                  </div>
+
+                            <button class="btn btn11 small" (click)="sandCommission(opportunity.uuid)">
+
+                                <i class="fa-solid fa-check fs-4 " style="color: #ffffff;"></i>
+
+                            </button>
+                        </div>
                     </div>
 
                 </div>
-            
+
 
             </div>
 
- <button class="btn btn-primary">save</button>
+            <button class="btn btn-primary">save</button>
 
         </form>
 
 
     </div>
 </section>
-
-
-
-
-

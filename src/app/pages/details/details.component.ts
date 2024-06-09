@@ -113,7 +113,7 @@ export class DetailsComponent implements OnInit {
       error: (err) => {
         console.log(err);
 
-        this.displayError = err.error.message.amount;
+        this.displayError = err.error.message;
         this.isLoading=false;
 
       },

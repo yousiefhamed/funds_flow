@@ -5,7 +5,7 @@ $main-color: #0054a2;
 
 // ===========================================
 .m{
-    margin-top: 200px;
+    margin-top: 20px;
 }
 .edd{
     align-items: center;
@@ -56,8 +56,8 @@ $main-color: #0054a2;
 .btn1{
     background-color: var(--color-main-blue);;
     color: aliceblue;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .opportunity{
@@ -118,4 +118,30 @@ $main-color: #0054a2;
     }
     
     
+    .status{
+        text-align: center;
+//  background-color: #0054a2;
+        width: fit-content;
+        height: 180px;
+        border:solid 3px  var(--color-main-blue);
+        border-radius: 10px;
+        //   padding-: 10px;
+
+    }
     
+    .on{
+
+        border-radius: 50%;
+        background-color: green;
+        color: white;
+        padding: 3px;
+    }
+
+    .off{
+
+        border-radius: 50%;
+        background-color: rgb(116, 6, 6);
+        color: white;
+        padding: 3px;
+        
+    }

@@ -10,7 +10,7 @@
     // align-items: center;
 }
 .btnspace{
-    width: 48%;
+    width: 40%;
 }
 
 .mbcontact{
@@ -29,4 +29,24 @@
 
 .textarea-no-formatting{
     border: none;
+}
+
+.DESCRIPTION{
+
+    width: 400px;
+    height: 250px;
+    overflow: hidden;
+    // background-color: rebeccapurple;
+    border-radius: 20px;
+}
+.w-inputPro{
+    width: 400px;
+
+    
+}
+
+.borderProfile{
+    border: 2px solid var(--color-main-blue);
+
+
 }

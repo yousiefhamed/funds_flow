@@ -1,8 +1,8 @@
 .styleborder{
 
-    border:  1px solid #0054a2;
+    border:  1px solid var(--color-main-blue);
     // padding: 20px;
-    box-shadow: 0px 0px 2px #0054a2 ;
+    box-shadow: 0px 0px 2px  var(--color-main-blue);;
   
   }
   .borderTop{
@@ -11,7 +11,7 @@
   }
   .btn1{
 
-    background-color: #0054a2;
+    background-color:  var(--color-main-blue);;
     color: aliceblue; 
-    padding: 15px;
+    padding: 10px;
   }

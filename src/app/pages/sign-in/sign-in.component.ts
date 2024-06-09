@@ -22,6 +22,10 @@ import { AuthService } from 'src/app/Services/auth.service';
 import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CategoriesService } from 'src/app/Services/categories.service';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { NavAuthComponent } from '../nav-auth/nav-auth.component';
+import { DialogboxComponent } from 'src/app/dialogbox/dialogbox.component';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
@@ -31,6 +35,10 @@ import { CategoriesService } from 'src/app/Services/categories.service';
     ReactiveFormsModule,
     FormsModule,
     RouterLinkActive,
+    CommonModule,
+    MatDialogModule,
+    MatButtonModule,
+    NavAuthComponent,
   ],
 
   templateUrl: './sign-in.component.html',
@@ -42,7 +50,21 @@ export class SignInComponent  {
   isLoading: boolean = false;
   subObject!: Subscription;
 
-  constructor(private _router: Router, private _AuthService: AuthService ) {}
+  constructor( public dialog: MatDialog ,private _router: Router, private _AuthService: AuthService ) {}
+
+
+
+
+  openDialog(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
+    this.dialog.open(DialogboxComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
 
 
 
@@ -85,6 +107,7 @@ export class SignInComponent  {
         error: (err: HttpErrorResponse) => {
           this.errMsg = err.error.message;
           this.isLoading = false;
+console.log(err);
 
         },
       });
@@ -93,6 +116,17 @@ export class SignInComponent  {
 
 
 
+  // openDialog(
+  //   enterAnimationDuration: string,
+  //   exitAnimationDuration: string
+  // ): void {
+  //   this.dialog.open(DialogboxComponent, {
+  //     width: '250px',
+  //     // data:'right click',
+  //     enterAnimationDuration,
+  //     exitAnimationDuration,
+  //   });
+  // }
 
 
 

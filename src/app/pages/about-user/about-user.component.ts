@@ -1,5 +1,5 @@
 import { ProfileService } from './../../Services/profile.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DialogModule } from '@angular/cdk/dialog';
 import { ButtonModule } from 'primeng/button';
@@ -19,6 +19,7 @@ import { Router, RouterLink } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { CategoriesService } from 'src/app/Services/categories.service';
 import { Observable, catchError, throwError } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 interface UploadEvent {
   originalEvent: Event;
@@ -44,7 +45,9 @@ export class AboutUserComponent implements OnInit {
     private _profileService: ProfileService,
     private _httpClient: HttpClient,
     private _Router: Router,
-    private _categoriesService: CategoriesService
+    private _categoriesService: CategoriesService,
+    private _Renderer2:Renderer2,
+    private _ToastrService:ToastrService
   ) {}
 
   openDialog() {
@@ -59,7 +62,7 @@ export class AboutUserComponent implements OnInit {
   _method2: object = { _method: 'put' };
   _method3: object = { _method: 'delete' };
   data: any;
-  photo: string | undefined;
+  photo: any;
   photoB: string = '';
   opportunites: any;
   opportunities: any;
@@ -71,6 +74,7 @@ export class AboutUserComponent implements OnInit {
   roleInvestor: string = '';
   roleBuss: string = '';
   opportunitiesId: any;
+  checkData:any
   investorForm: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
     about: new FormControl('', [
@@ -86,7 +90,7 @@ export class AboutUserComponent implements OnInit {
     ]),
 
     national_id: new FormControl('', [
-      // Validators.required,
+      Validators.required,
       // Validators.minLength(3),
       // Validators.maxLength(15),
     ]),
@@ -136,6 +140,12 @@ export class AboutUserComponent implements OnInit {
       // Validators.maxLength(15),
     ]),
 
+    age: new FormControl('', [
+      // Validators.required,
+      // Validators.minLength(3),
+      // Validators.maxLength(15),
+    ]),
+
     tax_card_number: new FormControl('', [
       // Validators.required,
       // Validators.minLength(3),
@@ -175,13 +185,15 @@ export class AboutUserComponent implements OnInit {
 
     this._httpClient
       .post(
-        `https://working-cockatoo-singularly.ngrok-free.app/api/update-profile`,
+        ` https://malamute-optimum-recently.ngrok-free.app/api/update-profile`,
         this.formData
       )
       .subscribe({
-        next: (res) => {
+
+        next: (res:any) => {
           console.log(res);
-          this._Router.navigate(['/about-user']);
+          window.location.reload()
+          this._ToastrService.success(res.message)
         },
         error: (err) => {
           console.log(err);
@@ -191,17 +203,20 @@ export class AboutUserComponent implements OnInit {
 
   getData() {
     this._profileService.getData(this._method).subscribe({
+
       next: (res) => {
         console.log(res);
-
-        this.photo = res.photo;
+   
+        this.photo=res
 
         if (res.role == 'investor') {
-          this.data = res.data;
+          this.checkData = res.data;
+          this.data = res.data.investor;
           this.roleInvestor = res.role;
         } else if (res.role == 'business') {
           this.roleBuss = res.role;
-          this.data = res.data;
+          this.data = res.data.business;
+          this.checkData = res.data
           this.opportunities = res.business_opportunities;
           this.investment_history = res.investment_history;
         } else {
@@ -246,6 +261,7 @@ export class AboutUserComponent implements OnInit {
       this._profileService.update(formData1).subscribe({
         next: (res) => {
           window.location.reload();
+          this._ToastrService.success(res.message)
 
           this.isLoading = false;
           console.log(res);
@@ -281,6 +297,7 @@ export class AboutUserComponent implements OnInit {
       this._profileService.update(formData1).subscribe({
         next: (res) => {
           this.isLoading = false;
+          this._ToastrService.success(res.message)
           window.location.reload();
           console.log(res);
         },
@@ -297,6 +314,7 @@ export class AboutUserComponent implements OnInit {
       next: (res) => {
         console.log(res);
         this.opportunites = res.data;
+        this._ToastrService.success(res.message)
 
         console.log(this.opportunites);
       },
@@ -326,6 +344,8 @@ export class AboutUserComponent implements OnInit {
     this._categoriesService.delete(uuid).subscribe({
       next: (res) => {
         console.log(res);
+        this._ToastrService.success(res.message)
+       window.location.reload()
       },
       error: (err) => {
         console.log(err);

@@ -1,5 +1,5 @@
 import { MatSelectModule } from '@angular/material/select';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,6 +18,7 @@ import { HttpClient } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { Details } from '../interface/details';
 import { CategoriesService } from 'src/app/Services/categories.service';
+import { ToastrService } from 'ngx-toastr';
 interface UploadEvent {
   originalEvent: Event;
   files: File[];
@@ -53,7 +54,9 @@ export class DetailsFormComponent implements OnInit {
       private messageService: MessageService,
       private _router:Router,
       private _activatedRoute:ActivatedRoute ,
-      private  _categoriesService:CategoriesService
+      private  _categoriesService:CategoriesService,
+      private _ToastrService:ToastrService,
+      private _Renderer2:Renderer2
     ) {}
   
     term: string = '';
@@ -164,12 +167,10 @@ export class DetailsFormComponent implements OnInit {
          
     this._ForminvestService.updateForm(formData1 ,this.opportunitiesId).subscribe({
       next: (res) => {
-        // console.log(res);
         this.isLoading = false;
-      
-     
+        this._ToastrService.success(res.message)
+        window.location.reload()
         
-        //  this._router.navigate(['/about-user'])
       },
       error: (err) => {
         console.log(err);

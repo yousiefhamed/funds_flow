@@ -1,3 +1,5 @@
+// @import  '../forget-password/forget-password.component';
+
 .signUpUser {
   display: flex;
   justify-content: center;
@@ -176,4 +178,65 @@
 .labelgender{
 
   margin-bottom: 50px !important;
+}
+
+
+// form {
+//   max-width: 500px;
+//   min-width: 350px;
+
+//   @media (max-width: 400px) {
+//     min-width: 90%;
+//   }
+// }
+// label {
+//   margin-bottom: 5px;
+//   color: var(--color-main-blue);
+//   transition: 0.2s top;
+// }
+
+
+.backgroundBtn {
+  // margin-top: 50px;
+  height: auto;
+  display: inline-block;
+  background-color: var(--color-main-blue);
+  color: var(--color-white);
+}
+
+
+
+.colortext{
+  color: #b2b2b2 !important;
+  
+}
+
+.colorheader{
+  color: rgb(53,152,243);
+  
+}
+
+
+.forget-password {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 100vw;
+  min-height: 100vh;
+  padding: 20px auto;
+  position: relative;
+}
+.form-var {
+  max-width: 500px;
+  min-width: 350px;
+
+  @media (max-width: 400px) {
+    min-width: 90%;
+  }
+}
+label {
+  margin-bottom: 5px;
+  color: var(--color-main-blue);
+  transition: 0.2s top;
 }

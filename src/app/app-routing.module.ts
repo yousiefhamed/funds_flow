@@ -5,10 +5,71 @@ import { adminGuard } from 'src/core/admin.guard';
 
 const routes: Routes = [
 
+
+
+
+
+
+
+
+  
+  //auth
+  {
+    path: '',
+
+    loadComponent: () =>
+      import('./layouts/auth-layout/auth-layout.component').then(
+        (m) => m.AuthLayoutComponent
+      ),
+    children: [
+      { path: '', redirectTo: 'landing', pathMatch: 'full' },
+      {
+        path: 'landing',
+        loadComponent: () =>
+          import('./pages/landing-page/landing-page.component').then(
+            (m) => m.LandingPageComponent
+          ),
+        title: 'landing',
+      },
+      {
+        path: 'signIn',
+        loadComponent: () =>
+          import('./pages/sign-in/sign-in.component').then(
+            (m) => m.SignInComponent
+          ),
+        title: 'SignIn',
+      },
+      {
+        path: 'signUpUser',
+        loadComponent: () =>
+          import('./pages/sign-up-user/sign-up-user.component').then(
+            (m) => m.SignUpUserComponent
+          ),
+        title: 'SignUpUser',
+      },
+      {
+        path: 'signUpBusiness',
+        loadComponent: () =>
+          import('./pages/sign-up-business/sign-up-business.component').then(
+            (m) => m.SignUpBusinessComponent
+          ),
+        title: 'SignUpBusiness',
+      },
+      {
+        path: 'forgetpassword',
+        loadComponent: () =>
+          import('./pages/forget-password/forget-password.component').then(
+            (m) => m.ForgetPasswordComponent
+          ),
+        title: 'forgetPassword',
+      },
+    ],
+  },
+
   // blank
   {
     path: '',
-     canActivate:[authGuard],
+    //  canActivate:[authGuard],
     loadComponent: () =>
       import('./layouts/blank-layout/blank-layout.component').then(
         (m) => m.BlankLayoutComponent
@@ -51,14 +112,7 @@ const routes: Routes = [
         title: 'test',
     
       },
-      {
-        path: 'manageBussiness ',
-        // canActivate:[adminGuard],
-        loadComponent: () =>
-          import('./pages/manage-bussiness/manage-bussiness.component').then((m) => m.ManageBussinessComponent),
-        title: 'ManageBussiness ',
-    
-      },
+  
       {
         path: 'order',
         loadComponent: () =>
@@ -166,63 +220,26 @@ const routes: Routes = [
           ),
         title: 'Details_form',
       },
+      {
+        path: 'manageBussiness',
+        loadComponent: () =>
+          import('./pages/manage-bussiness/manage-bussiness.component').then(
+            (m) => m.ManageBussinessComponent
+          ),
+        title: 'manageBussiness',
+      },
+      {
+        path: 'bussinessProfile/:id',
+        loadComponent: () =>
+          import('./pages/bussiness-profile/bussiness-profile.component').then(
+            (m) => m.BussinessProfileComponent
+          ),
+        title: 'BussinessProfile',
+      },
       // {path:'details', loadComponent:()=>import('./pages/details/details.component').then((m)=>m.DetailsComponent),title:'Details'}
     ],
   },
 
-
-  //auth
-  {
-    path: '',
-
-    loadComponent: () =>
-      import('./layouts/auth-layout/auth-layout.component').then(
-        (m) => m.AuthLayoutComponent
-      ),
-    children: [
-      { path: '', redirectTo: 'landing', pathMatch: 'full' },
-      {
-        path: 'landing',
-        loadComponent: () =>
-          import('./pages/landing-page/landing-page.component').then(
-            (m) => m.LandingPageComponent
-          ),
-        title: 'landing',
-      },
-      {
-        path: 'signIn',
-        loadComponent: () =>
-          import('./pages/sign-in/sign-in.component').then(
-            (m) => m.SignInComponent
-          ),
-        title: 'SignIn',
-      },
-      {
-        path: 'signUpUser',
-        loadComponent: () =>
-          import('./pages/sign-up-user/sign-up-user.component').then(
-            (m) => m.SignUpUserComponent
-          ),
-        title: 'SignUpUser',
-      },
-      {
-        path: 'signUpBusiness',
-        loadComponent: () =>
-          import('./pages/sign-up-business/sign-up-business.component').then(
-            (m) => m.SignUpBusinessComponent
-          ),
-        title: 'SignUpBusiness',
-      },
-      {
-        path: 'forgetpassword',
-        loadComponent: () =>
-          import('./pages/forget-password/forget-password.component').then(
-            (m) => m.ForgetPasswordComponent
-          ),
-        title: 'forgetPassword',
-      },
-    ],
-  },
 
 
   // notFound

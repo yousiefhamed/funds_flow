@@ -1,5 +1,5 @@
 import { MatSelectModule } from '@angular/material/select';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,6 +16,7 @@ import { Route, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ForminvestService } from 'src/app/Services/forminvest.service';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
+import { ToastrService } from 'ngx-toastr';
 interface UploadEvent {
   originalEvent: Event;
   files: File[];
@@ -48,7 +49,9 @@ export class InvestComponent  implements OnInit{
     private _ForminvestService: ForminvestService,
     private _http: HttpClient ,
     private messageService: MessageService,
-    private _router:Router
+    private _router:Router,
+    private _ToastrService:ToastrService,
+    private _Renderer2:Renderer2
   ) {}
 
   term: string = '';
@@ -142,7 +145,7 @@ formData1.append('ROI',this.investForm.get('ROI')?.value)
 formData1.append('photo',this.file)
 console.log(this.file);
 console.log(formData1);
-console.log(this.investForm);
+console.log(this.investForm.value);
 
 let formData = this.investForm.value;
 
@@ -153,7 +156,8 @@ formData.photo=this.file
     next: (res) => {
       console.log(res);
       this.isLoading = false;
-       this._router.navigate(['/about-user'])
+      this._ToastrService.success(res.message)
+
     },
     error: (err) => {
       console.log(err);
@@ -174,7 +178,7 @@ getInvest(){
       console.log(res);
       this.isLoading = false;
        this.investUpdate=res
-
+      
     },
     error: (err) => {
       console.log(err);

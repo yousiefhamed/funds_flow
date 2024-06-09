@@ -20,33 +20,28 @@ export class NavBlankComponent implements OnInit {
   photoB:string='';
   roleInvestor:string='';
   roleBuss:string='';
-
+name:any
   constructor( private _profileService:ProfileService , private _httpClient:HttpClient , private _Router:Router)  {}
 
+  signOut():void{
+
+    localStorage.removeItem('userToken')
+    this._Router.navigate(['/signIn'])
+  }
+
+
+
+
+
+
+
+
   getData(){
-    this._profileService.getData(this._method).subscribe({
+    this._profileService.getData1(this._method).subscribe({
       next:(res)=>{
-        console.log(res)
-        if(res.role == 'investor'){
-         
-          this.roleInvestor=res.role;
-          this.photo=res.photo
-       
-        }else if (res.role == 'business') {
-          this.roleBuss=res.role;
-          this.photo=res.photo
-        } 
-        
-        else if (res.role == 'admin') {
-          this.roleBuss=res.role;
-          this.photo=res.photo
-        
-        }
-        else {
-          console.log(" not found");
-          
-        }
-        
+        console.log(res.data)
+        this.data=res.data
+        this.name= res.name 
       },
       error:(err)=>{
         console.log(err)
@@ -56,6 +51,9 @@ export class NavBlankComponent implements OnInit {
   
 
 ngOnInit(): void {
+  
   this.getData()
+  console.log(this.name);
+
 }
 }

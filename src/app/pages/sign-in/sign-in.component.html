@@ -2,7 +2,7 @@
 
   <div class="signUpUser__content">
     <figure>
-      <img src="./../../../assets/logo.png" alt="Funds Flow Logo" />
+      <img src="./../../../assets/adites/logo-signUp.png" class="w-100" alt="Funds Flow Logo" />
     </figure>
   
   
@@ -84,8 +84,8 @@
         </div>
   
         <div class="d-flex justify-content-end ">
-          <span class="link-underline-primary">
-            <a routerLink="/forgetpassword">Forget Password ?</a>
+          <span >
+            <a routerLink="/forgetpassword" class="colortext">Forget Password ?</a>
           </span>
         </div>
   
@@ -103,8 +103,8 @@
         <p class="text-center mb-5 mt-3">
           New In?
           <span>
-            <a class="link-primary cursor-pointer" routerLink="/signUpUser">Sign Up</a>
-  
+            <span class="colortext"  role="button" (click)="openDialog('0ms', '0ms')">Sign Up</span>
+          
           </span>
         </p>
       </form>

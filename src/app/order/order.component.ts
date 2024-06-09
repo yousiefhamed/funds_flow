@@ -44,7 +44,7 @@ transaction:any;
   this.transaction=res.transaction
     },
     error:(err)=>{
-      console.log(err);
+      console.log( err);
       
 
     }

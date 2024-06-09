@@ -19,9 +19,14 @@ export class ForgetPasswordService {
     );
   }
 
-  resetCode(resetCode: Object): Observable<any> {
+  resetCodeSignUp(resetCode: Object): Observable<any> {
     return this._httpClient.post(
       `${this.baseUrl}api/password/otpvalidation`,
+      resetCode
+    );
+  } resetCode(resetCode: Object): Observable<any> {
+    return this._httpClient.post(
+      `${this.baseUrl}api/email-verification`,
       resetCode
     );
   }

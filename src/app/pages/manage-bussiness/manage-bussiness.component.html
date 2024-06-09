@@ -1,1 +1,67 @@
-<p>manage-bussiness works!</p>
+
+<section *ngIf="users">
+  <div class="container mt-4">
+    <div class="search w-75 mx-auto">
+      <!-- <button [routerLink]="['/userProfile' ,user.id]"> d</button> -->
+      <input type="search" placeholder="  Search via email" class="form-control w-100 m-4 p-3 " [(ngModel)]="term">
+  
+    </div>
+    <div class="d-flex justify-content-between">
+      <h3 class="h5 text-muted colortext">Manage Bussiness</h3>
+      <h5 class=" text-muted colortext"> Total
+        <span>   {{users.length}}</span>
+        <i class="fa-solid fa-user ms-2"></i></h5>
+                                       
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover mt-3    align-middle">
+        <thead class="thead-light borderheader colortext   ">
+  
+          <tr>
+            <th class="colortext">Name</th>
+            <th class="colortext">Email</th>
+            <th class="colortext">Tax Card Num </th>
+            <th colspan="3" class="colortext">Status</th>
+          </tr>
+  
+        </thead>
+        <!-- |searchOppo:term  -->
+        <tr *ngFor="let user of users |searchNameUser:term" class="position-relative hh ">
+  
+          <td class="p-4 ">
+  
+            <span [ngClass]="{'success': user.is_approved === 1, 'bg-danger': user.is_approved === 0}"
+              class=" position-absolute colorLeft me-5 circle"></span>{{ user.name }}
+          </td>
+          <td>{{user.email }}</td>
+          <td >{{user.business.tax_card_number}}</td>
+        
+          <td colspan="2" [ngClass]="{'successtext': user.is_approved=== '1', 'text-danger': user.is_approved=== '0'}" class="m-0 p-0">
+            
+            <span *ngIf="user.is_approved == 0" class="text-danger" 
+            >
+             Disapproved
+           </span>
+           <span *ngIf="user.is_approved == 1" class="successtext" 
+           >
+           Approved
+          </span>
+        
+          
+         
+          </td>
+          <td role="button" [routerLink]="['/bussinessProfile' ,user.id]"><i class="fas fa-ellipsis-h"></i>
+          
+         </td>
+  
+        </tr>
+  
+  
+  
+  
+  
+      </table>
+  
+    </div>
+  </div>
+</section>

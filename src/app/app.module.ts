@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { MyHttpInterceptor } from './my-http.interceptor';
 import { FooterComponent } from './pages/footer/footer.component';
 import { importProvidersFrom } from '@angular/core';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [AppComponent,],
   imports: [
@@ -19,7 +20,8 @@ import { importProvidersFrom } from '@angular/core';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FooterComponent
+    FooterComponent,
+    ToastrModule.forRoot(), 
   ],
   providers: [
 

@@ -317,8 +317,8 @@
 
             <!-- [disabled]="investForm.invalid" -->
             <div class="d-flex justify-content-between w-50 mx-auto">
-                <button class="btn w-50 btn1 btnspace me-2 p-2" (click)="accept()"> Accept</button>
-                <button class="btn w-50 btn-danger btnspace p-2" (click)="delete()">Reject</button>
+                <button class="btn w-50 btn1 btnspace me-2 p-2" (click)="accept(btn1)" #btn1> Accept</button>
+                <button class="btn w-50 btn-danger btnspace p-2" (click)="delete(btn2)" #btn2>Reject</button>
               </div>
         
 

@@ -1,16 +1,8 @@
-<p>manage-users works!</p>
-<p>manage-users works!</p>
-<p>manage-users works!</p>
-<p>manage-users works!</p>
-<p>manage-users works!</p>
 
 
-
-
-
-
-
-<div class="container mt-4">
+<section *ngIf="users">
+  
+<div class="container mt-4" *ngIf="users">
   <div class="search w-75 mx-auto">
     <!-- <button [routerLink]="['/userProfile' ,user.id]"> d</button> -->
     <input type="search" placeholder="  Search via email" class="form-control w-100 m-4 p-3 " [(ngModel)]="term">
@@ -36,26 +28,26 @@
 
       </thead>
       <!-- |searchOppo:term  -->
-      <tr *ngFor="let user of users |searchNameUser:term" class="position-relative hh">
+      <tr *ngFor="let user of users |searchNameUser:term" class="position-relative hh ">
 
         <td class="p-4 ">
 
           <span [ngClass]="{'success': user.is_approved === 1, 'bg-danger': user.is_approved === 0}"
-            class=" position-absolute colorLeft me-5 h"></span>{{ user.name }}
+            class=" position-absolute colorLeft me-5 circle"></span>{{ user.name }}
         </td>
         <td>{{user.email }}</td>
         <td >{{user.investor.national_id}}</td>
       
-        <td colspan="2" [ngClass]="{'successtext': user.is_approved=== '1', 'text-danger': user.is_approved=== '0'}">
+        <td colspan="2" [ngClass]="{'successtext': user.is_approved=== '1', 'text-danger': user.is_approved=== '0'}" class="m-0 p-0">
           
-          <p *ngIf="user.is_approved == 1"  class="successtext"
+          <span *ngIf="user.is_approved == 1"  class="successtext"
           >
             Approved
-          </p>
-           <p *ngIf="user.is_approved == 0" class="text-danger" 
+          </span>
+           <span *ngIf="user.is_approved == 0" class="text-danger" 
            >
             Disapproved
-          </p>
+          </span>
         
         </td>
         <td role="button" [routerLink]="['/userProfile' ,user.id]"><i class="fas fa-ellipsis-h"></i>
@@ -72,3 +64,4 @@
 
   </div>
 </div>
+</section>

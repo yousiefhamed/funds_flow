@@ -9,8 +9,7 @@ export class ForminvestService {
 
   constructor(private _httpClient:HttpClient) { }
 
-  baseUrl:string=`
-  https://malamute-optimum-recently.ngrok-free.app/`;
+  baseUrl:string=`https://malamute-optimum-recently.ngrok-free.app/`;
   
   investForm(data: FormData): Observable<any> {
 
@@ -23,8 +22,6 @@ export class ForminvestService {
   } 
   
   updateForm(data: FormData , uuid:string|null|number): Observable<any> {
-console.log(uuid);
-
     return this._httpClient.post(`${this.baseUrl}api/opportunity/update/${uuid}`,data);
   } 
 

@@ -1,0 +1,55 @@
+<section class="m mb-5 " *ngIf="data">
+    <div class="container">
+        <div class="row align-self-center mx-auto">
+            <!-- name -->
+            <input type="text" class="form-control w-75 mx-auto mb-5 p-2 text-center borderAll fw-bold "
+                [(ngModel)]="data.business.name">
+            <div class="col-md-6">
+
+
+                <!-- DESCRIPTION -->
+                <div class="DESCRIPTION mb-3 text-center borderProfile">
+                    <h3 class="h5 pt-2">DESCRIPTION</h3>
+                    <p class="p-4 text-muted">
+                        {{data.business.description}}
+                    </p>
+                </div>
+                <div class="form-floating mb-3">
+                    <input value="123@gmail" type="email" readonly class="form-control  borderProfile w-inputPro"
+                        id="floatingInput" placeholder="name@example.com" readonly [(ngModel)]="data.business.email" />
+                    <label for="floatingInput" class="text-muted "> E- Mail </label>
+
+
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <!--        id          -->
+                <div class="DESCRIPTION mb-3">
+                    <!-- <img src="../../../assets/id.jpeg" class="w-100 h-100" alt=""> -->
+                    <img [src]="data.id_card_photo" class="w-100 h-100" alt="">
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control borderProfile w-inputPro" id="floatingInput"
+                        placeholder="name@example.com"  readonly
+                        [(ngModel)]="data.business.tax_card_number" 
+                        />
+                    <!-- [(ngModel)]="user.investor.national_id" -->
+                    <label for="floatingInput">Tax Card Number </label>
+                </div>
+
+
+            </div>
+
+            <div class="d-flex justify-content-between  mt-5 mb-5">
+
+                <button class="btn  btn1 btnspace  p-2   " (click)="approve(data.id ,btnAdd)"  #btnAdd> Approve</button>
+                <button class="btn  btn-danger btnspace p-2 me-5  " (click)="disapprove(data.id ,btnAdd1)" #btnAdd1> Disapprove </button>
+
+            </div>
+        </div>
+    </div>
+
+
+</section>

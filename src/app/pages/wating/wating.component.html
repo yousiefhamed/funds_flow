@@ -134,8 +134,8 @@
         <div>
           <button class="btn btninfo w-100 mb-2 " [routerLink]="['/watingDetails' , data.uuid]">Show More Details</button>
           <div class="d-flex justify-content-between">
-            <button class="btn btninfo btnspace  " (click)="accept(data.uuid)"> Accept</button>
-            <button class="btn btn-danger btnspace" (click)="delete(data.uuid)">Reject</button>
+            <button class="btn btninfo btnspace  " (click)="accept(data.uuid ,AddBtn)" #AddBtn> Accept</button>
+            <button class="btn btn-danger btnspace" (click)="reject(data.uuid ,AddBtn1)" #AddBtn1>Reject</button>
           </div>
         </div>
     </div>

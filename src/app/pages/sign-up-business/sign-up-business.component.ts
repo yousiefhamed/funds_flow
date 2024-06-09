@@ -31,6 +31,7 @@ import {
   RxwebValidators,
 } from '@rxweb/reactive-form-validators';
 import { Subscription } from 'rxjs';
+import { ForgetPasswordService } from 'src/app/Services/forget-password.service';
 
 @Component({
   selector: 'app-sign-up-business',
@@ -56,12 +57,16 @@ export class SignUpBusinessComponent implements OnDestroy {
   errorDate: string = '';
   subObject!: Subscription;
   formData = new FormData();
+  email:any=''
+  step1:boolean=true;
 
+  step2:boolean=false;
+    
   term: string = '';
   file!: any;
   role:string = 'business';
 
-  constructor(private _router: Router, private _authService: AuthService) {}
+  constructor(private _router: Router, private _authService: AuthService ,private   _forgetPasswordService:ForgetPasswordService) {}
 
   passwordShown: boolean = false;
 
@@ -96,6 +101,14 @@ export class SignUpBusinessComponent implements OnDestroy {
       Validators.required,
     ]),
   });
+  resetCodeForm: FormGroup = new FormGroup({
+    verification_code: new FormControl(null, [
+      Validators.required,
+      Validators.pattern(/^[0-9]{6}$/),
+    ]),
+  });
+
+
 
   handelForm() {
     this.errMsg = '';
@@ -105,6 +118,8 @@ export class SignUpBusinessComponent implements OnDestroy {
     // const userDate = this.SinUpForm.value;
     // userDate.role = 'business';
     // console.log(this.SinUpForm.value);
+    let userDate = this.SinUpForm.value
+    this.email=userDate.email
 
 
     const formData1 = new FormData();
@@ -121,7 +136,8 @@ export class SignUpBusinessComponent implements OnDestroy {
       this.subObject = this._authService.Signup(formData1).subscribe({
         next: (res) => {
           this.isLoading = false;
-          this._router.navigate(['/signIn']);
+          this.step1=false;
+          this.step2=true;
         },
         error: (err: HttpErrorResponse) => {
           console.log(err);
@@ -152,6 +168,43 @@ export class SignUpBusinessComponent implements OnDestroy {
         }
  
   }
+
+  resetCodeSignUp() {
+    // this.errorMassage = '';
+    let resetCodeSignUp = this.resetCodeForm.value;
+    resetCodeSignUp.email = this.email;
+    this.isLoading = true;
+
+    this._forgetPasswordService
+        .resetCode(resetCodeSignUp)
+        .subscribe({
+          next: (Response) => {
+            // console.log(Response);
+          this._router.navigate(['/signIn']);
+             this.step1 = false;
+              this.step2 = true;
+            // this.displayMassage = Response.message;
+            // this.errorMassage = Response.message;
+            // console.log(Response.message);
+
+            this.isLoading = false;
+            // if (Response.status == true) {
+            //   this.errorMassage = '';
+            //   this.step2 = false;
+            //   this.step3 = true;
+            // }
+          },
+          error: (err: HttpErrorResponse) => {
+            // console.log(err);
+            // this.errorMassage = err.message;
+            // console.log(err.message);
+
+            this.isLoading = false;
+          },
+        });
+   
+  }
+
 
 
 }

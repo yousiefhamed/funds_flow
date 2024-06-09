@@ -41,7 +41,7 @@ ngOnInit(): void {
         console.log(res);
         // this.=res.data
         this.users= res.data
-         console.log( res.data.investors);
+         console.log( res.data.business);
   
       }, 
       error:(err)=>{

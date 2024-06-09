@@ -1,4 +1,4 @@
-<section class="_top" >
+<section class="mt-5" >
 
     <div class="container mx-auto p-5">
 
@@ -10,10 +10,10 @@
         </div>
 
 
-        <div class="row g-5  justify-content-between">
+        <div class="row g-4 justify-content-between">
 
 
-            <div *ngFor="let opportunity of opportunites |searchOppo:term " class="col-md-4 opportunity  ">
+            <div *ngFor="let opportunity of opportunites |searchOppo:term " class="col-md-3 opportunity m-4 ">
 
                 <div>
                     <img class=" w-100" [src]="opportunity.photo" title="opportunity.business_name"
