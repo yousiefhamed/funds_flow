@@ -166,23 +166,6 @@ export class AdminComponent implements OnInit {
       });
   }
 
-  sandCommission(uuid: any) {
-    console.log(this.term);
-
-    const com = this.commissionForm.value;
-
-    this._profileService.updatecom(uuid, com).subscribe({
-      next: (res) => {
-        this.isLoading = false;
-        console.log(res);
-        this.commissionForm.value.commission_amount = '';
-      },
-      error: (err) => {
-        this.isLoading = false;
-        console.log(err);
-      },
-    });
-  }
 
   getData() {
     this._profileService.getData(this._method).subscribe({

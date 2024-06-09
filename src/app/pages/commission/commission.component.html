@@ -1,0 +1,49 @@
+<form [formGroup]="commissionForm" ngSubmit="update()">
+
+    <div class="row m-4 g-4 justify-content-center">
+        <div class="col-md-6 " *ngFor="let  opportunity  of opportunities">
+            <div class="stylediv ">
+                <div class="d-flex justify-content-between  align-self-center">
+                    <div class="mt-5">
+                        {{opportunity.business_name }}
+                        <p class="fw-bolder fs-5"> </p>
+                        <p class="fw-bolder  fs-6">Business Field: <span>{{opportunity.category.name}}</span>
+                        </p>
+                        <p class="fw-bolder  fs-6">Total Amount: <span>{{opportunity.amount_needed}}</span>
+                        </p>
+                    </div>
+
+                    <div>
+                        <figure class="logo ">
+                            <img class="w-100" [src]="opportunity.photo" alt="logo">
+                        </figure>
+
+                        <div>
+                            <p>Start Date: {{opportunity.start_date}}
+                            </p>
+                            <p>End Date: {{opportunity.end_date}}</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex">
+                    <div class="text-center align-items-center  justify-content-center ms-5 borderAll w-75  ">
+                        <!-- <div class="p-2">Commission <span>{{opportunity.commission_amount}} </span> -->
+                            <input type="text" formControlName="commission_amount"
+                            class="border-0 w-25 pt-1 pb-1" 
+                            [(ngModel)]="opportunity.commission_amount"
+                            >
+                            <button class="btn" (click)="update()">
+                                <i class="fa-solid fa-pencil ms-3 pencil" role="button"></i>
+
+                            </button>
+
+                        <!-- </div> -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+  </div>
+</form>

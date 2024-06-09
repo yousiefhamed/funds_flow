@@ -179,6 +179,14 @@ const routes: Routes = [
           ),
         title: 'wating',
       },     
+      {
+        path: 'commission/:uuid',
+        loadComponent: () =>
+          import('./pages/commission/commission.component').then(
+            (m) => m.CommissionComponent
+          ),
+        title: 'commission',
+      },     
       
       {
         path: 'userProfile/:id',

@@ -1,4 +1,3 @@
-import { MessageService } from 'primeng/api';
 import { MatSelectModule } from '@angular/material/select';
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -51,7 +50,6 @@ export class WatingDetailsComponent implements OnInit {
   constructor(
     private _ForminvestService: ForminvestService,
     private _http: HttpClient,
-    private messageService: MessageService,
     private _router:Router,
     private _activatedRoute:ActivatedRoute ,
     private  _categoriesService:CategoriesService,
@@ -226,7 +224,7 @@ delete(element:HTMLButtonElement){
     this._ToastrService.success(res.message)
     this._Renderer2.removeAttribute(element ,'disabled')
 
-    // this._router.navigate(['/wating'])
+    this._router.navigate(['/wating'])
     
     },
     error: (err) => {
@@ -246,8 +244,8 @@ accept(element:HTMLButtonElement){
     console.log(res);
     this._ToastrService.success(res.message)
     this._Renderer2.removeAttribute(element ,'disabled')
-
-    // this._router.navigate(['/wating'])
+    //  this._router.navigate(['/wa'])
+    this._router.navigate(['/wating'])
 
     },
     error: (err) => {

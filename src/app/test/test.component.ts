@@ -105,11 +105,10 @@ export class TestComponent implements OnInit {
 
     const com = this.commissionForm.value;
 
-    this._profileService.updatecom(uuid, com).subscribe({
+    this._profileService.updatecom(uuid).subscribe({
       next: (res) => {
         this.isLoading = false;
         console.log(res);
-        this.commissionForm.value.commission_amount = '';
       },
       error: (err) => {
         this.isLoading = false;

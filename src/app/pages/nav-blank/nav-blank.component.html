@@ -44,11 +44,10 @@
            {{data.name}}
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="/about-user" role="button">Profile</a></li>
+            <li *ngIf="roleAdmin == 'admin' "><a class="dropdown-item" routerLink="/admin" role="button">Profile</a></li>
+            <li  *ngIf="roleAdmin !== 'admin' "><a class="dropdown-item" routerLink="/about-user" role="button">Profile</a></li>
             <li>
               <span class="dropdown-item text-danger" (click)="signOut()" role="button">Signout</span>
-
-
             </li>
           </ul>
         </li>

@@ -13,7 +13,7 @@ import {
 import { Route, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ForminvestService } from 'src/app/Services/forminvest.service';
 import { HttpClient } from '@angular/common/http';
-import { MessageService } from 'primeng/api';
+// import { MessageService } from 'primeng/api';
 import { ToastrService } from 'ngx-toastr';
 interface UploadEvent {
   originalEvent: Event;
@@ -43,7 +43,7 @@ export class InvestComponent implements OnInit {
   constructor(
     private _ForminvestService: ForminvestService,
     private _http: HttpClient ,
-    private messageService: MessageService,
+    // private messageService: MessageService,
     private _router:Router,
     private _ToastrService:ToastrService,
     private _Renderer2:Renderer2

@@ -19,6 +19,7 @@ export class NavBlankComponent implements OnInit {
   photoB:string='';
   roleInvestor:string='';
   roleBuss:string='';
+  roleAdmin:string='';
 name:any
   constructor( private _profileService:ProfileService , private _httpClient:HttpClient , private _Router:Router)  {}
 
@@ -40,6 +41,7 @@ name:any
       next:(res)=>{
         console.log(res.data)
         this.data=res.data
+        this. roleAdmin=res.data.role
         this.name= res.name 
       },
       error: (err) => {

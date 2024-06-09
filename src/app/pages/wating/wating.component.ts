@@ -9,11 +9,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProfileService } from 'src/app/Services/profile.service';
-import { ButtonModule } from 'primeng/button';
 
-import { AvatarModule } from 'primeng/avatar';
-import { InputTextModule } from 'primeng/inputtext';
-import { DialogModule } from 'primeng/dialog';
 import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -46,8 +42,6 @@ export class WatingComponent implements OnInit {
   data: any;
   Categories: any;
 
-
-
   getData() {
     this._profileService.getUnapproved(this._method).subscribe({
       next: (res) => {
@@ -66,38 +60,37 @@ export class WatingComponent implements OnInit {
     this.getData();
   }
 
-
-  reject(uuid: any ,element:HTMLButtonElement) {
-    this._Renderer2.setAttribute(element ,'disabled' ,'true')
+  reject(uuid: any, element: HTMLButtonElement) {
+    this._Renderer2.setAttribute(element, 'disabled', 'true');
 
     this._profileService.delete(this._method2, uuid).subscribe({
       next: (res) => {
         console.log(res);
-        this._ToastrService.success(res.message)
-        this._Renderer2.removeAttribute(element ,'disabled')
+        this._ToastrService.success(res.message);
+        this._Renderer2.removeAttribute(element, 'disabled');
+        window.location.reload()
 
       },
       error: (err) => {
-        this._Renderer2.removeAttribute(element ,'disabled' )
+        this._Renderer2.removeAttribute(element, 'disabled');
 
         console.log(err);
       },
     });
   }
-  accept(uuid: any ,element:HTMLButtonElement) {
-    this._Renderer2.setAttribute(element ,'disabled' ,'true')
+  accept(uuid: any, element: HTMLButtonElement) {
+    this._Renderer2.setAttribute(element, 'disabled', 'true');
 
     this._profileService.accept(this._method3, uuid).subscribe({
       next: (res) => {
-        this._ToastrService.success(res.message)
-        this._Renderer2.removeAttribute(element ,'disabled')
-
+        this._ToastrService.success(res.message);
+        this._Renderer2.removeAttribute(element, 'disabled');
+         window.location.reload()
         console.log(res);
       },
       error: (err) => {
         console.log(err);
-        this._Renderer2.removeAttribute(element ,'disabled' )
-
+        this._Renderer2.removeAttribute(element, 'disabled');
       },
     });
   }

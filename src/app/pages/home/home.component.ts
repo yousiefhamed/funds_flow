@@ -1,6 +1,6 @@
 import { SignUpUserComponent } from './../sign-up-user/sign-up-user.component';
 import { MatButtonModule } from '@angular/material/button';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Route, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import {
@@ -11,6 +11,7 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogboxComponent } from 'src/app/dialogbox/dialogbox.component';
 import { Meta, Title } from '@angular/platform-browser';
+import { ProfileService } from 'src/app/Services/profile.service';
 
 @Component({
   selector: 'app-home',
@@ -31,18 +32,21 @@ import { Meta, Title } from '@angular/platform-browser';
     './homeSections .scss',
   ],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   userName: string = '';
+  _method: object = { _method: 'get' };
+  roleInvestor:string='';
+  roleBuss:string='';
+
   constructor(
     private titleService: Title,
     private metaService: Meta,
     public dialog: MatDialog,
-    private _router: Router
+    private _router: Router,
+    private _profileService:ProfileService
+
   ) {}
 
-  ngOnInit(): void {
-    this.setMetaTags();
-  }
 
   setMetaTags(): void {
     this.titleService.setTitle(
@@ -80,4 +84,39 @@ export class HomeComponent {
 
     this._router.navigate(['/signIn']);
   }
+
+
+
+  getData(){
+    this._profileService.getData1(this._method).subscribe({
+      next:(res)=>{
+        console.log(res.data)
+        this.roleBuss=res.data.role
+        this.roleInvestor=res.data.role
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+
+
+    console.log(this.roleBuss);
+    console.log(this.roleInvestor);
+  
+  }
+
+
+
+
+ 
+
+  ngOnInit(): void {
+    this.setMetaTags();
+    this.getData()
+  }
+
+
+
+
+
 }

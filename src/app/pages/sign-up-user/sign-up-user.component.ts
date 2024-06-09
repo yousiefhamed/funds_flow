@@ -17,7 +17,6 @@ import {
 import { AuthService } from 'src/app/Services/auth.service';
 import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { FileUploadModule } from 'primeng/fileupload';
 import { ForgetPasswordService } from 'src/app/Services/forget-password.service';
 interface UploadEvent {
   originalEvent: Event;
@@ -33,7 +32,7 @@ interface UploadEvent {
     ReactiveFormsModule,
     FormsModule,
     RouterLinkActive,
-    FileUploadModule,
+
   ],
   templateUrl: './sign-up-user.component.html',
   styleUrls: ['./sign-up-user.component.scss'],

@@ -94,91 +94,6 @@
 @import "../../pages/about-user/about-user.component";
 
 
-
-.container-me > section.profile_hero {
-    padding-top: var(--padding-large);
-    figure {
-      flex: 50% 0 0;
-      img {
-        width: 100%;
-        border-radius: var(--border-radius-10);
-      }
-      img.position-absolute {
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: var(--padding-large);
-        padding: var(--padding-small);
-        background-color: var(--color-grey);
-        border-radius: 50%;
-      }
-    }
-    .form-container {
-      flex: 50% 0 0;
-      .input-container {
-        flex: 80% 0 0;
-      }
-    }
-    @media (max-width: 720px) {
-      align-items: center;
-      gap: var(--padding-large);
-  
-      figure,
-      .form-container {
-        flex: 100% 0 0;
-      }
-    }
-  }
-  
-  .form-container {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: var(--padding-regular);
-    margin: 0 auto;
-    .input-container {
-      min-height: 50px;
-      border-radius: var(--border-radius-10);
-      border: 2px solid var(--color-main-blue);
-      padding: var(--padding-extra-small);
-      flex: calc(50% - var(--padding-small)) 0 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: nowrap;
-      > div {
-        display: flex;
-        flex-direction: column;
-        gap: var(--padding-extra-small);
-        flex: calc(100% - 40px) 0 0;
-      }
-      input {
-        border: none;
-        width: 50%;
-  
-        &:focus {
-          outline: none;
-        }
-      }
-      img {
-        width: 30px;
-        height: 30px;
-        cursor: pointer;
-        transition: all var(--timing);
-  
-        &:hover,
-        &:active {
-          transform: scale(1.2);
-        }
-      }
-    }
-    @media (max-width: 720px) {
-      flex-direction: column;
-      .input-container {
-        flex: 100% 0 0;
-      }
-    }
-  }
-  
   .dd{
 //    top: ;
     left: 10.25rem;
@@ -230,11 +145,12 @@
   background-color:var(--color-main-blue);;
   color: white;
 }
-.btn11{
+.btn1{
   background-color: var(--color-main-blue);;
-border-radius: 50%;
+// border-radius: 50%;
 margin: 2px;
-
+padding-left: 100px;
+padding-right: 100px;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -287,4 +203,10 @@ input[type=number] {
 
 .space{
   width: 100%;
+}
+
+.pencil{
+
+  font-size: 15px;
+  color: var(--color-main-blue);
 }

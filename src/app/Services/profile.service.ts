@@ -29,12 +29,11 @@ getData1(data: any): Observable<any> {
   //   return this._httpClient.post(`http://working-cockatoo-singularly.ngrok-free.app/api/update-admin-profile/`, data);
   // }
 
-  updatecom(data: any, uuid: string | null | number): Observable<any> {
+  updatecom(data: any): Observable<any> {
     console.log(data);
-    console.log(uuid);
 
     return this._httpClient.post(
-      `${this.baseUrl}api/update-admin-profile/${uuid}`,
+      `${this.baseUrl}api/update-admin-profile`,
       data
     );
   }
