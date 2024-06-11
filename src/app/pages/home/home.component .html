@@ -1,10 +1,20 @@
-<div class="container-me">
+<div class="container-me container">
   <div class="header__container">
     <section class="heroSection__with__bg">
       <h1>Discover your path to wealth with us.</h1>
       <nav class="sign__btns">
-        <button class="btn1 btn " routerLink="/invest" *ngIf="roleBuss == 'business'">Post</button>
-        <button class="btn1 btn"  routerLink="/categories"    *ngIf="roleInvestor == 'investor' ">
+        <button
+          class="btn1 btn"
+          routerLink="/invest"
+          *ngIf="roleBuss == 'business'"
+        >
+          Post
+        </button>
+        <button
+          class="btn1 btn"
+          routerLink="/categories"
+          *ngIf="roleInvestor == 'investor' "
+        >
           Invest
         </button>
       </nav>
@@ -56,7 +66,7 @@
   <section class="categories">
     <div class="heading">
       <h2 class="h2__heading">Categories</h2>
-      <a  class="p__text" routerLink="/categories" >See All</a>
+      <a class="p__text" routerLink="/categories">See All</a>
     </div>
     <div class="categories__container">
       <div class="category">

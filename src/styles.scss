@@ -178,9 +178,15 @@ body {
 }
 
 body .container-me {
-  padding-inline: var(--padding-large);
-  @media (max-width: 550px) {
-    padding-inline: var(--padding-regular);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  box-sizing: border-box;
+  gap: calc(var(--padding-medium) * 2);
+  flex-wrap: wrap;
+  @media (max-width: 575px) {
+    padding-inline: 20px;
   }
 
   > header,
