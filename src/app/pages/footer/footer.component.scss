@@ -8,6 +8,7 @@
   width: 100%;
   position: relative;
   color: var(--color-white);
+  padding-inline: 20px;
 
   &::after {
     content: "";
@@ -40,7 +41,7 @@
     }
 
     .text p {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: var(--font-weight-bold);
       padding-inline-start: var(--padding-regular);
     }
@@ -49,7 +50,7 @@
       justify-content: center;
       align-items: flex-start;
       flex-direction: column;
-      gap: var(--padding-small);
+      gap: 20px;
 
       .social {
         display: flex;
@@ -63,7 +64,7 @@
         }
 
         p a {
-          font-size: 16px;
+          font-size: 14px;
           font-weight: var(--font-weight-light);
           max-width: 350px;
         }
@@ -75,7 +76,7 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      gap: var(--padding-regular);
+      gap: 20px;
 
       > div {
         width: 100%;
@@ -112,7 +113,7 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      gap: 10px;
+      gap: 5px;
 
       p a {
         font-size: 14px;
@@ -124,6 +125,7 @@
       flex-direction: column;
       justify-content: center;
       text-align: center;
+      gap: 20px;
 
       .social__icons {
         flex-wrap: wrap;

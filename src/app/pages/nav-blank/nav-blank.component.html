@@ -56,7 +56,7 @@
              ON
         </li>  
         
-        <li class="off" *ngIf="data.is_approved == 0">
+        <li class="off" *ngIf="data.is_approved == 0 && roleAdmin != 'admin' ">
              OFF
         </li>
       </ul>
