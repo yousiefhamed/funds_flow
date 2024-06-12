@@ -22,7 +22,11 @@ import { FooterComponent } from '../footer/footer.component';
     FooterComponent,
   ],
   templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.component.scss', './landingSections.scss'],
+  styleUrls: [
+    './landing-page.component.scss',
+    './landingSections.scss',
+    './landingOtherSections.scss',
+  ],
 })
 export class LandingPageComponent {
   constructor(

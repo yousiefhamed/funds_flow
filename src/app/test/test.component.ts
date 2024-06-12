@@ -28,7 +28,7 @@ interface UploadEvent {
   ],
 
   templateUrl: './test.component.html',
-  styleUrls: ['./test.component.scss'],
+  styleUrls: ['./test.component.scss', './testComponest.scss'],
 })
 export class TestComponent implements OnInit {
   // data:{}={
@@ -51,7 +51,7 @@ export class TestComponent implements OnInit {
     private _router: Router,
     private _httpClient: HttpClient,
     private _ToastrService: ToastrService,
-    private _Renderer2:Renderer2
+    private _Renderer2: Renderer2
   ) {}
 
   payForm: FormGroup = new FormGroup({
@@ -89,10 +89,9 @@ export class TestComponent implements OnInit {
         this.formData
       )
       .subscribe({
-        next: (res:any) => {
-
+        next: (res: any) => {
           window.location.reload();
-          this._ToastrService.success(res.message)
+          this._ToastrService.success(res.message);
         },
         error: (err) => {
           console.log(err);
@@ -145,7 +144,7 @@ export class TestComponent implements OnInit {
 
     this._profileService.update(formData1).subscribe({
       next: (res) => {
-        this._ToastrService.success(res.message)
+        this._ToastrService.success(res.message);
 
         window.location.reload();
 
